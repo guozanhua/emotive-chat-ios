@@ -9,13 +9,22 @@
 import UIKit
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate
+{
 
     var window: UIWindow?
+    var initialViewController: UIViewController?
 
-
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
+    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool
+    {
+        initialViewController = LoginViewController()
+        
+        let frame = UIScreen.mainScreen().bounds
+        window = UIWindow(frame: frame)
+        
+        window!.rootViewController = initialViewController
+        window!.makeKeyAndVisible()
+        
         return true
     }
 
