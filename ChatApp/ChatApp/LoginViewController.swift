@@ -41,7 +41,6 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, UITextFie
             passTextField.attributedPlaceholder = passPlaceholder
             passTextField.textColor = UIColor.whiteColor()
             passTextField.secureTextEntry = true
-
             
             let loginView : FBSDKLoginButton = FBSDKLoginButton()
             self.view.addSubview(loginView)
