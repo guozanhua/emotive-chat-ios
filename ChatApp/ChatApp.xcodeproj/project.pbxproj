@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A1B178FE1B914DA800372CB0 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B178FD1B914DA800372CB0 /* SignUpViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		B74005A71B901E2100565B02 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B74005A41B901E2100565B02 /* FBSDKCoreKit.framework */; };
 		B74005A81B901E2100565B02 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B74005A51B901E2100565B02 /* FBSDKLoginKit.framework */; };
 		B74005A91B901E2100565B02 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B74005A61B901E2100565B02 /* FBSDKShareKit.framework */; };
@@ -67,6 +68,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		A1B178FD1B914DA800372CB0 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		B740059E1B901B4B00565B02 /* ChatApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ChatApp-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
 		B74005A41B901E2100565B02 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		B74005A51B901E2100565B02 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
@@ -147,6 +149,7 @@
 			children = (
 				B7CCF9381B8E7F6B004DE54A /* AppDelegate.swift */,
 				B7CCF93A1B8E7F6B004DE54A /* LoginViewController.swift */,
+				A1B178FD1B914DA800372CB0 /* SignUpViewController.swift */,
 				B7CCF93C1B8E7F6B004DE54A /* Main.storyboard */,
 				B7CCF93F1B8E7F6B004DE54A /* Assets.xcassets */,
 				B7CCF9411B8E7F6B004DE54A /* LaunchScreen.storyboard */,
@@ -308,6 +311,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1B178FE1B914DA800372CB0 /* SignUpViewController.swift in Sources */,
 				B7CCF93B1B8E7F6B004DE54A /* LoginViewController.swift in Sources */,
 				B7CCF9391B8E7F6B004DE54A /* AppDelegate.swift in Sources */,
 			);

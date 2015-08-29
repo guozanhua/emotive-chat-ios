@@ -10,8 +10,11 @@ import UIKit
 
 class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, UITextFieldDelegate
 {
-    var userTextField: UITextField!
+    var emailTextField: UITextField!
     var passTextField: UITextField!
+    var signUpButton: UIButton!
+    
+    var vc : UIViewController?
 
     /* UIViewController overrides */
     
@@ -29,11 +32,11 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, UITextFie
             let bgColor = UIColor(red: 0, green: 239/255, blue: 224/255, alpha: 1)
             self.view.backgroundColor = bgColor
 
-            let userTextField: UITextField = UITextField(frame: CGRect(x: 80.0, y: 160.0, width: 200.0, height: 40.0))
-            self.view.addSubview(userTextField)
-            let userPlaceholder = NSAttributedString(string: "username", attributes: [NSForegroundColorAttributeName : UIColor(white: 1, alpha: 0.7)])
-            userTextField.attributedPlaceholder = userPlaceholder
-            userTextField.textColor = UIColor.whiteColor()
+            let emailTextField: UITextField = UITextField(frame: CGRect(x: 80.0, y: 160.0, width: 200.0, height: 40.0))
+            self.view.addSubview(emailTextField)
+            let emailPlaceholder = NSAttributedString(string: "email", attributes: [NSForegroundColorAttributeName : UIColor(white: 1, alpha: 0.7)])
+            emailTextField.attributedPlaceholder = emailPlaceholder
+            emailTextField.textColor = UIColor.whiteColor()
             
             let passTextField: UITextField = UITextField(frame: CGRect(x: 80.0, y: 200.0, width: 200.0, height: 40.0))
             self.view.addSubview(passTextField)
@@ -47,11 +50,24 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, UITextFie
             loginView.center = self.view.center
             loginView.readPermissions = ["public_profile", "email", "user_friends"]
             loginView.delegate = self
+            
+            let signUpButton = UIButton()
+            signUpButton.setTitle("Sign Up", forState: .Normal)
+            signUpButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+            signUpButton.frame = CGRectMake(135, 500, 100, 50)
+            signUpButton.addTarget(self, action: "pressed:", forControlEvents: .TouchUpInside)
+            self.view.addSubview(signUpButton)
         }
 
     }
     
-    // UITextField Delegates
+    func pressed(sender: UIButton!)
+    {
+        let vc = SignUpViewController()
+        self.presentViewController(vc, animated: true, completion: nil)
+    }
+    
+    /* UITextField Delegates
     func textFieldDidBeginEditing(textField: UITextField) {
         print("TextField did begin editing method called")
     }
@@ -79,6 +95,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, UITextFie
         textField.resignFirstResponder();
         return true;
     }
+    */
     
     
     /* FBSDKLoginButtonDelegate methods */
