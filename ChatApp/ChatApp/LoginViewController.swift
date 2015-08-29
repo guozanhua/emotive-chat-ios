@@ -23,6 +23,10 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate
         }
         else
         {
+            let bgColor = UIColor(red: 0, green: 239/255, blue: 224/255, alpha: 1)
+            self.view.backgroundColor = bgColor
+
+            
             let loginView : FBSDKLoginButton = FBSDKLoginButton()
             self.view.addSubview(loginView)
             loginView.center = self.view.center
