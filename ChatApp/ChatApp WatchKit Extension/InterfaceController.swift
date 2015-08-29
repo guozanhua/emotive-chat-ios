@@ -13,11 +13,31 @@ import Foundation
 class InterfaceController: WKInterfaceController
 {
 
+    @IBOutlet var friendsTable: WKInterfaceTable!
+    
+    
+    let friends = ["Rahul", "Spencer", "Jack", "Steve", "Sean"]
+    let friendColors = [UIColor.redColor(), UIColor.greenColor(), UIColor.blueColor(), UIColor.yellowColor(), UIColor.purpleColor()]
+
     override func awakeWithContext(context: AnyObject?)
     {
         super.awakeWithContext(context)
         
         // Configure interface objects here.
+        
+        loadTableData()
+    }
+    
+    func loadTableData()
+    {
+        friendsTable.setNumberOfRows(friends.count, withRowType: "FriendsTableRowController")
+        
+        for (index, friendName) in friends.enumerate() {
+            
+            let row = friendsTable.rowControllerAtIndex(index) as! FriendsTableRowController
+            row.friendLabel.setText(friendName)
+            row.friendSeparator.setColor(friendColors[index]);
+        }
     }
 
     override func willActivate()
