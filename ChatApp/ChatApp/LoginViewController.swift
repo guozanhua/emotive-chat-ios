@@ -10,6 +10,22 @@ import UIKit
 
 class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, UITextFieldDelegate
 {
+    var bgColorRed: CGFloat = 0
+    var bgColorGreen: CGFloat = 239/255
+    var bgColorBlue: CGFloat = 224/255
+    
+    var textFieldXPos: CGFloat = 80
+    
+    var emailFieldYPos: CGFloat = 160
+    var passFieldYPos: CGFloat = 200
+    
+    var textFieldWidth: CGFloat = 200
+    var textFieldHeight: CGFloat = 40
+    
+    var signUpWidth: CGFloat = 100
+    var signUpHeight: CGFloat = 50
+    var signUpYOffset: CGFloat = 150
+    
     var emailTextField: UITextField!
     var passTextField: UITextField!
     var signUpButton: UIButton!
@@ -29,36 +45,60 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, UITextFie
         }
         else
         {
-            let bgColor = UIColor(red: 0, green: 239/255, blue: 224/255, alpha: 1)
+            let bgColor = UIColor(red: bgColorRed, green: bgColorGreen, blue: bgColorBlue, alpha: 1)
             self.view.backgroundColor = bgColor
 
-            let emailTextField: UITextField = UITextField(frame: CGRect(x: 80.0, y: 160.0, width: 200.0, height: 40.0))
-            self.view.addSubview(emailTextField)
-            let emailPlaceholder = NSAttributedString(string: "email", attributes: [NSForegroundColorAttributeName : UIColor(white: 1, alpha: 0.7)])
-            emailTextField.attributedPlaceholder = emailPlaceholder
-            emailTextField.textColor = UIColor.whiteColor()
+            addEmailTextField()
             
-            let passTextField: UITextField = UITextField(frame: CGRect(x: 80.0, y: 200.0, width: 200.0, height: 40.0))
-            self.view.addSubview(passTextField)
-            let passPlaceholder = NSAttributedString(string: "password", attributes: [NSForegroundColorAttributeName : UIColor(white: 1, alpha: 0.7)])
-            passTextField.attributedPlaceholder = passPlaceholder
-            passTextField.textColor = UIColor.whiteColor()
-            passTextField.secureTextEntry = true
+            addPassTextField()
             
-            let loginView : FBSDKLoginButton = FBSDKLoginButton()
-            self.view.addSubview(loginView)
-            loginView.center = self.view.center
-            loginView.readPermissions = ["public_profile", "email", "user_friends"]
-            loginView.delegate = self
+            addFacebookLogin()
             
-            let signUpButton = UIButton()
-            signUpButton.setTitle("Sign Up", forState: .Normal)
-            signUpButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-            signUpButton.frame = CGRectMake(135, 500, 100, 50)
-            signUpButton.addTarget(self, action: "pressed:", forControlEvents: .TouchUpInside)
-            self.view.addSubview(signUpButton)
+            addSignUpButton()
         }
 
+    }
+    
+    func addEmailTextField()
+    {
+        let emailTextField: UITextField = UITextField(frame: CGRect(x: textFieldXPos, y: emailFieldYPos, width: textFieldWidth, height: textFieldHeight))
+        let emailPlaceholder = NSAttributedString(string: "email", attributes: [NSForegroundColorAttributeName : UIColor(white: 1, alpha: 0.7)])
+        emailTextField.attributedPlaceholder = emailPlaceholder
+        emailTextField.textColor = UIColor.whiteColor()
+        
+        self.view.addSubview(emailTextField)
+    }
+    
+    func addPassTextField()
+    {
+        let passTextField: UITextField = UITextField(frame: CGRect(x: textFieldXPos, y: passFieldYPos, width: textFieldWidth, height: textFieldHeight))
+        let passPlaceholder = NSAttributedString(string: "password", attributes: [NSForegroundColorAttributeName : UIColor(white: 1, alpha: 0.7)])
+        passTextField.attributedPlaceholder = passPlaceholder
+        passTextField.textColor = UIColor.whiteColor()
+        passTextField.secureTextEntry = true
+        
+        self.view.addSubview(passTextField)
+    }
+    
+    func addFacebookLogin()
+    {
+        let loginView : FBSDKLoginButton = FBSDKLoginButton()
+        loginView.center = self.view.center
+        loginView.readPermissions = ["public_profile", "email", "user_friends"]
+        loginView.delegate = self
+        
+        self.view.addSubview(loginView)
+    }
+    
+    func addSignUpButton()
+    {
+        let signUpButton = UIButton()
+        signUpButton.setTitle("Sign Up", forState: .Normal)
+        signUpButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+        signUpButton.frame = CGRectMake(self.view.center.x - signUpWidth/2, self.view.center.y + signUpYOffset, signUpWidth, signUpHeight)
+        signUpButton.addTarget(self, action: "pressed:", forControlEvents: .TouchUpInside)
+        
+        self.view.addSubview(signUpButton)
     }
     
     func pressed(sender: UIButton!)
@@ -66,37 +106,6 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, UITextFie
         let vc = SignUpViewController()
         self.presentViewController(vc, animated: true, completion: nil)
     }
-    
-    /* UITextField Delegates
-    func textFieldDidBeginEditing(textField: UITextField) {
-        print("TextField did begin editing method called")
-    }
-    func textFieldDidEndEditing(textField: UITextField) {
-        print("TextField did end editing method called")
-    }
-    func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
-        print("TextField should begin editing method called")
-        return true;
-    }
-    func textFieldShouldClear(textField: UITextField) -> Bool {
-        print("TextField should clear method called")
-        return true;
-    }
-    func textFieldShouldEndEditing(textField: UITextField) -> Bool {
-        print("TextField should snd editing method called")
-        return true;
-    }
-    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
-        print("While entering the characters this method gets called")
-        return true;
-    }
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
-        print("TextField should return method called")
-        textField.resignFirstResponder();
-        return true;
-    }
-    */
-    
     
     /* FBSDKLoginButtonDelegate methods */
     
