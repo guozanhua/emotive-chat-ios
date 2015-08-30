@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="8187.4" systemVersion="14F27" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="AgC-eL-Hgc">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8151.3"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="8092"/>
+    </dependencies>
+    <scenes>
+        <!--Interface Controller-->
+        <scene sceneID="aou-V4-d1y">
+            <objects>
+                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="ChatApp_WatchKit_App" customModuleProvider="target">
+                    <items>
+                        <table alignment="left" id="L5S-yp-Mob">
+                            <items>
+                                <tableRow identifier="FriendsTableRowController" id="ktD-Dg-Cta" customClass="FriendsTableRowController" customModule="ChatApp_WatchKit_Extension">
+                                    <group key="rootItem" width="1" alignment="left" id="WQ6-ic-dui">
+                                        <items>
+                                            <separator alignment="left" verticalAlignment="center" id="1tq-Xd-lzR"/>
+                                            <label width="109" height="36.5" alignment="right" verticalAlignment="center" text="Label" textAlignment="left" id="Hsj-8b-CgQ"/>
+                                        </items>
+                                        <color key="backgroundColor" red="0.15745344065656564" green="0.15745344065656564" blue="0.15745344065656564" alpha="1" colorSpace="calibratedRGB"/>
+                                    </group>
+                                    <connections>
+                                        <outlet property="friendLabel" destination="Hsj-8b-CgQ" id="BS5-cy-c0m"/>
+                                        <outlet property="friendSeparator" destination="1tq-Xd-lzR" id="g4C-gL-h5v"/>
+                                    </connections>
+                                </tableRow>
+                            </items>
+                        </table>
+                    </items>
+                    <connections>
+                        <outlet property="friendsTable" destination="L5S-yp-Mob" id="oTX-rF-Ixb"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="186" y="353"/>
+        </scene>
+        <!--FriendDetails-->
+        <scene sceneID="PnB-mK-I3l">
+            <objects>
+                <controller identifier="FriendDetails" hidesWhenLoading="NO" id="V2w-pL-DL7" customClass="FriendDetailInterfaceController" customModule="ChatApp_WatchKit_Extension">
+                    <items>
+                        <imageView width="0.90000000000000002" height="0.90000000000000002" alignment="center" verticalAlignment="center" id="kCU-Xz-eYd"/>
+                    </items>
+                    <connections>
+                        <outlet property="friendImage" destination="kCU-Xz-eYd" id="QWW-aW-lhV"/>
+                        <segue destination="QVF-YW-Igh" kind="relationship" relationship="nextPage" id="olo-Gp-FlG"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="379" y="352.75"/>
+        </scene>
+        <!--emotiveSelect-->
+        <scene sceneID="Mpw-LE-1mQ">
+            <objects>
+                <controller identifier="emotiveSelect" hidesWhenLoading="NO" id="QVF-YW-Igh" customClass="EmotiveSelectInterfaceController" customModule="ChatApp_WatchKit_Extension">
+                    <items>
+                        <group width="1" height="174" alignment="left" layout="vertical" id="SAm-Dx-3rK">
+                            <items>
+                                <group width="1" height="54" alignment="left" id="r7T-fn-RjB">
+                                    <items>
+                                        <button width="67" height="72" alignment="left" title="Button" id="8w6-Aj-S23">
+                                            <color key="backgroundColor" red="0.26418349054624074" green="0.72549019607843135" blue="0.47773364335348983" alpha="1" colorSpace="calibratedRGB"/>
+                                            <connections>
+                                                <action selector="leftPressed" destination="QVF-YW-Igh" id="ug5-tJ-gqS"/>
+                                            </connections>
+                                        </button>
+                                        <button width="67" height="72" alignment="right" title="Button" id="qFr-mv-qco">
+                                            <color key="backgroundColor" red="0.2738085934258907" green="0.37415797639740517" blue="0.72549019607843135" alpha="1" colorSpace="calibratedRGB"/>
+                                            <connections>
+                                                <action selector="rightPressed" destination="QVF-YW-Igh" id="N0t-cI-IIM"/>
+                                            </connections>
+                                        </button>
+                                    </items>
+                                </group>
+                                <group width="1" height="54" alignment="left" id="u6g-3u-EYe">
+                                    <items>
+                                        <button width="67" height="72" alignment="left" title="Button" id="wlH-25-HH0">
+                                            <color key="backgroundColor" red="0.72549019609999998" green="0.24274082063713881" blue="0.27118841672370769" alpha="1" colorSpace="calibratedRGB"/>
+                                            <connections>
+                                                <action selector="leftPressed" destination="QVF-YW-Igh" id="SaM-5A-YVy"/>
+                                            </connections>
+                                        </button>
+                                        <button width="67" height="72" alignment="right" title="Button" id="2jE-1p-dWg">
+                                            <color key="backgroundColor" red="0.72549019609999998" green="0.62273528305865322" blue="0.28159509229215124" alpha="1" colorSpace="calibratedRGB"/>
+                                            <connections>
+                                                <action selector="rightPressed" destination="QVF-YW-Igh" id="oxO-9P-kxa"/>
+                                            </connections>
+                                        </button>
+                                    </items>
+                                </group>
+                                <group width="1" height="54" alignment="left" id="Nuc-DV-Dwr">
+                                    <items>
+                                        <button width="67" height="72" alignment="left" title="Button" id="Agc-7Y-kXJ">
+                                            <color key="backgroundColor" red="0.20891703680540516" green="0.72549019609999998" blue="0.68487953718648853" alpha="1" colorSpace="calibratedRGB"/>
+                                            <connections>
+                                                <action selector="leftPressed" destination="QVF-YW-Igh" id="6ab-bT-x94"/>
+                                            </connections>
+                                        </button>
+                                        <button width="67" height="72" alignment="right" title="Button" id="WTf-Lt-AgH">
+                                            <color key="backgroundColor" red="0.72549019609999998" green="0.25837773587880553" blue="0.67130015032404633" alpha="1" colorSpace="calibratedRGB"/>
+                                            <connections>
+                                                <action selector="rightPressed" destination="QVF-YW-Igh" id="NaX-Nm-sL8"/>
+                                            </connections>
+                                        </button>
+                                    </items>
+                                </group>
+                            </items>
+                        </group>
+                    </items>
+                    <connections>
+                        <outlet property="leftButton" destination="8w6-Aj-S23" id="XCI-bp-Pzv"/>
+                        <outlet property="rightButton" destination="qFr-mv-qco" id="0Hj-hD-CIb"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="572" y="363.5"/>
+        </scene>
+    </scenes>
+</document>

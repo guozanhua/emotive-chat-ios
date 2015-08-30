@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A12834231B92BEE60030F2DF /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A12834221B92BEE60030F2DF /* Interface.storyboard */; settings = {ASSET_TAGS = (); }; };
+		A1A878F61B91C9EB00AD0941 /* FriendDetailInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A878F51B91C9EB00AD0941 /* FriendDetailInterfaceController.swift */; settings = {ASSET_TAGS = (); }; };
+		A1A878F81B922CC600AD0941 /* EmotiveSelectInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A878F71B922CC600AD0941 /* EmotiveSelectInterfaceController.swift */; settings = {ASSET_TAGS = (); }; };
 		A1B178FE1B914DA800372CB0 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B178FD1B914DA800372CB0 /* SignUpViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		A1B179001B9161E700372CB0 /* FriendsTableRowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B178FF1B9161E700372CB0 /* FriendsTableRowController.swift */; settings = {ASSET_TAGS = (); }; };
 		B74005A71B901E2100565B02 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B74005A41B901E2100565B02 /* FBSDKCoreKit.framework */; };
@@ -18,7 +21,6 @@
 		B7CCF9401B8E7F6B004DE54A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B7CCF93F1B8E7F6B004DE54A /* Assets.xcassets */; };
 		B7CCF9431B8E7F6B004DE54A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7CCF9411B8E7F6B004DE54A /* LaunchScreen.storyboard */; };
 		B7CCF9481B8E7F6B004DE54A /* ChatApp WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = B7CCF9471B8E7F6B004DE54A /* ChatApp WatchKit App.app */; };
-		B7CCF94E1B8E7F6B004DE54A /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7CCF94C1B8E7F6B004DE54A /* Interface.storyboard */; };
 		B7CCF9501B8E7F6B004DE54A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B7CCF94F1B8E7F6B004DE54A /* Assets.xcassets */; };
 		B7CCF9571B8E7F6B004DE54A /* ChatApp WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = B7CCF9561B8E7F6B004DE54A /* ChatApp WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		B7CCF95C1B8E7F6B004DE54A /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7CCF95B1B8E7F6B004DE54A /* InterfaceController.swift */; };
@@ -69,6 +71,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		A12834221B92BEE60030F2DF /* Interface.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Interface.storyboard; sourceTree = "<group>"; };
+		A1A878F51B91C9EB00AD0941 /* FriendDetailInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendDetailInterfaceController.swift; sourceTree = "<group>"; };
+		A1A878F71B922CC600AD0941 /* EmotiveSelectInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmotiveSelectInterfaceController.swift; sourceTree = "<group>"; };
 		A1B178FD1B914DA800372CB0 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		A1B178FF1B9161E700372CB0 /* FriendsTableRowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsTableRowController.swift; sourceTree = "<group>"; };
 		B740059E1B901B4B00565B02 /* ChatApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ChatApp-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
@@ -83,7 +88,6 @@
 		B7CCF9421B8E7F6B004DE54A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B7CCF9441B8E7F6B004DE54A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B7CCF9471B8E7F6B004DE54A /* ChatApp WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ChatApp WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		B7CCF94D1B8E7F6B004DE54A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
 		B7CCF94F1B8E7F6B004DE54A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B7CCF9511B8E7F6B004DE54A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B7CCF9561B8E7F6B004DE54A /* ChatApp WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "ChatApp WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -163,7 +167,7 @@
 		B7CCF94B1B8E7F6B004DE54A /* ChatApp WatchKit App */ = {
 			isa = PBXGroup;
 			children = (
-				B7CCF94C1B8E7F6B004DE54A /* Interface.storyboard */,
+				A12834221B92BEE60030F2DF /* Interface.storyboard */,
 				B7CCF94F1B8E7F6B004DE54A /* Assets.xcassets */,
 				B7CCF9511B8E7F6B004DE54A /* Info.plist */,
 			);
@@ -178,6 +182,8 @@
 				B7CCF95F1B8E7F6B004DE54A /* Assets.xcassets */,
 				B7CCF9611B8E7F6B004DE54A /* Info.plist */,
 				A1B178FF1B9161E700372CB0 /* FriendsTableRowController.swift */,
+				A1A878F51B91C9EB00AD0941 /* FriendDetailInterfaceController.swift */,
+				A1A878F71B922CC600AD0941 /* EmotiveSelectInterfaceController.swift */,
 			);
 			path = "ChatApp WatchKit Extension";
 			sourceTree = "<group>";
@@ -294,8 +300,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A12834231B92BEE60030F2DF /* Interface.storyboard in Resources */,
 				B7CCF9501B8E7F6B004DE54A /* Assets.xcassets in Resources */,
-				B7CCF94E1B8E7F6B004DE54A /* Interface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -324,6 +330,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1A878F81B922CC600AD0941 /* EmotiveSelectInterfaceController.swift in Sources */,
+				A1A878F61B91C9EB00AD0941 /* FriendDetailInterfaceController.swift in Sources */,
 				B7CCF95E1B8E7F6B004DE54A /* ExtensionDelegate.swift in Sources */,
 				A1B179001B9161E700372CB0 /* FriendsTableRowController.swift in Sources */,
 				B7CCF95C1B8E7F6B004DE54A /* InterfaceController.swift in Sources */,
@@ -360,14 +368,6 @@
 				B7CCF9421B8E7F6B004DE54A /* Base */,
 			);
 			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-		B7CCF94C1B8E7F6B004DE54A /* Interface.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				B7CCF94D1B8E7F6B004DE54A /* Base */,
-			);
-			name = Interface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

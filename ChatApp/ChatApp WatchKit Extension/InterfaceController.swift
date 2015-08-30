@@ -39,6 +39,18 @@ class InterfaceController: WKInterfaceController
             row.friendSeparator.setColor(friendColors[index]);
         }
     }
+    /*
+    override func contextForSegueWithIdentifier(segueIdentifier: String, inTable table: WKInterfaceTable, rowIndex: Int) -> AnyObject? {
+        
+        let friend = friends[rowIndex]
+        return friend
+        
+    }
+    */
+    
+    override func table(table: WKInterfaceTable, didSelectRowAtIndex rowIndex: Int) {
+        presentControllerWithNames(["FriendDetails", "emotiveSelect"], contexts: [friends[rowIndex], friends[rowIndex]])
+    }
 
     override func willActivate()
     {
