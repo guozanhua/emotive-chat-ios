@@ -32,12 +32,11 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, UITextFie
     
     var vc : UIViewController?
 
-    /* UIViewController overrides */
+    // MARK: - UIViewController methods
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        //userTextField.delegate = self
         
         if (FBSDKAccessToken.currentAccessToken() != nil)
         {
@@ -48,58 +47,15 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, UITextFie
             let bgColor = UIColor(red: bgColorRed, green: bgColorGreen, blue: bgColorBlue, alpha: 1)
             self.view.backgroundColor = bgColor
 
-            addEmailTextField()
-            
-            addPassTextField()
-            
-            addFacebookLogin()
-            
-            addSignUpButton()
+            _addEmailTextField()
+            _addPassTextField()
+            _addFacebookLogin()
+            _addSignUpButton()
         }
 
     }
     
-    func addEmailTextField()
-    {
-        let emailTextField: UITextField = UITextField(frame: CGRect(x: textFieldXPos, y: emailFieldYPos, width: textFieldWidth, height: textFieldHeight))
-        let emailPlaceholder = NSAttributedString(string: "email", attributes: [NSForegroundColorAttributeName : UIColor(white: 1, alpha: 0.7)])
-        emailTextField.attributedPlaceholder = emailPlaceholder
-        emailTextField.textColor = UIColor.whiteColor()
-        
-        self.view.addSubview(emailTextField)
-    }
-    
-    func addPassTextField()
-    {
-        let passTextField: UITextField = UITextField(frame: CGRect(x: textFieldXPos, y: passFieldYPos, width: textFieldWidth, height: textFieldHeight))
-        let passPlaceholder = NSAttributedString(string: "password", attributes: [NSForegroundColorAttributeName : UIColor(white: 1, alpha: 0.7)])
-        passTextField.attributedPlaceholder = passPlaceholder
-        passTextField.textColor = UIColor.whiteColor()
-        passTextField.secureTextEntry = true
-        
-        self.view.addSubview(passTextField)
-    }
-    
-    func addFacebookLogin()
-    {
-        let loginView : FBSDKLoginButton = FBSDKLoginButton()
-        loginView.center = self.view.center
-        loginView.readPermissions = ["public_profile", "email", "user_friends"]
-        loginView.delegate = self
-        
-        self.view.addSubview(loginView)
-    }
-    
-    func addSignUpButton()
-    {
-        let signUpButton = UIButton()
-        signUpButton.setTitle("Sign Up", forState: .Normal)
-        signUpButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-        signUpButton.frame = CGRectMake(self.view.center.x - signUpWidth/2, self.view.center.y + signUpYOffset, signUpWidth, signUpHeight)
-        signUpButton.addTarget(self, action: "pressed:", forControlEvents: .TouchUpInside)
-        
-        self.view.addSubview(signUpButton)
-    }
+    // MARK: - Internal methods
     
     func pressed(sender: UIButton!)
     {
@@ -107,7 +63,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, UITextFie
         self.presentViewController(vc, animated: true, completion: nil)
     }
     
-    /* FBSDKLoginButtonDelegate methods */
+    // MARK: - FBSDKLoginButtonDelegate methods
     
     func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
         print("User Logged In")
@@ -151,6 +107,49 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, UITextFie
             }
         })
     }
-
+    
+    // MARK: - Private methods
+    
+    private func _addEmailTextField()
+    {
+        let emailTextField: UITextField = UITextField(frame: CGRect(x: textFieldXPos, y: emailFieldYPos, width: textFieldWidth, height: textFieldHeight))
+        let emailPlaceholder = NSAttributedString(string: "email", attributes: [NSForegroundColorAttributeName : UIColor(white: 1, alpha: 0.7)])
+        emailTextField.attributedPlaceholder = emailPlaceholder
+        emailTextField.textColor = UIColor.whiteColor()
+        
+        self.view.addSubview(emailTextField)
+    }
+    
+    private func _addPassTextField()
+    {
+        let passTextField: UITextField = UITextField(frame: CGRect(x: textFieldXPos, y: passFieldYPos, width: textFieldWidth, height: textFieldHeight))
+        let passPlaceholder = NSAttributedString(string: "password", attributes: [NSForegroundColorAttributeName : UIColor(white: 1, alpha: 0.7)])
+        passTextField.attributedPlaceholder = passPlaceholder
+        passTextField.textColor = UIColor.whiteColor()
+        passTextField.secureTextEntry = true
+        
+        self.view.addSubview(passTextField)
+    }
+    
+    private func _addFacebookLogin()
+    {
+        let loginView : FBSDKLoginButton = FBSDKLoginButton()
+        loginView.center = self.view.center
+        loginView.readPermissions = ["public_profile", "email", "user_friends"]
+        loginView.delegate = self
+        
+        self.view.addSubview(loginView)
+    }
+    
+    private func _addSignUpButton()
+    {
+        let signUpButton = UIButton()
+        signUpButton.setTitle("Sign Up", forState: .Normal)
+        signUpButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+        signUpButton.frame = CGRectMake(self.view.center.x - signUpWidth/2, self.view.center.y + signUpYOffset, signUpWidth, signUpHeight)
+        signUpButton.addTarget(self, action: "pressed:", forControlEvents: .TouchUpInside)
+        
+        self.view.addSubview(signUpButton)
+    }
 }
 

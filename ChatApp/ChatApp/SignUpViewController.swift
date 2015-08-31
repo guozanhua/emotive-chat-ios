@@ -27,27 +27,31 @@ class SignUpViewController: UIViewController, UITextFieldDelegate
     var emailTextField: UITextField!
     var passTextField: UITextField!
     var signUpButton: UIButton!
+    
+    // MARK: - UIViewController methods
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        //userTextField.delegate = self
-
-        // Do any additional setup after loading the view.
         
         self.view.backgroundColor = UIColor.redColor()
         
-        addFirstNameTextField()
-        
-        addLastNameTextField()
-        
-        addEmailTextField()
-        
-        addPassTextField()
-
-        addSignUpButton()
+        _addFirstNameTextField()
+        _addLastNameTextField()
+        _addEmailTextField()
+        _addPassTextField()
+        _addSignUpButton()
     }
     
-    func addFirstNameTextField()
+    // MARK: - Internal methods
+    
+    func pressed(sender: UIButton!)
+    {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    // MARK: - Private methods
+
+    private func _addFirstNameTextField()
     {
         let firstNameTextField: UITextField = UITextField(frame: CGRect(x: textFieldXPos, y: firstNameFieldYPos, width: textFieldWidth, height: textFieldHeight))
         let firstNamePlaceholder = NSAttributedString(string: "first name", attributes: [NSForegroundColorAttributeName : UIColor(white: 1, alpha: 0.7)])
@@ -57,7 +61,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate
         self.view.addSubview(firstNameTextField)
     }
     
-    func addLastNameTextField()
+    private func _addLastNameTextField()
     {
         let lastNameTextField: UITextField = UITextField(frame: CGRect(x: textFieldXPos, y: firstNameFieldYPos + textFieldYOffset, width: textFieldWidth, height: textFieldHeight))
         let lastNamePlaceholder = NSAttributedString(string: "last name", attributes: [NSForegroundColorAttributeName : UIColor(white: 1, alpha: 0.7)])
@@ -67,7 +71,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate
         self.view.addSubview(lastNameTextField)
     }
     
-    func addEmailTextField()
+    private func _addEmailTextField()
     {
         let emailTextField: UITextField = UITextField(frame: CGRect(x: textFieldXPos, y: firstNameFieldYPos + 2*textFieldYOffset, width: textFieldWidth, height: textFieldHeight))
         let emailPlaceholder = NSAttributedString(string: "email", attributes: [NSForegroundColorAttributeName : UIColor(white: 1, alpha: 0.7)])
@@ -77,7 +81,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate
         self.view.addSubview(emailTextField)
     }
     
-    func addPassTextField()
+    private func _addPassTextField()
     {
         let passTextField: UITextField = UITextField(frame: CGRect(x: textFieldXPos, y: firstNameFieldYPos + 3*textFieldYOffset, width: textFieldWidth, height: textFieldHeight))
         let passPlaceholder = NSAttributedString(string: "password", attributes: [NSForegroundColorAttributeName : UIColor(white: 1, alpha: 0.7)])
@@ -88,7 +92,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate
         self.view.addSubview(passTextField)
     }
     
-    func addSignUpButton()
+    private func _addSignUpButton()
     {
         let signUpButton = UIButton()
         signUpButton.setTitle("Sign Up", forState: .Normal)
@@ -98,25 +102,4 @@ class SignUpViewController: UIViewController, UITextFieldDelegate
         
         self.view.addSubview(signUpButton)
     }
-    
-    func pressed(sender: UIButton!)
-    {
-        self.dismissViewControllerAnimated(true, completion: nil)
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
