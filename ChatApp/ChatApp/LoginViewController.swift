@@ -38,21 +38,18 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, UITextFie
     {
         super.viewDidLoad()
         
+        let bgColor = UIColor(red: bgColorRed, green: bgColorGreen, blue: bgColorBlue, alpha: 1)
+        self.view.backgroundColor = bgColor
+        
+        _addEmailTextField()
+        _addPassTextField()
+        _addFacebookLogin()
+        _addSignUpButton()
+        
         if (FBSDKAccessToken.currentAccessToken() != nil)
         {
             // User is already logged in, do work such as go to next view controller.
         }
-        else
-        {
-            let bgColor = UIColor(red: bgColorRed, green: bgColorGreen, blue: bgColorBlue, alpha: 1)
-            self.view.backgroundColor = bgColor
-
-            _addEmailTextField()
-            _addPassTextField()
-            _addFacebookLogin()
-            _addSignUpButton()
-        }
-
     }
     
     // MARK: - Internal methods
@@ -66,18 +63,15 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, UITextFie
     // MARK: - FBSDKLoginButtonDelegate methods
     
     func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
-        print("User Logged In")
         
-        if ((error) != nil)
-        {
+        if ((error) != nil) {
             // Process error
         }
         else if result.isCancelled {
             // Handle cancellations
         }
         else {
-            if result.grantedPermissions.contains("email")
-            {
+            if result.grantedPermissions.contains("email") {
                 // Successfully logged in
             }
         }
@@ -92,13 +86,11 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, UITextFie
         let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters: nil)
         graphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
             
-            if ((error) != nil)
-            {
+            if ((error) != nil) {
                 // Process error
                 print("Error: \(error)")
             }
-            else
-            {
+            else {
                 print("fetched user: \(result)")
                 let userName : NSString = result.valueForKey("name") as! NSString
                 print("User Name is: \(userName)")
