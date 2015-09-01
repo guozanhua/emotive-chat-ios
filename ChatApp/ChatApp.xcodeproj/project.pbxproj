@@ -16,6 +16,8 @@
 		B74005A71B901E2100565B02 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B74005A41B901E2100565B02 /* FBSDKCoreKit.framework */; };
 		B74005A81B901E2100565B02 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B74005A51B901E2100565B02 /* FBSDKLoginKit.framework */; };
 		B74005A91B901E2100565B02 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B74005A61B901E2100565B02 /* FBSDKShareKit.framework */; };
+		B77C129A1B942CDF00FA33F1 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77C12991B942CDF00FA33F1 /* User.swift */; };
+		B77C129D1B95048A00FA33F1 /* NetworkingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77C129C1B95048A00FA33F1 /* NetworkingManager.swift */; };
 		B7CCF9391B8E7F6B004DE54A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7CCF9381B8E7F6B004DE54A /* AppDelegate.swift */; };
 		B7CCF93B1B8E7F6B004DE54A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7CCF93A1B8E7F6B004DE54A /* LoginViewController.swift */; };
 		B7CCF93E1B8E7F6B004DE54A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7CCF93C1B8E7F6B004DE54A /* Main.storyboard */; };
@@ -82,6 +84,8 @@
 		B74005A41B901E2100565B02 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		B74005A51B901E2100565B02 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		B74005A61B901E2100565B02 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
+		B77C12991B942CDF00FA33F1 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		B77C129C1B95048A00FA33F1 /* NetworkingManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingManager.swift; sourceTree = "<group>"; };
 		B7CCF9351B8E7F6B004DE54A /* ChatApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChatApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7CCF9381B8E7F6B004DE54A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B7CCF93A1B8E7F6B004DE54A /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -143,6 +147,24 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		B77C12981B942CA900FA33F1 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				B7CCF93A1B8E7F6B004DE54A /* LoginViewController.swift */,
+				A1B178FD1B914DA800372CB0 /* SignUpViewController.swift */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		B77C129B1B942CE700FA33F1 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B77C12991B942CDF00FA33F1 /* User.swift */,
+				B77C129C1B95048A00FA33F1 /* NetworkingManager.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		B7CCF92C1B8E7F6B004DE54A = {
 			isa = PBXGroup;
 			children = (
@@ -170,8 +192,8 @@
 			isa = PBXGroup;
 			children = (
 				B7CCF9381B8E7F6B004DE54A /* AppDelegate.swift */,
-				B7CCF93A1B8E7F6B004DE54A /* LoginViewController.swift */,
-				A1B178FD1B914DA800372CB0 /* SignUpViewController.swift */,
+				B77C129B1B942CE700FA33F1 /* Models */,
+				B77C12981B942CA900FA33F1 /* ViewControllers */,
 				B7CCF93C1B8E7F6B004DE54A /* Main.storyboard */,
 				B7CCF93F1B8E7F6B004DE54A /* Assets.xcassets */,
 				B7CCF9411B8E7F6B004DE54A /* LaunchScreen.storyboard */,
@@ -280,6 +302,7 @@
 					};
 					B7CCF9551B8E7F6B004DE54A = {
 						CreatedOnToolsVersion = 7.0;
+						DevelopmentTeam = 7KP2V8DA69;
 					};
 				};
 			};
@@ -371,8 +394,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B77C129A1B942CDF00FA33F1 /* User.swift in Sources */,
 				A1B178FE1B914DA800372CB0 /* SignUpViewController.swift in Sources */,
 				B7CCF93B1B8E7F6B004DE54A /* LoginViewController.swift in Sources */,
+				B77C129D1B95048A00FA33F1 /* NetworkingManager.swift in Sources */,
 				B7CCF9391B8E7F6B004DE54A /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -508,10 +533,13 @@
 		B7CCF9651B8E7F6B004DE54A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "ChatApp WatchKit Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = rahulm.ChatApp.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 4;
@@ -522,10 +550,13 @@
 		B7CCF9661B8E7F6B004DE54A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "ChatApp WatchKit Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = rahulm.ChatApp.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 4;
