@@ -79,7 +79,8 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, UITextFie
         }
     }
     
-    func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
+    func loginButtonDidLogOut(loginButton: FBSDKLoginButton!)
+    {
         print("User Logged Out")
     }
     

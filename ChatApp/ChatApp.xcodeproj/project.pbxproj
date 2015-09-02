@@ -13,6 +13,7 @@
 		A1B178FE1B914DA800372CB0 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B178FD1B914DA800372CB0 /* SignUpViewController.swift */; };
 		A1B179001B9161E700372CB0 /* FriendsTableRowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B178FF1B9161E700372CB0 /* FriendsTableRowController.swift */; };
 		A4E5A38606366F6212613BDE /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 94D61645A74D222B5754205F /* libPods.a */; };
+		B70FA7E51B96B33E009867E5 /* CredentialStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70FA7E41B96B33E009867E5 /* CredentialStore.swift */; };
 		B74005A71B901E2100565B02 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B74005A41B901E2100565B02 /* FBSDKCoreKit.framework */; };
 		B74005A81B901E2100565B02 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B74005A51B901E2100565B02 /* FBSDKLoginKit.framework */; };
 		B74005A91B901E2100565B02 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B74005A61B901E2100565B02 /* FBSDKShareKit.framework */; };
@@ -80,6 +81,7 @@
 		A1A878F71B922CC600AD0941 /* EmotiveSelectInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmotiveSelectInterfaceController.swift; sourceTree = "<group>"; };
 		A1B178FD1B914DA800372CB0 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		A1B178FF1B9161E700372CB0 /* FriendsTableRowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsTableRowController.swift; sourceTree = "<group>"; };
+		B70FA7E41B96B33E009867E5 /* CredentialStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CredentialStore.swift; sourceTree = "<group>"; };
 		B740059E1B901B4B00565B02 /* ChatApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ChatApp-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
 		B74005A41B901E2100565B02 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		B74005A51B901E2100565B02 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
@@ -161,6 +163,7 @@
 			children = (
 				B77C12991B942CDF00FA33F1 /* User.swift */,
 				B77C129C1B95048A00FA33F1 /* NetworkingManager.swift */,
+				B70FA7E41B96B33E009867E5 /* CredentialStore.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -394,6 +397,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B70FA7E51B96B33E009867E5 /* CredentialStore.swift in Sources */,
 				B77C129A1B942CDF00FA33F1 /* User.swift in Sources */,
 				A1B178FE1B914DA800372CB0 /* SignUpViewController.swift in Sources */,
 				B7CCF93B1B8E7F6B004DE54A /* LoginViewController.swift in Sources */,

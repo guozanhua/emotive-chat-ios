@@ -8,25 +8,39 @@
 
 import UIKit
 
-class NetworkingManager: NSObject {
+class NetworkingManager: NSObject
+{
     
     static let sharedInstance = NetworkingManager()
     static let baseURLString = "www.woomiapp.com/"
 
     var manager: AFHTTPSessionManager
-    var sessionToken: String?
+    var credentialStore : CredentialStore
     
     // MARK: - Initializers
     
-    override init() {
+    override init()
+    {
         let baseURL = NSURL(string: NetworkingManager.baseURLString)
         manager = AFHTTPSessionManager(baseURL: baseURL)
+        
+        self.credentialStore = CredentialStore()
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: NSSelectorFromString("tokenChanged:"), name: "token-changed", object: nil)
     }
     
     // MARK: - Internal methods
     
-    func replaceSessionToken(newToken: String) {
-        sessionToken = newToken
-        manager.requestSerializer.setValue(sessionToken, forHTTPHeaderField: "X-Auth-Token")
+    @objc func tokenChanged(notification: NSNotification)
+    {
+        self._setAuthTokenHeader()
     }
+    
+    // MARK: - Private methods
+    
+    private func _setAuthTokenHeader()
+    {
+        let authToken = self.credentialStore.authToken()
+        self.manager.requestSerializer.setValue(authToken, forHTTPHeaderField: "X-Auth-Token")
+    }
+
 }

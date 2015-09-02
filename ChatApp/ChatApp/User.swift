@@ -8,7 +8,8 @@
 
 import UIKit
 
-class User: NSObject {
+class User: NSObject
+{
 
     static var userPath = "users/"
     
@@ -19,12 +20,14 @@ class User: NSObject {
     
     // MARK: - Initializers
     
-    init(newUUID: String) {
+    init(newUUID: String)
+    {
         super.init()
         User.fetchInfoForUser(self, uuid: newUUID)
     }
 
-    init(newNickname: String, newFullName: String, newPassword: String) {
+    init(newNickname: String, newFullName: String, newPassword: String)
+    {
         super.init()
         
         let urlString = User.userPath.stringByAppendingString("new")
@@ -54,7 +57,8 @@ class User: NSObject {
     
     // MARK: - Type methods
     
-    class func fetchInfoForUser(user: User, uuid: String) {
+    class func fetchInfoForUser(user: User, uuid: String)
+    {
         let urlString = User.userPath.stringByAppendingString(uuid)
         let manager = NetworkingManager.sharedInstance.manager
         
