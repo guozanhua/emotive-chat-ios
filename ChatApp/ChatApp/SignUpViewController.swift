@@ -30,7 +30,8 @@ class SignUpViewController: UIViewController, UITextFieldDelegate
     
     // MARK: - UIViewController methods
 
-    override func viewDidLoad() {
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
         
         self.view.backgroundColor = UIColor.redColor()

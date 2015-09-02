@@ -11,7 +11,8 @@ import UIKit
 class User: NSObject
 {
 
-    static var userPath = "users/"
+    static var userPath = "/users"
+    static var newUserPathComponent = "/new"
     
     var uuid: String?
     var nickname: String?
@@ -30,7 +31,7 @@ class User: NSObject
     {
         super.init()
         
-        let urlString = User.userPath.stringByAppendingString("new")
+        let urlString = User.userPath.stringByAppendingString(User.newUserPathComponent)
         let manager = NetworkingManager.sharedInstance.manager
         let parameters = ["nickname": newNickname, "fullName": newFullName, "password": newPassword]
         

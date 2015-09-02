@@ -63,7 +63,8 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, UITextFie
     
     // MARK: - FBSDKLoginButtonDelegate methods
     
-    func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
+    func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!)
+    {
         
         if ((error) != nil) {
             // Process error

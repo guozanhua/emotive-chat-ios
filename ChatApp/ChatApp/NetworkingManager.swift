@@ -12,7 +12,9 @@ class NetworkingManager: NSObject
 {
     
     static let sharedInstance = NetworkingManager()
-    static let baseURLString = "www.woomiapp.com/"
+    
+    static let baseURLString = "www.woomiapp.com"
+    static let authenticateURLPathComponent = "/login"
 
     var manager: AFHTTPSessionManager
     var credentialStore : CredentialStore
@@ -36,6 +38,36 @@ class NetworkingManager: NSObject
     @objc func tokenChanged(notification: NSNotification)
     {
         self._setAuthTokenHeader()
+    }
+    
+    func authenticate(username: String!, password: String!)
+    {
+        let parameters = ["username": username, "password": password]
+        
+        self.manager.POST(NetworkingManager.authenticateURLPathComponent,
+            parameters: parameters,
+            success: {
+                (dataTask: NSURLSessionDataTask!, responseObject: AnyObject!) -> Void in
+                if let jsonResult = responseObject as? Dictionary<String, AnyObject> {
+                    let authToken = jsonResult["auth_token"] as? String
+                    self.credentialStore.setAuthToken(authToken)
+                }
+                else {
+                    print("Error: responseObject coudln't be converted to Dictionary")
+                }
+            }, failure: {
+                (dataTask: NSURLSessionDataTask!, error: NSError!) -> Void in
+                let errorMessage = "Error: " + error.localizedDescription
+                print(errorMessage)
+                
+                if let response = dataTask.response as? NSHTTPURLResponse {
+                    if (response.statusCode == 401) {
+                        NetworkingManager.sharedInstance.credentialStore.setAuthToken(nil)
+                    }
+                }
+                
+            }
+        )
     }
     
     // MARK: - Private methods
