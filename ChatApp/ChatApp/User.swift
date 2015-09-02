@@ -51,6 +51,13 @@ class User: NSObject
                 (dataTask: NSURLSessionDataTask!, error: NSError!) -> Void in
                 let errorMessage = "Error: " + error.localizedDescription
                 print(errorMessage)
+                
+                if let response = dataTask.response as? NSHTTPURLResponse {
+                    if (response.statusCode == 401) {
+                        NetworkingManager.sharedInstance.credentialStore.setAuthToken(nil)
+                    }
+                }
+                
             }
         )
     }
@@ -78,6 +85,12 @@ class User: NSObject
             failure: { (dataTask: NSURLSessionDataTask!, error: NSError!) in
                 let errorMessage = "Error: " + error.localizedDescription
                 print(errorMessage)
+                
+                if let response = dataTask.response as? NSHTTPURLResponse {
+                    if (response.statusCode == 401) {
+                        NetworkingManager.sharedInstance.credentialStore.setAuthToken(nil)
+                    }
+                }
             }
         )
     }

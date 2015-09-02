@@ -17,25 +17,20 @@ class CredentialStore: NSObject
     
     func isLoggedIn() -> Bool
     {
-        if self.authToken() != nil {
-            return true
-        }
-        else {
-            return false
-        }
+        return self.authToken() != nil
     }
     
     func clearSavedCredentials()
     {
-        self._setAuthToken(nil)
+        self.setAuthToken(nil)
     }
     
-    func authToken() -> String
+    func authToken() -> String?
     {
         return self._secureValueForKey(self.AUTH_TOKEN_KEY)
     }
     
-    func setAuthToken(newAuthToken: String)
+    func setAuthToken(newAuthToken: String?)
     {
         self._setSecureValueForKey(newAuthToken, key: AUTH_TOKEN_KEY)
         NSNotificationCenter.defaultCenter().postNotificationName("token-changed", object: self)
@@ -43,9 +38,9 @@ class CredentialStore: NSObject
     
     // MARK: - Private methods
     
-    func _setSecureValueForKey(secureValue: String, key: String!)
+    func _setSecureValueForKey(secureValue: String?, key: String!)
     {
-        if (secureValue) {
+        if (secureValue != nil) {
             SSKeychain.setPassword(secureValue, forService: SERVICE_NAME, account: key)
         }
         else {

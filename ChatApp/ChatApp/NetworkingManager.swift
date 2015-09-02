@@ -22,9 +22,12 @@ class NetworkingManager: NSObject
     override init()
     {
         let baseURL = NSURL(string: NetworkingManager.baseURLString)
-        manager = AFHTTPSessionManager(baseURL: baseURL)
-        
+        self.manager = AFHTTPSessionManager(baseURL: baseURL)
         self.credentialStore = CredentialStore()
+        
+        super.init()
+        
+        self._setAuthTokenHeader()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: NSSelectorFromString("tokenChanged:"), name: "token-changed", object: nil)
     }
     
