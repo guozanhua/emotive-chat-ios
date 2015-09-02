@@ -10,7 +10,7 @@ import UIKit
 
 class User: NSObject {
 
-    static var baseURL = "www.woomiapp.com/users/"
+    static var userPath = "users/"
     
     var uuid: String?
     var nickname: String?
@@ -27,7 +27,7 @@ class User: NSObject {
     init(newNickname: String, newFullName: String, newPassword: String) {
         super.init()
         
-        let urlString = User.baseURL.stringByAppendingString("new")
+        let urlString = User.userPath.stringByAppendingString("new")
         let manager = NetworkingManager.sharedInstance.manager
         let parameters = ["nickname": newNickname, "fullName": newFullName, "password": newPassword]
         
@@ -55,7 +55,7 @@ class User: NSObject {
     // MARK: - Type methods
     
     class func fetchInfoForUser(user: User, uuid: String) {
-        let urlString = User.baseURL.stringByAppendingString(uuid)
+        let urlString = User.userPath.stringByAppendingString(uuid)
         let manager = NetworkingManager.sharedInstance.manager
         
         manager.GET( urlString,
