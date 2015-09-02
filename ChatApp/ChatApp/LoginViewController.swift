@@ -95,7 +95,6 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, UITextFie
             else {
                 print("fetched user: \(result)")
                 let userEmail : String = result.valueForKey("email") as! String
-                print(userEmail)
                 self.emailTextField.text = userEmail
             }
         })

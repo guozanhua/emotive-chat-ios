@@ -11,7 +11,7 @@ import UIKit
 class NetworkingManager: NSObject {
     
     static let sharedInstance = NetworkingManager()
-    static let baseURLString = "www.woomi.com/"
+    static let baseURLString = "www.woomiapp.com/"
 
     var manager: AFHTTPSessionManager
     var sessionToken: String?
