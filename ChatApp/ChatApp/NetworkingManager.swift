@@ -70,6 +70,11 @@ class NetworkingManager: NSObject
         )
     }
     
+    func logout()
+    {
+        self.credentialStore.clearSavedCredentials()
+    }
+    
     // MARK: - Private methods
     
     private func _setAuthTokenHeader()
