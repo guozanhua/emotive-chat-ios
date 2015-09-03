@@ -13,8 +13,8 @@ class NetworkingManager: NSObject
     
     static let sharedInstance = NetworkingManager()
     
-    static let baseURLString = "www.woomiapp.com"
-    static let authenticateURLPathComponent = "/login"
+    static let baseURLString = "www.woomiapp.com/api"
+    static let authenticateURLPathComponent = "/authenticate"
 
     var manager: AFHTTPSessionManager
     var credentialStore : CredentialStore
