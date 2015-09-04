@@ -26,12 +26,15 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, UITextFie
     var signUpHeight: CGFloat = 50
     var signUpYOffset: CGFloat = 150
     
+    var settingsXPos: CGFloat = 30
+    var settingsYPos: CGFloat = 50
+    
     var emailTextField: UITextField!
     var passTextField: UITextField!
     var fbLogInButton: FBSDKLoginButton!
+    var loginButton: UIButton!
     var signUpButton: UIButton!
-    
-    var vc : UIViewController?
+    var settingsButton: UIButton!
 
     // MARK: - UIViewController methods
     
@@ -45,7 +48,9 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, UITextFie
         _addEmailTextField()
         _addPassTextField()
         _addFacebookLogin()
+        _addLoginButton()
         _addSignUpButton()
+        _addSettingsButton()
         
         if (FBSDKAccessToken.currentAccessToken() != nil)
         {
@@ -55,10 +60,21 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, UITextFie
     
     // MARK: - Internal methods
     
-    func pressed(sender: UIButton!)
+    func signupPressed(sender: UIButton!)
     {
         let vc = SignUpViewController()
         self.presentViewController(vc, animated: true, completion: nil)
+    }
+    
+    func loginPressed(sender: UIButton!)
+    {
+        
+    }
+    
+    func settingsPressed(sender: UIButton!)
+    {
+        let settingsVC = SettingsViewController()
+        self.presentViewController(settingsVC, animated: true, completion: nil)
     }
     
     // MARK: - FBSDKLoginButtonDelegate methods
@@ -137,15 +153,36 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, UITextFie
         self.view.addSubview(self.fbLogInButton)
     }
     
+    private func _addLoginButton()
+    {
+        self.loginButton = UIButton()
+        self.loginButton.setTitle("Login", forState: .Normal)
+        self.loginButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+        self.loginButton.frame = CGRectMake(self.view.center.x - signUpWidth/2, self.view.center.y + 0.5 * signUpYOffset, signUpWidth, signUpHeight)
+        self.loginButton.addTarget(self, action: "loginPressed:", forControlEvents: .TouchUpInside)
+        
+        self.view.addSubview(self.loginButton)
+    }
+    
     private func _addSignUpButton()
     {
         self.signUpButton = UIButton()
         self.signUpButton.setTitle("Sign Up", forState: .Normal)
         self.signUpButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
         self.signUpButton.frame = CGRectMake(self.view.center.x - signUpWidth/2, self.view.center.y + signUpYOffset, signUpWidth, signUpHeight)
-        self.signUpButton.addTarget(self, action: "pressed:", forControlEvents: .TouchUpInside)
+        self.signUpButton.addTarget(self, action: "signupPressed:", forControlEvents: .TouchUpInside)
         
         self.view.addSubview(self.signUpButton)
+    }
+    private func _addSettingsButton()
+    {
+        self.settingsButton = UIButton()
+        self.settingsButton.setTitle("Settings", forState: .Normal)
+        self.settingsButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+        self.settingsButton.frame = CGRectMake(settingsXPos, settingsYPos, signUpWidth, signUpHeight)
+        self.settingsButton.addTarget(self, action: "settingsPressed:", forControlEvents: .TouchUpInside)
+        
+        self.view.addSubview(self.settingsButton)
     }
 }
 
