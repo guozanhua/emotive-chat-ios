@@ -11,6 +11,7 @@
 		A1A878F61B91C9EB00AD0941 /* FriendDetailInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A878F51B91C9EB00AD0941 /* FriendDetailInterfaceController.swift */; };
 		A1A878F81B922CC600AD0941 /* EmotiveSelectInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A878F71B922CC600AD0941 /* EmotiveSelectInterfaceController.swift */; };
 		A1AC3CB31B9A488C00F04EC2 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1AC3CB21B9A488C00F04EC2 /* SettingsViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		A1AC3CB51B9A530C00F04EC2 /* FriendSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1AC3CB41B9A530C00F04EC2 /* FriendSearchViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		A1B178FE1B914DA800372CB0 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B178FD1B914DA800372CB0 /* SignUpViewController.swift */; };
 		A1B179001B9161E700372CB0 /* FriendsTableRowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B178FF1B9161E700372CB0 /* FriendsTableRowController.swift */; };
 		A4E5A38606366F6212613BDE /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 94D61645A74D222B5754205F /* libPods.a */; };
@@ -81,6 +82,7 @@
 		A1A878F51B91C9EB00AD0941 /* FriendDetailInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendDetailInterfaceController.swift; sourceTree = "<group>"; };
 		A1A878F71B922CC600AD0941 /* EmotiveSelectInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmotiveSelectInterfaceController.swift; sourceTree = "<group>"; };
 		A1AC3CB21B9A488C00F04EC2 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		A1AC3CB41B9A530C00F04EC2 /* FriendSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendSearchViewController.swift; sourceTree = "<group>"; };
 		A1B178FD1B914DA800372CB0 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		A1B178FF1B9161E700372CB0 /* FriendsTableRowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsTableRowController.swift; sourceTree = "<group>"; };
 		B70FA7E41B96B33E009867E5 /* CredentialStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CredentialStore.swift; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 				B7CCF93A1B8E7F6B004DE54A /* LoginViewController.swift */,
 				A1B178FD1B914DA800372CB0 /* SignUpViewController.swift */,
 				A1AC3CB21B9A488C00F04EC2 /* SettingsViewController.swift */,
+				A1AC3CB41B9A530C00F04EC2 /* FriendSearchViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -400,6 +403,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1AC3CB51B9A530C00F04EC2 /* FriendSearchViewController.swift in Sources */,
 				B70FA7E51B96B33E009867E5 /* CredentialStore.swift in Sources */,
 				B77C129A1B942CDF00FA33F1 /* User.swift in Sources */,
 				A1AC3CB31B9A488C00F04EC2 /* SettingsViewController.swift in Sources */,
