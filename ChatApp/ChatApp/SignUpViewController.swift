@@ -54,52 +54,56 @@ class SignUpViewController: UIViewController, UITextFieldDelegate
 
     private func _addFirstNameTextField()
     {
-        let firstNameTextField: UITextField = UITextField(frame: CGRect(x: textFieldXPos, y: firstNameFieldYPos, width: textFieldWidth, height: textFieldHeight))
+        self.firstNameTextField = UITextField(frame: CGRect(x: textFieldXPos, y: firstNameFieldYPos, width: textFieldWidth, height: textFieldHeight))
         let firstNamePlaceholder = NSAttributedString(string: "first name", attributes: [NSForegroundColorAttributeName : UIColor(white: 1, alpha: 0.7)])
-        firstNameTextField.attributedPlaceholder = firstNamePlaceholder
-        firstNameTextField.textColor = UIColor.whiteColor()
+        self.firstNameTextField.attributedPlaceholder = firstNamePlaceholder
+        self.firstNameTextField.textColor = UIColor.whiteColor()
+        self.firstNameTextField.delegate = self
         
         self.view.addSubview(firstNameTextField)
     }
     
     private func _addLastNameTextField()
     {
-        let lastNameTextField: UITextField = UITextField(frame: CGRect(x: textFieldXPos, y: firstNameFieldYPos + textFieldYOffset, width: textFieldWidth, height: textFieldHeight))
+        self.lastNameTextField = UITextField(frame: CGRect(x: textFieldXPos, y: firstNameFieldYPos + textFieldYOffset, width: textFieldWidth, height: textFieldHeight))
         let lastNamePlaceholder = NSAttributedString(string: "last name", attributes: [NSForegroundColorAttributeName : UIColor(white: 1, alpha: 0.7)])
-        lastNameTextField.attributedPlaceholder = lastNamePlaceholder
-        lastNameTextField.textColor = UIColor.whiteColor()
+        self.lastNameTextField.attributedPlaceholder = lastNamePlaceholder
+        self.lastNameTextField.textColor = UIColor.whiteColor()
+        self.lastNameTextField.delegate = self
         
         self.view.addSubview(lastNameTextField)
     }
     
     private func _addEmailTextField()
     {
-        let emailTextField: UITextField = UITextField(frame: CGRect(x: textFieldXPos, y: firstNameFieldYPos + 2*textFieldYOffset, width: textFieldWidth, height: textFieldHeight))
+        self.emailTextField = UITextField(frame: CGRect(x: textFieldXPos, y: firstNameFieldYPos + 2*textFieldYOffset, width: textFieldWidth, height: textFieldHeight))
         let emailPlaceholder = NSAttributedString(string: "email", attributes: [NSForegroundColorAttributeName : UIColor(white: 1, alpha: 0.7)])
-        emailTextField.attributedPlaceholder = emailPlaceholder
-        emailTextField.textColor = UIColor.whiteColor()
+        self.emailTextField.attributedPlaceholder = emailPlaceholder
+        self.emailTextField.textColor = UIColor.whiteColor()
+        self.emailTextField.delegate = self
         
         self.view.addSubview(emailTextField)
     }
     
     private func _addPassTextField()
     {
-        let passTextField: UITextField = UITextField(frame: CGRect(x: textFieldXPos, y: firstNameFieldYPos + 3*textFieldYOffset, width: textFieldWidth, height: textFieldHeight))
+        self.passTextField = UITextField(frame: CGRect(x: textFieldXPos, y: firstNameFieldYPos + 3*textFieldYOffset, width: textFieldWidth, height: textFieldHeight))
         let passPlaceholder = NSAttributedString(string: "password", attributes: [NSForegroundColorAttributeName : UIColor(white: 1, alpha: 0.7)])
-        passTextField.attributedPlaceholder = passPlaceholder
-        passTextField.textColor = UIColor.whiteColor()
-        passTextField.secureTextEntry = true
+        self.passTextField.attributedPlaceholder = passPlaceholder
+        self.passTextField.textColor = UIColor.whiteColor()
+        self.passTextField.secureTextEntry = true
+        self.passTextField.delegate = self
         
         self.view.addSubview(passTextField)
     }
     
     private func _addSignUpButton()
     {
-        let signUpButton = UIButton()
-        signUpButton.setTitle("Sign Up", forState: .Normal)
-        signUpButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-        signUpButton.frame = CGRectMake(self.view.center.x - signUpWidth/2, self.view.center.y + signUpYOffset, signUpWidth, signUpHeight)
-        signUpButton.addTarget(self, action: "pressed:", forControlEvents: .TouchUpInside)
+        self.signUpButton = UIButton()
+        self.signUpButton.setTitle("Sign Up", forState: .Normal)
+        self.signUpButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+        self.signUpButton.frame = CGRectMake(self.view.center.x - signUpWidth/2, self.view.center.y + signUpYOffset, signUpWidth, signUpHeight)
+        self.signUpButton.addTarget(self, action: "pressed:", forControlEvents: .TouchUpInside)
         
         self.view.addSubview(signUpButton)
     }
