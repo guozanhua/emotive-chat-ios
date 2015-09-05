@@ -13,6 +13,7 @@ class User: NSObject
 
     static var userPath = "/users"
     static var newUserPathComponent = "/new"
+    static var currentUser : User?
     
     var uuid: String?
     var nickname: String?
@@ -66,7 +67,7 @@ class User: NSObject
     }
     
     // MARK: - Type methods
-    
+        
     class func fetchInfoForUser(user: User, uuid: String)
     {
         let urlString = User.userPath.stringByAppendingString(uuid)
