@@ -8,34 +8,53 @@
 
 import UIKit
 
-class FriendSearchViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
+class FriendSearchViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate
+{
+    var bgColorRed: CGFloat = 0
+    var bgColorGreen: CGFloat = 0.82
+    var bgColorBlue: CGFloat = 1
     
     var friendSearchBar: UISearchBar!
     var friendTableView: UITableView!
+    var logoutButton: UIButton!
+    
+    var searchXOffset: CGFloat = 150
+    var searchYPos: CGFloat = 100
+    var searchWidth: CGFloat = 300
+    var searchHeight: CGFloat = 50
+    
+    var tableYPos: CGFloat = 150
+    var tableHeight: CGFloat = 400
+    
+    var logoutXPos: CGFloat = 30
+    var logoutYPos: CGFloat = 50
+    var logoutWidth: CGFloat = 100
+    var logoutHeight: CGFloat = 50
     
     var searchActive : Bool = false
     var friends = ["Rahul Madduluri", "Spencer Congero", "Jack Kellner", "Steve Nam", "Sean Allgood"]
     var filtered:[String] = []
+    
+    // MARK: - UIViewController methods
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.friendSearchBar = UISearchBar.init(frame: CGRectMake(self.view.center.x - 150.0, 100.0, 300.0, 50.0))
-        self.friendTableView = UITableView.init(frame: CGRectMake(self.view.center.x - 150.0, 150.0, 300.0, 400.0), style: UITableViewStyle.Plain)
+        self.view.backgroundColor = UIColor(red:bgColorRed, green:bgColorGreen, blue:bgColorBlue, alpha:1.0)
         
-        self.friendTableView.delegate = self
-        self.friendTableView.dataSource = self
-        self.friendSearchBar.delegate = self
-        
-        self.friendTableView.registerClass(FriendsTableViewCell.self, forCellReuseIdentifier: "cell")
-        
-        self.view.backgroundColor = UIColor.orangeColor()
-        
-        self.view.addSubview(friendSearchBar)
-        self.view.addSubview(friendTableView)
-
-        // Do any additional setup after loading the view.
+        _addLogoutButton()
+        _addSearchBar()
+        _addTableView()
     }
+    
+    // MARK: - Internal methods
+    
+    func logoutPressed(sender: UIButton!)
+    {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    // MARK: - UISearchBarDelegate methods
     
     func searchBarTextDidBeginEditing(searchBar: UISearchBar)
     {
@@ -71,11 +90,8 @@ class FriendSearchViewController: UIViewController, UITableViewDataSource, UITab
         }
         self.friendTableView.reloadData()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+    
+    // MARK: - UITableViewDelegate methods
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
@@ -100,18 +116,46 @@ class FriendSearchViewController: UIViewController, UITableViewDataSource, UITab
         }
         
         return cell;
+    }
+
+    
+    // MARK: - Private methods
+
+    private func _addLogoutButton()
+    {
+        self.logoutButton = UIButton()
+        self.logoutButton.setTitle("Log Out", forState: .Normal)
+        self.logoutButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+        self.logoutButton.frame = CGRectMake(logoutXPos, logoutYPos, logoutWidth, logoutHeight)
+        self.logoutButton.addTarget(self, action: "logoutPressed:", forControlEvents: .TouchUpInside)
         
+        self.view.addSubview(self.logoutButton)
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    private func _addSearchBar()
+    {
+        self.friendSearchBar = UISearchBar.init(frame: CGRectMake(self.view.center.x - searchXOffset, searchYPos, searchWidth, searchHeight))
+        self.friendSearchBar.searchBarStyle = UISearchBarStyle.Minimal
+        let textFieldInsideSearchBar = friendSearchBar.valueForKey("searchField") as? UITextField
+        textFieldInsideSearchBar?.textColor = UIColor.whiteColor()
+        self.friendSearchBar.alpha = 0.9
+        
+        self.friendSearchBar.delegate = self
+        self.view.addSubview(friendSearchBar)
     }
-    */
-
+    
+    private func _addTableView()
+    {
+        self.friendTableView = UITableView.init(frame: CGRectMake(self.view.center.x - searchXOffset, tableYPos, searchWidth, tableHeight), style: UITableViewStyle.Plain)
+        self.friendTableView.backgroundColor = UIColor(red:bgColorRed, green:bgColorGreen, blue:bgColorBlue, alpha:1.0)
+        self.friendTableView.separatorColor = UIColor.whiteColor()
+        
+        self.friendTableView.registerClass(FriendsTableViewCell.self, forCellReuseIdentifier: "cell")
+        
+        self.friendTableView.delegate = self
+        self.friendTableView.dataSource = self
+        
+        self.view.addSubview(friendTableView)
+    }
+    
 }
