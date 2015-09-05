@@ -16,9 +16,9 @@ class User: NSObject
     static var currentUser : User?
     
     var uuid: String?
-    var nickname: String?
     var firstName: String?
     var lastName: String?
+    var email: String?
     var friends: [String]?
     
     // MARK: - Initializers
@@ -29,13 +29,13 @@ class User: NSObject
         User.fetchInfoForUser(self, uuid: newUUID)
     }
 
-    init(newNickname: String, newFirstName: String, newLastName: String, newPassword: String)
+    init(newFirstName: String, newLastName: String, newEmail: String, newPassword: String)
     {
         super.init()
         
         let urlString = User.userPath.stringByAppendingString(User.newUserPathComponent)
         let manager = NetworkingManager.sharedInstance.manager
-        let parameters = ["nickname": newNickname, "firstName": newFirstName, "lastName": newLastName, "password": newPassword]
+        let parameters = ["firstName": newFirstName, "lastName": newLastName, "email": newEmail, "password": newPassword]
         
         manager.POST(urlString,
             parameters: parameters,
@@ -43,9 +43,9 @@ class User: NSObject
                 (dataTask: NSURLSessionDataTask!, responseObject: AnyObject!) -> Void in
                 if let jsonResult = responseObject as? Dictionary<String, AnyObject> {
                     self.uuid = jsonResult["uuid"] as? String
-                    self.nickname = jsonResult["nickname"] as? String
                     self.firstName = jsonResult["firstName"] as? String
                     self.lastName = jsonResult["lastName"] as? String
+                    self.email = jsonResult["email"] as? String
                     self.friends = jsonResult["friends"] as? [String]
                 }
                 else {
@@ -70,7 +70,7 @@ class User: NSObject
     
     class func fetchInfoForUser(user: User, uuid: String)
     {
-        let urlString = User.userPath.stringByAppendingString(uuid)
+        let urlString = User.userPath.stringByAppendingString("/"+uuid)
         let manager = NetworkingManager.sharedInstance.manager
         
         manager.GET( urlString,
@@ -78,9 +78,9 @@ class User: NSObject
             success: { (dataTask: NSURLSessionDataTask!, responseObject: AnyObject!) in
                 if let jsonResult = responseObject as? Dictionary<String, AnyObject> {
                     user.uuid = jsonResult["uuid"] as? String
-                    user.nickname = jsonResult["nickname"] as? String
                     user.firstName = jsonResult["firstName"] as? String
                     user.lastName = jsonResult["lastName"] as? String
+                    user.email = jsonResult["email"] as? String
                     user.friends = jsonResult["friends"] as? [String]
                 }
                 else {

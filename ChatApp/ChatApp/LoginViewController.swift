@@ -66,8 +66,19 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, UITextFie
         let modalStyle = UIModalTransitionStyle.CrossDissolve
         let friendVC = FriendSearchViewController()
         friendVC.modalTransitionStyle = modalStyle
-        presentViewController(friendVC, animated: true, completion: nil)
-
+        
+        NetworkingManager.sharedInstance.authenticate(self.emailTextField.text, password: self.passTextField.text, completionClosure: {
+            (userUUID: String!, email: String!, firstName: String!, lastName: String!, friends: [String]!) in
+            
+            let defaults = NSUserDefaults.standardUserDefaults()
+            
+            defaults.setObject(userUUID, forKey: "uuid")
+            defaults.setObject(email, forKey: "firstName")
+            defaults.setObject(firstName, forKey: "lastName")
+            defaults.setObject(lastName, forKey: "email")
+            
+            self.presentViewController(friendVC, animated: true, completion: nil)
+        })
     }
     
     // MARK: - FBSDKLoginButtonDelegate methods

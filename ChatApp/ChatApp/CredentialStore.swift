@@ -48,7 +48,7 @@ class CredentialStore: NSObject
         }
     }
     
-    func _secureValueForKey(key: String!) -> String
+    func _secureValueForKey(key: String?) -> String?
     {
         return SSKeychain.passwordForService(SERVICE_NAME, account: key)
     }

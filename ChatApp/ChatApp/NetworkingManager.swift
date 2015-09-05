@@ -39,8 +39,8 @@ class NetworkingManager: NSObject
     {
         self._setAuthTokenHeader()
     }
-    
-    func authenticate(username: String!, password: String!, completionClosure:(userUUID: String!) -> ())
+
+    func authenticate(username: String!, password: String!, completionClosure:(userUUID: String!, email: String!, firstName: String!, lastName: String!, friends:[String]!) -> ())
     {
         let parameters = ["username": username, "password": password]
         
@@ -51,9 +51,13 @@ class NetworkingManager: NSObject
                 if let jsonResult = responseObject as? Dictionary<String, AnyObject> {
                     let authToken = jsonResult["token"] as? String
                     let userUUID = jsonResult["uuid"] as? String
+                    let email = jsonResult["email"] as? String
+                    let firstName = jsonResult["firstName"] as? String
+                    let lastName = jsonResult["lastname"] as? String
+                    let friends = jsonResult["friends"] as? [String]
                     self.credentialStore.setAuthToken(authToken)
-                    
-                    completionClosure(userUUID: userUUID)
+
+                    completionClosure(userUUID: userUUID, email: email, firstName: firstName, lastName: lastName, friends: friends)
                 }
                 else {
                     print("Error: responseObject coudln't be converted to Dictionary")
@@ -72,6 +76,7 @@ class NetworkingManager: NSObject
             }
         )
     }
+
     
     func logout()
     {
@@ -83,7 +88,9 @@ class NetworkingManager: NSObject
     private func _setAuthTokenHeader()
     {
         let authToken = self.credentialStore.authToken()
-        self.manager.requestSerializer.setValue(authToken, forHTTPHeaderField: "X-Auth-Token")
+        if (authToken != nil) {
+            self.manager.requestSerializer.setValue(authToken, forHTTPHeaderField: "X-Auth-Token")
+        }
     }
 
 }
