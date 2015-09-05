@@ -68,13 +68,20 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, UITextFie
     
     func loginPressed(sender: UIButton!)
     {
-        
+        let modalStyle = UIModalTransitionStyle.CrossDissolve
+        let friendVC = FriendSearchViewController()
+        friendVC.modalTransitionStyle = modalStyle
+        presentViewController(friendVC, animated: true, completion: nil)
+
     }
     
     func settingsPressed(sender: UIButton!)
     {
+        let modalStyle = UIModalTransitionStyle.FlipHorizontal
         let settingsVC = SettingsViewController()
+        settingsVC.modalTransitionStyle = modalStyle
         self.presentViewController(settingsVC, animated: true, completion: nil)
+        
     }
     
     // MARK: - FBSDKLoginButtonDelegate methods
