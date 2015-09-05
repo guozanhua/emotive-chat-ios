@@ -8,7 +8,16 @@
 
 import UIKit
 
-class FriendsTableViewCell: UITableViewCell {
+class FriendsTableViewCell: UITableViewCell
+{
+    var bgColorRed: CGFloat = 0
+    var bgColorGreen: CGFloat = 0.82
+    var bgColorBlue: CGFloat = 1
+    
+    var nameLabelXPos: CGFloat = 20
+    var nameLabelYPos: CGFloat = 0
+    var nameLabelWidth: CGFloat = 300
+    var nameLabelHeight: CGFloat = 50
     
     var nameLabel: UILabel!
     
@@ -17,9 +26,9 @@ class FriendsTableViewCell: UITableViewCell {
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        self.backgroundColor = UIColor(red:0.00, green:0.82, blue:1.00, alpha:1.0)
+        self.backgroundColor = UIColor(red:bgColorRed, green:bgColorGreen, blue:bgColorBlue, alpha:1.0)
         
-        self.nameLabel = UILabel(frame: CGRectMake(20.0, 0.0, 300.0, 50.0))
+        self.nameLabel = UILabel(frame: CGRectMake(nameLabelXPos, nameLabelYPos, nameLabelWidth, nameLabelHeight))
         self.nameLabel.textColor = UIColor.whiteColor()
         
         self.addSubview(nameLabel)

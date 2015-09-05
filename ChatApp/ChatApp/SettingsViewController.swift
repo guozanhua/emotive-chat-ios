@@ -29,6 +29,8 @@ class SettingsViewController: UIViewController, UITextFieldDelegate
     var cancelButton: UIButton!
     var acceptButton: UIButton!
     
+    let defaults = NSUserDefaults.standardUserDefaults()
+    
     // MARK: - UIViewController methods
     
     override func viewDidLoad()
@@ -61,9 +63,12 @@ class SettingsViewController: UIViewController, UITextFieldDelegate
     
     private func _addFirstNameTextField()
     {
+        let firstName = defaults.stringForKey("firstName");
+        
         self.firstNameTextField = UITextField(frame: CGRect(x: textFieldXPos, y: firstNameFieldYPos, width: textFieldWidth, height: textFieldHeight))
         let firstNamePlaceholder = NSAttributedString(string: "first name", attributes: [NSForegroundColorAttributeName : UIColor(white: 1, alpha: 0.7)])
         self.firstNameTextField.attributedPlaceholder = firstNamePlaceholder
+        self.firstNameTextField.text = firstName
         self.firstNameTextField.textColor = UIColor.whiteColor()
         self.firstNameTextField.delegate = self
         
@@ -72,9 +77,12 @@ class SettingsViewController: UIViewController, UITextFieldDelegate
     
     private func _addLastNameTextField()
     {
+        let lastName = defaults.stringForKey("firstName");
+        
         self.lastNameTextField = UITextField(frame: CGRect(x: textFieldXPos, y: firstNameFieldYPos + textFieldYOffset, width: textFieldWidth, height: textFieldHeight))
         let lastNamePlaceholder = NSAttributedString(string: "last name", attributes: [NSForegroundColorAttributeName : UIColor(white: 1, alpha: 0.7)])
         self.lastNameTextField.attributedPlaceholder = lastNamePlaceholder
+        self.lastNameTextField.text = lastName
         self.lastNameTextField.textColor = UIColor.whiteColor()
         self.lastNameTextField.delegate = self
         
@@ -83,9 +91,12 @@ class SettingsViewController: UIViewController, UITextFieldDelegate
     
     private func _addEmailTextField()
     {
+        let email = defaults.stringForKey("firstName");
+        
         self.emailTextField = UITextField(frame: CGRect(x: textFieldXPos, y: firstNameFieldYPos + 2*textFieldYOffset, width: textFieldWidth, height: textFieldHeight))
         let emailPlaceholder = NSAttributedString(string: "email", attributes: [NSForegroundColorAttributeName : UIColor(white: 1, alpha: 0.7)])
         self.emailTextField.attributedPlaceholder = emailPlaceholder
+        self.emailTextField.text = email
         self.emailTextField.textColor = UIColor.whiteColor()
         self.emailTextField.delegate = self
         
