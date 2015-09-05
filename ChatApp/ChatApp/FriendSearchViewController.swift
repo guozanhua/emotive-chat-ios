@@ -26,6 +26,11 @@ class FriendSearchViewController: UIViewController, UITableViewDataSource, UITab
     var tableYPos: CGFloat = 150
     var tableHeight: CGFloat = 400
     
+    var settingsXPos: CGFloat = 240
+    var settingsYPos: CGFloat = 50
+    var settingsWidth: CGFloat = 100
+    var settingsHeight: CGFloat = 50
+    
     var logoutXPos: CGFloat = 30
     var logoutYPos: CGFloat = 50
     var logoutWidth: CGFloat = 100
@@ -34,6 +39,7 @@ class FriendSearchViewController: UIViewController, UITableViewDataSource, UITab
     var searchActive : Bool = false
     var friends = ["Rahul Madduluri", "Spencer Congero", "Jack Kellner", "Steve Nam", "Sean Allgood"]
     var filtered:[String] = []
+    var settingsButton: UIButton!
     
     // MARK: - UIViewController methods
 
@@ -43,6 +49,7 @@ class FriendSearchViewController: UIViewController, UITableViewDataSource, UITab
         self.view.backgroundColor = UIColor(red:bgColorRed, green:bgColorGreen, blue:bgColorBlue, alpha:1.0)
         
         _addLogoutButton()
+        _addSettingsButton()
         _addSearchBar()
         _addTableView()
     }
@@ -52,6 +59,15 @@ class FriendSearchViewController: UIViewController, UITableViewDataSource, UITab
     func logoutPressed(sender: UIButton!)
     {
         self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func settingsPressed(sender: UIButton!)
+    {
+        let modalStyle = UIModalTransitionStyle.FlipHorizontal
+        let settingsVC = SettingsViewController()
+        settingsVC.modalTransitionStyle = modalStyle
+        self.presentViewController(settingsVC, animated: true, completion: nil)
+        
     }
     
     // MARK: - UISearchBarDelegate methods
@@ -130,6 +146,17 @@ class FriendSearchViewController: UIViewController, UITableViewDataSource, UITab
         self.logoutButton.addTarget(self, action: "logoutPressed:", forControlEvents: .TouchUpInside)
         
         self.view.addSubview(self.logoutButton)
+    }
+    
+    private func _addSettingsButton()
+    {
+        self.settingsButton = UIButton()
+        self.settingsButton.setTitle("Settings", forState: .Normal)
+        self.settingsButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+        self.settingsButton.frame = CGRectMake(settingsXPos, settingsYPos, settingsWidth, settingsHeight)
+        self.settingsButton.addTarget(self, action: "settingsPressed:", forControlEvents: .TouchUpInside)
+        
+        self.view.addSubview(self.settingsButton)
     }
     
     private func _addSearchBar()

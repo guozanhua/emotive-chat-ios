@@ -26,15 +26,11 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, UITextFie
     var signUpHeight: CGFloat = 50
     var signUpYOffset: CGFloat = 150
     
-    var settingsXPos: CGFloat = 30
-    var settingsYPos: CGFloat = 50
-    
     var emailTextField: UITextField!
     var passTextField: UITextField!
     var fbLogInButton: FBSDKLoginButton!
     var loginButton: UIButton!
     var signUpButton: UIButton!
-    var settingsButton: UIButton!
 
     // MARK: - UIViewController methods
     
@@ -50,7 +46,6 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, UITextFie
         _addFacebookLogin()
         _addLoginButton()
         _addSignUpButton()
-        _addSettingsButton()
         
         if (FBSDKAccessToken.currentAccessToken() != nil)
         {
@@ -73,15 +68,6 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, UITextFie
         friendVC.modalTransitionStyle = modalStyle
         presentViewController(friendVC, animated: true, completion: nil)
 
-    }
-    
-    func settingsPressed(sender: UIButton!)
-    {
-        let modalStyle = UIModalTransitionStyle.FlipHorizontal
-        let settingsVC = SettingsViewController()
-        settingsVC.modalTransitionStyle = modalStyle
-        self.presentViewController(settingsVC, animated: true, completion: nil)
-        
     }
     
     // MARK: - FBSDKLoginButtonDelegate methods
@@ -180,16 +166,6 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, UITextFie
         self.signUpButton.addTarget(self, action: "signupPressed:", forControlEvents: .TouchUpInside)
         
         self.view.addSubview(self.signUpButton)
-    }
-    private func _addSettingsButton()
-    {
-        self.settingsButton = UIButton()
-        self.settingsButton.setTitle("Settings", forState: .Normal)
-        self.settingsButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-        self.settingsButton.frame = CGRectMake(settingsXPos, settingsYPos, signUpWidth, signUpHeight)
-        self.settingsButton.addTarget(self, action: "settingsPressed:", forControlEvents: .TouchUpInside)
-        
-        self.view.addSubview(self.settingsButton)
     }
 }
 
