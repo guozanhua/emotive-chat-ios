@@ -40,7 +40,7 @@ class NetworkingManager: NSObject
         self._setAuthTokenHeader()
     }
     
-    func authenticate(username: String!, password: String!, completionClosure:() -> ())
+    func authenticate(username: String!, password: String!, completionClosure:(userUUID: String!) -> ())
     {
         let parameters = ["username": username, "password": password]
         
@@ -49,10 +49,11 @@ class NetworkingManager: NSObject
             success: {
                 (dataTask: NSURLSessionDataTask!, responseObject: AnyObject!) -> Void in
                 if let jsonResult = responseObject as? Dictionary<String, AnyObject> {
-                    let authToken = jsonResult["auth_token"] as? String
+                    let authToken = jsonResult["token"] as? String
+                    let userUUID = jsonResult["uuid"] as? String
                     self.credentialStore.setAuthToken(authToken)
                     
-                    completionClosure()
+                    completionClosure(userUUID: userUUID)
                 }
                 else {
                     print("Error: responseObject coudln't be converted to Dictionary")
