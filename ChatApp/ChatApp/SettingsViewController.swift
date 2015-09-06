@@ -79,7 +79,7 @@ class SettingsViewController: UIViewController, UITextFieldDelegate
     
     private func _addLastNameTextField()
     {
-        let lastName = defaults.stringForKey("firstName");
+        let lastName = defaults.stringForKey("lastName");
         
         self.lastNameTextField = UITextField(frame: CGRect(x: textFieldXPos, y: firstNameFieldYPos + textFieldYOffset, width: textFieldWidth, height: textFieldHeight))
         let lastNamePlaceholder = NSAttributedString(string: "last name", attributes: [NSForegroundColorAttributeName : UIColor(white: 1, alpha: 0.7)])
@@ -93,7 +93,7 @@ class SettingsViewController: UIViewController, UITextFieldDelegate
     
     private func _addEmailTextField()
     {
-        let email = defaults.stringForKey("firstName");
+        let email = defaults.stringForKey("email");
         
         self.emailTextField = UITextField(frame: CGRect(x: textFieldXPos, y: firstNameFieldYPos + 2*textFieldYOffset, width: textFieldWidth, height: textFieldHeight))
         let emailPlaceholder = NSAttributedString(string: "email", attributes: [NSForegroundColorAttributeName : UIColor(white: 1, alpha: 0.7)])
