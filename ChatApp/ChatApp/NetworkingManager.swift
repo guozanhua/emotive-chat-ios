@@ -13,8 +13,8 @@ class NetworkingManager: NSObject
     
     static let sharedInstance = NetworkingManager()
     
-    static let baseURLString = "www.woomiapp.com/api"
-    static let authenticateURLPathComponent = "/authenticate"
+    static let baseURLString = "http://localhost:3003/api"
+    static let authenticateURLPathComponent = "authenticate"
 
     var manager: AFHTTPSessionManager
     var credentialStore : CredentialStore
@@ -40,9 +40,9 @@ class NetworkingManager: NSObject
         self._setAuthTokenHeader()
     }
 
-    func authenticate(username: String!, password: String!, completionClosure:(userUUID: String!, email: String!, firstName: String!, lastName: String!, friends:[String]!) -> ())
+    func authenticate(email: String!, password: String!, completionClosure:(userUUID: String!, email: String!, firstName: String!, lastName: String!, friends:[String]!) -> ())
     {
-        let parameters = ["username": username, "password": password]
+        let parameters = ["email": email, "password": password]
         
         self.manager.POST(NetworkingManager.authenticateURLPathComponent,
             parameters: parameters,
@@ -56,8 +56,10 @@ class NetworkingManager: NSObject
                     let lastName = jsonResult["lastname"] as? String
                     let friends = jsonResult["friends"] as? [String]
                     self.credentialStore.setAuthToken(authToken)
-
-                    completionClosure(userUUID: userUUID, email: email, firstName: firstName, lastName: lastName, friends: friends)
+                    
+                    if (authToken != nil) {
+                        completionClosure(userUUID: userUUID, email: email, firstName: firstName, lastName: lastName, friends: friends)
+                    }
                 }
                 else {
                     print("Error: responseObject coudln't be converted to Dictionary")

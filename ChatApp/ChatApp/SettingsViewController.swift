@@ -59,6 +59,8 @@ class SettingsViewController: UIViewController, UITextFieldDelegate
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
+    
+    
     // MARK: - Private methods
     
     private func _addFirstNameTextField()

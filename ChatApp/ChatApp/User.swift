@@ -11,8 +11,7 @@ import UIKit
 class User: NSObject
 {
 
-    static var userPath = "/users"
-    static var newUserPathComponent = "/new"
+    static var userPath = "signup"
     static var currentUser : User?
     
     var uuid: String?
@@ -33,7 +32,7 @@ class User: NSObject
     {
         super.init()
         
-        let urlString = User.userPath.stringByAppendingString(User.newUserPathComponent)
+        let urlString = User.userPath
         let manager = NetworkingManager.sharedInstance.manager
         let parameters = ["firstName": newFirstName, "lastName": newLastName, "email": newEmail, "password": newPassword]
         
@@ -61,7 +60,6 @@ class User: NSObject
                         NetworkingManager.sharedInstance.credentialStore.setAuthToken(nil)
                     }
                 }
-                
             }
         )
     }
