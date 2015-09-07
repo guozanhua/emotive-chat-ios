@@ -27,11 +27,11 @@ class User: NSObject
         super.init()
         User.fetchInfoForUser(self, uuid: newUUID)
     }
-
-    init(newFirstName: String, newLastName: String, newEmail: String, newPassword: String)
+    
+    // MARK: - Type methods
+    
+    class func createNewUser(newFirstName: String, newLastName: String, newEmail: String, newPassword: String)
     {
-        super.init()
-        
         let urlString = User.userPath
         let manager = NetworkingManager.sharedInstance.manager
         let parameters = ["firstName": newFirstName, "lastName": newLastName, "email": newEmail, "password": newPassword]
@@ -41,11 +41,10 @@ class User: NSObject
             success: {
                 (dataTask: NSURLSessionDataTask!, responseObject: AnyObject!) -> Void in
                 if let jsonResult = responseObject as? Dictionary<String, AnyObject> {
-                    self.uuid = jsonResult["uuid"] as? String
-                    self.firstName = jsonResult["firstName"] as? String
-                    self.lastName = jsonResult["lastName"] as? String
-                    self.email = jsonResult["email"] as? String
-                    self.friends = jsonResult["friends"] as? [String]
+                    let successful = jsonResult["success"] as? Bool
+                    if (successful == false) {
+                        print("Failed to create new user")
+                    }
                 }
                 else {
                     print("Error: responseObject coudln't be converted to Dictionary")
@@ -63,8 +62,6 @@ class User: NSObject
             }
         )
     }
-    
-    // MARK: - Type methods
     
     class func fetchInfoForUser(user: User, uuid: String)
     {
