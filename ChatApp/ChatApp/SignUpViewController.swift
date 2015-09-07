@@ -47,7 +47,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate
     
     func pressed(sender: UIButton!)
     {
-        _ = User.init(newFirstName: self.firstNameTextField.text!, newLastName: self.lastNameTextField.text!, newEmail: self.emailTextField.text!, newPassword: self.passTextField.text!)
+        User.createNewUser(self.firstNameTextField.text!, newLastName: self.lastNameTextField.text!, newEmail: self.emailTextField.text!, newPassword: self.passTextField.text!)
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
