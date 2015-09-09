@@ -13,7 +13,7 @@ class NetworkingManager: NSObject
     
     static let sharedInstance = NetworkingManager()
     
-    static let baseURLString = "http://www.woomiapp.com:80/api"
+    static let baseURLString = "http://localhost:3003/api"
     static let authenticateURLPathComponent = "authenticate"
 
     var manager: AFHTTPSessionManager
@@ -53,7 +53,7 @@ class NetworkingManager: NSObject
                     let userUUID = jsonResult["uuid"] as? String
                     let email = jsonResult["email"] as? String
                     let firstName = jsonResult["firstName"] as? String
-                    let lastName = jsonResult["lastname"] as? String
+                    let lastName = jsonResult["lastName"] as? String
                     let friends = jsonResult["friends"] as? [String]
                     self.credentialStore.setAuthToken(authToken)
                     
