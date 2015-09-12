@@ -29,6 +29,10 @@ class SettingsViewController: UIViewController, UITextFieldDelegate
     var cancelButton: UIButton!
     var acceptButton: UIButton!
     
+    var userURLPathComponent = "user"
+    
+    var currentUserUuid: String!
+    
     let defaults = NSUserDefaults.standardUserDefaults()
     
     // MARK: - UIViewController methods
@@ -56,12 +60,60 @@ class SettingsViewController: UIViewController, UITextFieldDelegate
     
     func acceptPressed(sender: UIButton!)
     {
+        _updateSettings(self.firstNameTextField.text, lastName: self.lastNameTextField.text, email: self.emailTextField.text, password: self.passTextField.text)
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     
     
     // MARK: - Private methods
+    
+    private func _updateSettings(firstName: String!, lastName: String!, email: String!, password: String!)
+    {
+        // put request to change user info
+        
+        let manager = NetworkingManager.sharedInstance.manager
+        self.currentUserUuid = defaults.stringForKey("uuid")
+        let parameters = ["uuid": self.currentUserUuid, "firstName": firstName, "lastName": lastName, "email": email, "password": password]
+        
+        manager.PUT(self.userURLPathComponent,
+            parameters: parameters,
+            success: {
+                (dataTask: NSURLSessionDataTask!, responseObject: AnyObject!) -> Void in
+                if let jsonResult = responseObject as? Dictionary<String, AnyObject> {
+                    let successful = jsonResult["success"] as? Bool
+                    if (successful == false) {
+                        print("Failed to update new user")
+                    }
+                    else if (successful == true) {
+                        
+                        let defaults = NSUserDefaults.standardUserDefaults()
+                        
+                        defaults.setObject(firstName, forKey: "firstName")
+                        defaults.setObject(lastName, forKey: "lastName")
+                        defaults.setObject(email, forKey: "email")
+
+                    }
+                }
+                else {
+                    print("Error: responseObject coudln't be converted to Dictionary")
+                }
+            }, failure: {
+                (dataTask: NSURLSessionDataTask!, error: NSError!) -> Void in
+                let errorMessage = "Error: " + error.localizedDescription
+                print(errorMessage)
+                
+                if let response = dataTask.response as? NSHTTPURLResponse {
+                    if (response.statusCode == 401) {
+                        NetworkingManager.sharedInstance.credentialStore.setAuthToken(nil)
+                    }
+                }
+            }
+        )
+
+        
+        
+    }
     
     private func _addFirstNameTextField()
     {
