@@ -8,16 +8,15 @@
 
 import UIKit
 
-class FriendSearchViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate
+class AddFriendViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate
 {
-    var bgColorRed: CGFloat = 0
-    var bgColorGreen: CGFloat = 0.82
-    var bgColorBlue: CGFloat = 1
+    var bgColorRed: CGFloat = 244/255
+    var bgColorGreen: CGFloat = 179/255
+    var bgColorBlue: CGFloat = 80/255
     
     var friendSearchBar: UISearchBar!
     var friendTableView: UITableView!
-    var logoutButton: UIButton!
-    var addFriendsButton: UIButton!
+    var doneButton: UIButton!
     
     var searchXOffset: CGFloat = 150
     var searchYPos: CGFloat = 100
@@ -26,19 +25,11 @@ class FriendSearchViewController: UIViewController, UITableViewDataSource, UITab
     
     var tableYPos: CGFloat = 150
     var tableHeight: CGFloat = 400
-    
-    var settingsXPos: CGFloat = 240
-    var settingsYPos: CGFloat = 50
-    var settingsWidth: CGFloat = 100
-    var settingsHeight: CGFloat = 50
-    
-    var logoutXPos: CGFloat = 30
-    var logoutYPos: CGFloat = 50
-    var logoutWidth: CGFloat = 100
-    var logoutHeight: CGFloat = 50
-    
-    var addXPos: CGFloat = 160
-    var addWidth: CGFloat = 50
+
+    var doneXPos: CGFloat = 30
+    var doneYPos: CGFloat = 50
+    var doneWidth: CGFloat = 100
+    var doneHeight: CGFloat = 50
     
     var searchActive : Bool = false
     var friends = [[String]]()
@@ -46,50 +37,65 @@ class FriendSearchViewController: UIViewController, UITableViewDataSource, UITab
     var filtered:[String] = []
     var settingsButton: UIButton!
     
-    var currentUserUuid: String!
     var userURLPathComponent = "user"
+    var friendsURLPathComponent = "friends"
+    
+    var selectedFriends: [String] = []
+    
+    var currentUserUuid: String!
     
     let defaults = NSUserDefaults.standardUserDefaults()
     
     // MARK: - UIViewController methods
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.view.backgroundColor = UIColor(red:bgColorRed, green:bgColorGreen, blue:bgColorBlue, alpha:1.0)
         
-        _addLogoutButton()
-        _addSettingsButton()
-        _addAddFriendsButton()
+        _getFriends()
+        
+        _addDoneButton()
         _addSearchBar()
         _addTableView()
     }
     
-    override func viewWillAppear(animated: Bool) {
-        _getFriends()
-    }
-    
     // MARK: - Internal methods
     
-    func logoutPressed(sender: UIButton!)
+    func donePressed(sender: UIButton!)
     {
-        self.dismissViewControllerAnimated(true, completion: nil)
-    }
-    
-    func settingsPressed(sender: UIButton!)
-    {
-        let modalStyle = UIModalTransitionStyle.FlipHorizontal
-        let settingsVC = SettingsViewController()
-        settingsVC.modalTransitionStyle = modalStyle
-        self.presentViewController(settingsVC, animated: true, completion: nil)
-    }
-    
-    func addFriendsPressed(sender: UIButton!)
-    {
-        let modalStyle = UIModalTransitionStyle.CoverVertical
-        let addFriendsVC = AddFriendViewController()
-        addFriendsVC.modalTransitionStyle = modalStyle
-        self.presentViewController(addFriendsVC, animated: true, completion: nil)
+        let manager = NetworkingManager.sharedInstance.manager
+        self.currentUserUuid = defaults.stringForKey("uuid")
+        let parameters = ["uuid": self.currentUserUuid, "friends": self.selectedFriends]
+        
+        manager.PUT(self.userURLPathComponent,
+            parameters: parameters,
+            success: {
+                (dataTask: NSURLSessionDataTask!, responseObject: AnyObject!) -> Void in
+                if let jsonResult = responseObject as? Dictionary<String, AnyObject> {
+                    let successful = jsonResult["success"] as? Bool
+                    if (successful == false) {
+                        print("Failed to update new user")
+                    }
+                    else if (successful == true) {
+                        self.dismissViewControllerAnimated(true, completion: nil)
+                    }
+                }
+                else {
+                    print("Error: responseObject coudln't be converted to Dictionary")
+                }
+            }, failure: {
+                (dataTask: NSURLSessionDataTask!, error: NSError!) -> Void in
+                let errorMessage = "Error: " + error.localizedDescription
+                print(errorMessage)
+                
+                if let response = dataTask.response as? NSHTTPURLResponse {
+                    if (response.statusCode == 401) {
+                        NetworkingManager.sharedInstance.credentialStore.setAuthToken(nil)
+                    }
+                }
+            }
+        )
     }
     
     // MARK: - UISearchBarDelegate methods
@@ -127,6 +133,7 @@ class FriendSearchViewController: UIViewController, UITableViewDataSource, UITab
             searchActive = true;
         }
         self.friendTableView.reloadData()
+        
     }
     
     // MARK: - UITableViewDelegate methods
@@ -144,7 +151,7 @@ class FriendSearchViewController: UIViewController, UITableViewDataSource, UITab
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell") as! FriendsTableViewCell;
+        let cell = tableView.dequeueReusableCellWithIdentifier("cell") as! AddFriendTableViewCell;
         
         cell.hiddenIDLabel.text = self.friends[indexPath.row][1]
         
@@ -159,10 +166,14 @@ class FriendSearchViewController: UIViewController, UITableViewDataSource, UITab
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        //let cell = tableView.cellForRowAtIndexPath(indexPath) as! AddFriendTableViewCell
+        let cell = tableView.cellForRowAtIndexPath(indexPath) as! AddFriendTableViewCell
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        let friendUuid = cell.hiddenIDLabel.text as String!
+        if (!self.selectedFriends.contains(friendUuid)) {
+            cell.selectedLabel.hidden = false
+            self.selectedFriends.append(friendUuid)
+        }
     }
-
     
     // MARK: - Private methods
     
@@ -172,7 +183,7 @@ class FriendSearchViewController: UIViewController, UITableViewDataSource, UITab
         self.currentUserUuid = defaults.stringForKey("uuid")
         let parameters = ["uuid": self.currentUserUuid]
         
-        manager.GET(self.userURLPathComponent,
+        manager.GET(self.friendsURLPathComponent,
             parameters: parameters,
             success: { (dataTask: NSURLSessionDataTask!, responseObject: AnyObject!) in
                 if let jsonResult = responseObject as? Dictionary<String, AnyObject> {
@@ -209,37 +220,15 @@ class FriendSearchViewController: UIViewController, UITableViewDataSource, UITab
         )
     }
     
-    private func _addAddFriendsButton()
+    private func _addDoneButton()
     {
-        self.addFriendsButton = UIButton()
-        self.addFriendsButton.setTitle("Add", forState: .Normal)
-        self.addFriendsButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-        self.addFriendsButton.frame = CGRectMake(addXPos, logoutYPos, addWidth, logoutHeight)
-        self.addFriendsButton.addTarget(self, action: "addFriendsPressed:", forControlEvents: .TouchUpInside)
+        self.doneButton = UIButton()
+        self.doneButton.setTitle("Done", forState: .Normal)
+        self.doneButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+        self.doneButton.frame = CGRectMake(doneXPos, doneYPos, doneWidth, doneHeight)
+        self.doneButton.addTarget(self, action: "donePressed:", forControlEvents: .TouchUpInside)
         
-        self.view.addSubview(self.addFriendsButton)
-    }
-
-    private func _addLogoutButton()
-    {
-        self.logoutButton = UIButton()
-        self.logoutButton.setTitle("Log Out", forState: .Normal)
-        self.logoutButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-        self.logoutButton.frame = CGRectMake(logoutXPos, logoutYPos, logoutWidth, logoutHeight)
-        self.logoutButton.addTarget(self, action: "logoutPressed:", forControlEvents: .TouchUpInside)
-        
-        self.view.addSubview(self.logoutButton)
-    }
-    
-    private func _addSettingsButton()
-    {
-        self.settingsButton = UIButton()
-        self.settingsButton.setTitle("Settings", forState: .Normal)
-        self.settingsButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-        self.settingsButton.frame = CGRectMake(settingsXPos, settingsYPos, settingsWidth, settingsHeight)
-        self.settingsButton.addTarget(self, action: "settingsPressed:", forControlEvents: .TouchUpInside)
-        
-        self.view.addSubview(self.settingsButton)
+        self.view.addSubview(self.doneButton)
     }
     
     private func _addSearchBar()
@@ -260,7 +249,7 @@ class FriendSearchViewController: UIViewController, UITableViewDataSource, UITab
         self.friendTableView.backgroundColor = UIColor(red:bgColorRed, green:bgColorGreen, blue:bgColorBlue, alpha:1.0)
         self.friendTableView.separatorColor = UIColor.whiteColor()
         
-        self.friendTableView.registerClass(FriendsTableViewCell.self, forCellReuseIdentifier: "cell")
+        self.friendTableView.registerClass(AddFriendTableViewCell.self, forCellReuseIdentifier: "cell")
         
         self.friendTableView.delegate = self
         self.friendTableView.dataSource = self
