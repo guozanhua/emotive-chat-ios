@@ -146,7 +146,7 @@ class FriendSearchViewController: UIViewController, UITableViewDataSource, UITab
         
         let cell = tableView.dequeueReusableCellWithIdentifier("cell") as! FriendsTableViewCell;
         
-        cell.hiddenIDLabel.text = self.friends[indexPath.row][1]
+        cell.userUuid = self.friends[indexPath.row][1]
         
         if(searchActive) {
             cell.nameLabel?.text = filtered[indexPath.row]

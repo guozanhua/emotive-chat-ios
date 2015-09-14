@@ -26,9 +26,8 @@ class AddFriendTableViewCell: UITableViewCell
     
     var nameLabel: UILabel!
     var selectedLabel: UILabel!
-    var hiddenIDLabel: UILabel!
     
-    // MARK: - UITableViewCell methods
+    var userUuid: String!
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -43,9 +42,6 @@ class AddFriendTableViewCell: UITableViewCell
         self.selectedLabel.text = "o"
         self.selectedLabel.hidden = true
         
-        self.hiddenIDLabel = UILabel.init()
-        self.hiddenIDLabel.hidden = true
-        
         self.addSubview(nameLabel)
         self.addSubview(selectedLabel)
     }
@@ -53,6 +49,8 @@ class AddFriendTableViewCell: UITableViewCell
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
+    
+    // MARK: - UITableViewCell methods
     
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

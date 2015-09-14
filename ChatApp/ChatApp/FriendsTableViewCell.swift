@@ -21,9 +21,7 @@ class FriendsTableViewCell: UITableViewCell
     
     var nameLabel: UILabel!
     
-    var hiddenIDLabel: UILabel!
-    
-    // MARK: - UITableViewCell methods
+    var userUuid: String!
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -33,15 +31,14 @@ class FriendsTableViewCell: UITableViewCell
         self.nameLabel = UILabel(frame: CGRectMake(nameLabelXPos, nameLabelYPos, nameLabelWidth, nameLabelHeight))
         self.nameLabel.textColor = UIColor.whiteColor()
         
-        self.hiddenIDLabel = UILabel.init()
-        self.hiddenIDLabel.hidden = true
-        
         self.addSubview(nameLabel)
     }
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
+    
+    // MARK: - UITableViewCell methods
 
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

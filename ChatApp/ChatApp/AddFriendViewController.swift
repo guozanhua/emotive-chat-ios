@@ -38,11 +38,13 @@ class AddFriendViewController: UIViewController, UITableViewDataSource, UITableV
     var settingsButton: UIButton!
     
     var userURLPathComponent = "user"
-    var friendsURLPathComponent = "friends"
+    var usersURLPathComponent = "users"
     
-    var selectedFriends: [String] = []
+    var selectedFriends = NSMutableSet()
     
     var currentUserUuid: String!
+    
+    var selectedIndexPaths = NSMutableSet()
     
     let defaults = NSUserDefaults.standardUserDefaults()
     
@@ -66,7 +68,8 @@ class AddFriendViewController: UIViewController, UITableViewDataSource, UITableV
     {
         let manager = NetworkingManager.sharedInstance.manager
         self.currentUserUuid = defaults.stringForKey("uuid")
-        let parameters = ["uuid": self.currentUserUuid, "friends": self.selectedFriends]
+        let friendsArray = self.selectedFriends.allObjects
+        let parameters = ["uuid": self.currentUserUuid, "friends": friendsArray]
         
         manager.PUT(self.userURLPathComponent,
             parameters: parameters,
@@ -153,7 +156,7 @@ class AddFriendViewController: UIViewController, UITableViewDataSource, UITableV
         
         let cell = tableView.dequeueReusableCellWithIdentifier("cell") as! AddFriendTableViewCell;
         
-        cell.hiddenIDLabel.text = self.friends[indexPath.row][1]
+        cell.userUuid = self.friends[indexPath.row][1]
         
         if(searchActive) {
             cell.nameLabel?.text = filtered[indexPath.row]
@@ -162,28 +165,45 @@ class AddFriendViewController: UIViewController, UITableViewDataSource, UITableV
             cell.nameLabel?.text = name
         }
         
+        _configure(cell, forRowAtIndexPath: indexPath)
+        
         return cell;
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let cell = tableView.cellForRowAtIndexPath(indexPath) as! AddFriendTableViewCell
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        let friendUuid = cell.hiddenIDLabel.text as String!
-        if (!self.selectedFriends.contains(friendUuid)) {
-            cell.selectedLabel.hidden = false
-            self.selectedFriends.append(friendUuid)
+        let friendUuid = cell.userUuid as String!
+        if (selectedIndexPaths.containsObject(indexPath)) {
+            self.selectedFriends.removeObject(friendUuid)
+            self.selectedIndexPaths.removeObject(indexPath)
         }
+        else {
+            self.selectedFriends.addObject(friendUuid)
+            self.selectedIndexPaths.addObject(indexPath)
+        }
+        _configure(cell, forRowAtIndexPath: indexPath)
     }
     
     // MARK: - Private methods
+    
+    private func _configure(cell: AddFriendTableViewCell, forRowAtIndexPath indexPath: NSIndexPath)
+    {
+        if (selectedIndexPaths.containsObject(indexPath)) {
+            cell.selectedLabel.hidden = false
+        }
+        else {
+            cell.selectedLabel.hidden = true
+        }
+    }
     
     private func _getFriends()
     {
         let manager = NetworkingManager.sharedInstance.manager
         self.currentUserUuid = defaults.stringForKey("uuid")
-        let parameters = ["uuid": self.currentUserUuid]
+        let parameters = ["ignoreFriendsOfUserWithUuid": self.currentUserUuid]
         
-        manager.GET(self.friendsURLPathComponent,
+        manager.GET(self.usersURLPathComponent,
             parameters: parameters,
             success: { (dataTask: NSURLSessionDataTask!, responseObject: AnyObject!) in
                 if let jsonResult = responseObject as? Dictionary<String, AnyObject> {
