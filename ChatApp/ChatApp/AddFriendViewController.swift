@@ -69,7 +69,7 @@ class AddFriendViewController: UIViewController, UITableViewDataSource, UITableV
         let manager = NetworkingManager.sharedInstance.manager
         self.currentUserUuid = defaults.stringForKey("uuid")
         let friendsArray = self.selectedFriends.allObjects
-        let parameters = ["uuid": self.currentUserUuid, "friends": friendsArray]
+        let parameters = ["uuid": self.currentUserUuid, "newFriends": friendsArray]
         
         manager.PUT(self.userURLPathComponent,
             parameters: parameters,
