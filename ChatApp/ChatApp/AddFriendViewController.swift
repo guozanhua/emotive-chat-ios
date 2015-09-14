@@ -44,6 +44,8 @@ class AddFriendViewController: UIViewController, UITableViewDataSource, UITableV
     
     var currentUserUuid: String!
     
+    var cellIdentifier = "cell"
+    
     var selectedIndexPaths = NSMutableSet()
     
     let defaults = NSUserDefaults.standardUserDefaults()
@@ -154,7 +156,7 @@ class AddFriendViewController: UIViewController, UITableViewDataSource, UITableV
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell") as! AddFriendTableViewCell;
+        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as! AddFriendTableViewCell;
         
         cell.userUuid = self.friends[indexPath.row][1]
         
@@ -269,7 +271,7 @@ class AddFriendViewController: UIViewController, UITableViewDataSource, UITableV
         self.friendTableView.backgroundColor = UIColor(red:bgColorRed, green:bgColorGreen, blue:bgColorBlue, alpha:1.0)
         self.friendTableView.separatorColor = UIColor.whiteColor()
         
-        self.friendTableView.registerClass(AddFriendTableViewCell.self, forCellReuseIdentifier: "cell")
+        self.friendTableView.registerClass(AddFriendTableViewCell.self, forCellReuseIdentifier: cellIdentifier)
         
         self.friendTableView.delegate = self
         self.friendTableView.dataSource = self

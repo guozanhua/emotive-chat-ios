@@ -49,6 +49,8 @@ class FriendSearchViewController: UIViewController, UITableViewDataSource, UITab
     var currentUserUuid: String!
     var userURLPathComponent = "user"
     
+    var cellIdentifier = "cell"
+    
     let defaults = NSUserDefaults.standardUserDefaults()
     
     // MARK: - UIViewController methods
@@ -144,7 +146,7 @@ class FriendSearchViewController: UIViewController, UITableViewDataSource, UITab
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell") as! FriendsTableViewCell;
+        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as! FriendsTableViewCell;
         
         cell.userUuid = self.friends[indexPath.row][1]
         
@@ -260,7 +262,7 @@ class FriendSearchViewController: UIViewController, UITableViewDataSource, UITab
         self.friendTableView.backgroundColor = UIColor(red:bgColorRed, green:bgColorGreen, blue:bgColorBlue, alpha:1.0)
         self.friendTableView.separatorColor = UIColor.whiteColor()
         
-        self.friendTableView.registerClass(FriendsTableViewCell.self, forCellReuseIdentifier: "cell")
+        self.friendTableView.registerClass(FriendsTableViewCell.self, forCellReuseIdentifier: cellIdentifier)
         
         self.friendTableView.delegate = self
         self.friendTableView.dataSource = self
