@@ -29,10 +29,6 @@ class SettingsViewController: UIViewController, UITextFieldDelegate
     var cancelButton: UIButton!
     var acceptButton: UIButton!
     
-    var userURLPathComponent = "user"
-    
-    var currentUserUuid: String!
-    
     let defaults = NSUserDefaults.standardUserDefaults()
     
     // MARK: - UIViewController methods
@@ -73,10 +69,10 @@ class SettingsViewController: UIViewController, UITextFieldDelegate
         // put request to change user info
         
         let manager = NetworkingManager.sharedInstance.manager
-        self.currentUserUuid = defaults.stringForKey("uuid")
-        let parameters = ["uuid": self.currentUserUuid, "firstName": firstName, "lastName": lastName, "email": email, "password": password]
+        let currentUserUuid = UserDefaults.currentUserUuid()
+        let parameters = ["uuid": currentUserUuid, "firstName": firstName, "lastName": lastName, "email": email, "password": password]
         
-        manager.PUT(self.userURLPathComponent,
+        manager.PUT(User.userPath + currentUserUuid,
             parameters: parameters,
             success: {
                 (dataTask: NSURLSessionDataTask!, responseObject: AnyObject!) -> Void in

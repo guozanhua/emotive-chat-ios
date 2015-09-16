@@ -46,7 +46,6 @@ class FriendSearchViewController: UIViewController, UITableViewDataSource, UITab
     var filtered:[String] = []
     var settingsButton: UIButton!
     
-    var currentUserUuid: String!
     var userURLPathComponent = "user"
     
     var cellIdentifier = "cell"
@@ -171,16 +170,16 @@ class FriendSearchViewController: UIViewController, UITableViewDataSource, UITab
     private func _getFriends()
     {
         let manager = NetworkingManager.sharedInstance.manager
-        self.currentUserUuid = defaults.stringForKey("uuid")
-        let parameters = ["uuid": self.currentUserUuid]
+        let currentUserUuid = UserDefaults.currentUserUuid()
+        let parameters = ["uuid": currentUserUuid]
         
-        manager.GET(self.userURLPathComponent,
+        manager.GET(User.userPath + currentUserUuid,
             parameters: parameters,
             success: { (dataTask: NSURLSessionDataTask!, responseObject: AnyObject!) in
                 if let jsonResult = responseObject as? Dictionary<String, AnyObject> {
                     let successful = jsonResult["success"] as? Bool
                     if (successful == false) {
-                        print("Failed to update new user")
+                        print("Failed to get all friends of user")
                     }
                     else if (successful == true) {
                         self.friends = jsonResult["friends"] as! [[String]]

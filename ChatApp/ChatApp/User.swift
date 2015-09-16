@@ -11,7 +11,7 @@ import UIKit
 class User: NSObject
 {
 
-    static var userPath = "signup"
+    static var userPath = "users/"
     static var currentUser : User?
     
     var uuid: String?
@@ -32,11 +32,10 @@ class User: NSObject
     
     class func createNewUser(newFirstName: String, newLastName: String, newEmail: String, newPassword: String)
     {
-        let urlString = User.userPath
         let manager = NetworkingManager.sharedInstance.manager
         let parameters = ["firstName": newFirstName, "lastName": newLastName, "email": newEmail, "password": newPassword]
         
-        manager.POST(urlString,
+        manager.POST(User.userPath,
             parameters: parameters,
             success: {
                 (dataTask: NSURLSessionDataTask!, responseObject: AnyObject!) -> Void in
@@ -65,10 +64,10 @@ class User: NSObject
     
     class func fetchInfoForUser(user: User, uuid: String)
     {
-        let urlString = User.userPath.stringByAppendingString("/"+uuid)
+        let urlString = User.userPath.stringByAppendingString(uuid)
         let manager = NetworkingManager.sharedInstance.manager
         
-        manager.GET( urlString,
+        manager.GET(urlString,
             parameters: nil,
             success: { (dataTask: NSURLSessionDataTask!, responseObject: AnyObject!) in
                 if let jsonResult = responseObject as? Dictionary<String, AnyObject> {

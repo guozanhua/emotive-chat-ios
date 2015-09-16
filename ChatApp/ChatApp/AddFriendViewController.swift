@@ -37,13 +37,8 @@ class AddFriendViewController: UIViewController, UITableViewDataSource, UITableV
     var filtered:[String] = []
     var settingsButton: UIButton!
     
-    var userURLPathComponent = "user"
-    var usersURLPathComponent = "users"
-    
     var selectedFriends = NSMutableSet()
-    
-    var currentUserUuid: String!
-    
+        
     var cellIdentifier = "cell"
     
     var selectedIndexPaths = NSMutableSet()
@@ -57,7 +52,7 @@ class AddFriendViewController: UIViewController, UITableViewDataSource, UITableV
         
         self.view.backgroundColor = UIColor(red:bgColorRed, green:bgColorGreen, blue:bgColorBlue, alpha:1.0)
         
-        _getFriends()
+        _getPotentialFriends()
         
         _addDoneButton()
         _addSearchBar()
@@ -69,11 +64,12 @@ class AddFriendViewController: UIViewController, UITableViewDataSource, UITableV
     func donePressed(sender: UIButton!)
     {
         let manager = NetworkingManager.sharedInstance.manager
-        self.currentUserUuid = defaults.stringForKey("uuid")
+
         let friendsArray = self.selectedFriends.allObjects
-        let parameters = ["uuid": self.currentUserUuid, "newFriends": friendsArray]
+        let currentUserUuid = UserDefaults.currentUserUuid()
+        let parameters = ["uuid": currentUserUuid, "newFriends": friendsArray]
         
-        manager.PUT(self.userURLPathComponent,
+        manager.PUT(User.userPath + currentUserUuid,
             parameters: parameters,
             success: {
                 (dataTask: NSURLSessionDataTask!, responseObject: AnyObject!) -> Void in
@@ -199,19 +195,18 @@ class AddFriendViewController: UIViewController, UITableViewDataSource, UITableV
         }
     }
     
-    private func _getFriends()
+    private func _getPotentialFriends()
     {
         let manager = NetworkingManager.sharedInstance.manager
-        self.currentUserUuid = defaults.stringForKey("uuid")
-        let parameters = ["ignoreFriendsOfUserWithUuid": self.currentUserUuid]
+        let parameters = ["ignoreFriendsOfUserWithUuid": UserDefaults.currentUserUuid()]
         
-        manager.GET(self.usersURLPathComponent,
+        manager.GET(User.userPath,
             parameters: parameters,
             success: { (dataTask: NSURLSessionDataTask!, responseObject: AnyObject!) in
                 if let jsonResult = responseObject as? Dictionary<String, AnyObject> {
                     let successful = jsonResult["success"] as? Bool
                     if (successful == false) {
-                        print("Failed to update new user")
+                        print("Failed to get all potential friends")
                     }
                     else if (successful == true) {
                         self.friends = jsonResult["friends"] as! [[String]]
