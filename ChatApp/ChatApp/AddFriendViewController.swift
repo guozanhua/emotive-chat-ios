@@ -32,9 +32,8 @@ class AddFriendViewController: UIViewController, UITableViewDataSource, UITableV
     var doneHeight: CGFloat = 50
     
     var searchActive : Bool = false
-    var friends = [[String]]()
-    var friendNames: [String] = []
-    var filtered:[String] = []
+    var potentialFriends: [Dictionary<String,String>] = []
+    var filteredPotentialFriends: [Dictionary<String,String>] = []
     var settingsButton: UIButton!
     
     var selectedFriends = NSMutableSet()
@@ -69,7 +68,7 @@ class AddFriendViewController: UIViewController, UITableViewDataSource, UITableV
         let currentUserUuid = UserDefaults.currentUserUuid()
         let parameters = ["uuid": currentUserUuid, "newFriends": friendsArray]
         
-        manager.PUT(User.userPath + currentUserUuid,
+        manager.PUT(User.userPath,
             parameters: parameters,
             success: {
                 (dataTask: NSURLSessionDataTask!, responseObject: AnyObject!) -> Void in
@@ -103,35 +102,38 @@ class AddFriendViewController: UIViewController, UITableViewDataSource, UITableV
     
     func searchBarTextDidBeginEditing(searchBar: UISearchBar)
     {
-        searchActive = true;
+        self.searchActive = true;
     }
     
     func searchBarTextDidEndEditing(searchBar: UISearchBar)
     {
-        searchActive = false
+        self.searchActive = false
     }
     
     func searchBarCancelButtonClicked(searchBar: UISearchBar)
     {
-        searchActive = false;
+        self.searchActive = false;
     }
     
     func searchBarSearchButtonClicked(searchBar: UISearchBar)
     {
-        searchActive = false
+        self.searchActive = false
     }
     
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
         
-        filtered = self.friendNames.filter({ (text) -> Bool in
-            let tmp: NSString = text
-            let range = tmp.rangeOfString(searchText, options: NSStringCompareOptions.CaseInsensitiveSearch)
-            return range.location != NSNotFound
+        self.filteredPotentialFriends = self.potentialFriends.filter({ (potentialFriend) -> Bool in
+            let fullName: String = potentialFriend["firstName"]! + potentialFriend["lastName"]!
+            if (fullName.rangeOfString(searchText, options: NSStringCompareOptions.CaseInsensitiveSearch) != nil) {
+                return true
+            }
+            return false
         })
-        if (filtered.count == 0) {
-            searchActive = false;
+
+        if (self.filteredPotentialFriends.count == 0) {
+            self.searchActive = false;
         } else {
-            searchActive = true;
+            self.searchActive = true;
         }
         self.friendTableView.reloadData()
         
@@ -145,22 +147,25 @@ class AddFriendViewController: UIViewController, UITableViewDataSource, UITableV
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if(searchActive) {
-            return filtered.count
+            return filteredPotentialFriends.count
         }
-        return friends.count
+        return potentialFriends.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as! AddFriendTableViewCell;
         
-        cell.userUuid = self.friends[indexPath.row][1]
-        
         if(searchActive) {
-            cell.nameLabel?.text = filtered[indexPath.row]
+            if (indexPath.row < filteredPotentialFriends.count) {
+                cell.userUuid = self.filteredPotentialFriends[indexPath.row]["uuid"]
+                cell.nameLabel?.text = self.filteredPotentialFriends[indexPath.row]["firstName"]! + " " + self.filteredPotentialFriends[indexPath.row]["lastName"]!
+            }
         } else {
-            let name = self.friendNames[indexPath.row] as String?
-            cell.nameLabel?.text = name
+            if (indexPath.row < potentialFriends.count) {
+                cell.userUuid = self.potentialFriends[indexPath.row]["uuid"]
+                cell.nameLabel?.text = self.potentialFriends[indexPath.row]["firstName"]! + " " + self.potentialFriends[indexPath.row]["lastName"]!
+            }
         }
         
         _configure(cell, forRowAtIndexPath: indexPath)
@@ -209,13 +214,7 @@ class AddFriendViewController: UIViewController, UITableViewDataSource, UITableV
                         print("Failed to get all potential friends")
                     }
                     else if (successful == true) {
-                        self.friends = jsonResult["friends"] as! [[String]]
-                        
-                        self.friendNames = []
-                        
-                        for friend in self.friends {
-                            self.friendNames.append(friend[0])
-                        }
+                        self.potentialFriends = jsonResult["potentialFriends"] as! [Dictionary<String, String>]
                         
                         self.friendTableView.reloadData()
                     }

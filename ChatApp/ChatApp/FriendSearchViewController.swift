@@ -41,9 +41,8 @@ class FriendSearchViewController: UIViewController, UITableViewDataSource, UITab
     var addWidth: CGFloat = 50
     
     var searchActive : Bool = false
-    var friends = [[String]]()
-    var friendNames: [String] = []
-    var filteredFriends:[String] = []
+    var friends: [Dictionary<String,String>] = []
+    var filteredFriends: [Dictionary<String,String>] = []
     var settingsButton: UIButton!
         
     var cellIdentifier = "cell"
@@ -114,9 +113,11 @@ class FriendSearchViewController: UIViewController, UITableViewDataSource, UITab
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
         
         self.filteredFriends = self.friends.filter({ (friend) -> Bool in
-            let fullName = friend["firstName"] + friend["lastName"]
-            let range = fullName.rangeOfString(searchText, options: NSStringCompareOptions.CaseInsensitiveSearch)
-            return range.location != NSNotFound
+            let fullName: String = friend["firstName"]! + friend["lastName"]!
+            if (fullName.rangeOfString(searchText, options: NSStringCompareOptions.CaseInsensitiveSearch) != nil) {
+                return true
+            }
+            return false
         })
         if (self.filteredFriends.count == 0) {
             self.searchActive = false;
@@ -133,6 +134,9 @@ class FriendSearchViewController: UIViewController, UITableViewDataSource, UITab
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if (self.searchActive) {
+            return self.filteredFriends.count
+        }
         return self.friends.count
     }
     
@@ -140,13 +144,17 @@ class FriendSearchViewController: UIViewController, UITableViewDataSource, UITab
         
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as! FriendsTableViewCell;
         
-        cell.userUuid = self.friends[indexPath.row][1]
         
         if(searchActive) {
-            cell.nameLabel?.text = filtered[indexPath.row]
+            if (indexPath.row < filteredFriends.count) {
+                cell.userUuid = self.filteredFriends[indexPath.row]["uuid"]
+                cell.nameLabel?.text = self.filteredFriends[indexPath.row]["firstName"]! + " " + self.filteredFriends[indexPath.row]["lastName"]!
+            }
         } else {
-            let name = self.friendNames[indexPath.row] as String?
-            cell.nameLabel?.text = name
+            if (indexPath.row < friends.count) {
+                cell.userUuid = self.friends[indexPath.row]["uuid"]
+                cell.nameLabel?.text = self.friends[indexPath.row]["firstName"]! + " " + self.friends[indexPath.row]["lastName"]!
+            }
         }
         
         return cell;
@@ -159,9 +167,7 @@ class FriendSearchViewController: UIViewController, UITableViewDataSource, UITab
 
     
     // MARK: - Private methods
-    
-    private func _filter
-    
+        
     private func _getFriends()
     {
         let manager = NetworkingManager.sharedInstance.manager
@@ -177,13 +183,7 @@ class FriendSearchViewController: UIViewController, UITableViewDataSource, UITab
                         print("Failed to get all friends of user")
                     }
                     else if (successful == true) {
-                        self.friends = jsonResult["friends"] as! [[String]]
-                        
-                        self.friendNames = []
-                        
-                        for friend in self.friends {
-                            self.friendNames.append(friend[0])
-                        }
+                        self.friends = jsonResult["friends"] as! [Dictionary<String, String>]
                         
                         self.friendTableView.reloadData()
                     }
