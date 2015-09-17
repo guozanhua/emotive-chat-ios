@@ -43,14 +43,10 @@ class FriendSearchViewController: UIViewController, UITableViewDataSource, UITab
     var searchActive : Bool = false
     var friends = [[String]]()
     var friendNames: [String] = []
-    var filtered:[String] = []
+    var filteredFriends:[String] = []
     var settingsButton: UIButton!
-    
-    var userURLPathComponent = "user"
-    
+        
     var cellIdentifier = "cell"
-    
-    let defaults = NSUserDefaults.standardUserDefaults()
     
     // MARK: - UIViewController methods
 
@@ -97,35 +93,35 @@ class FriendSearchViewController: UIViewController, UITableViewDataSource, UITab
     
     func searchBarTextDidBeginEditing(searchBar: UISearchBar)
     {
-        searchActive = true;
+        self.searchActive = true;
     }
     
     func searchBarTextDidEndEditing(searchBar: UISearchBar)
     {
-        searchActive = false
+        self.searchActive = false
     }
     
     func searchBarCancelButtonClicked(searchBar: UISearchBar)
     {
-        searchActive = false;
+        self.searchActive = false;
     }
     
     func searchBarSearchButtonClicked(searchBar: UISearchBar)
     {
-        searchActive = false
+        self.searchActive = false
     }
     
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
         
-        filtered = self.friendNames.filter({ (text) -> Bool in
-            let tmp: NSString = text
-            let range = tmp.rangeOfString(searchText, options: NSStringCompareOptions.CaseInsensitiveSearch)
+        self.filteredFriends = self.friends.filter({ (friend) -> Bool in
+            let fullName = friend["firstName"] + friend["lastName"]
+            let range = fullName.rangeOfString(searchText, options: NSStringCompareOptions.CaseInsensitiveSearch)
             return range.location != NSNotFound
         })
-        if (filtered.count == 0) {
-            searchActive = false;
+        if (self.filteredFriends.count == 0) {
+            self.searchActive = false;
         } else {
-            searchActive = true;
+            self.searchActive = true;
         }
         self.friendTableView.reloadData()
     }
@@ -137,10 +133,7 @@ class FriendSearchViewController: UIViewController, UITableViewDataSource, UITab
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if(searchActive) {
-            return filtered.count
-        }
-        return friends.count
+        return self.friends.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -167,13 +160,15 @@ class FriendSearchViewController: UIViewController, UITableViewDataSource, UITab
     
     // MARK: - Private methods
     
+    private func _filter
+    
     private func _getFriends()
     {
         let manager = NetworkingManager.sharedInstance.manager
         let currentUserUuid = UserDefaults.currentUserUuid()
         let parameters = ["uuid": currentUserUuid]
         
-        manager.GET(User.userPath + currentUserUuid,
+        manager.GET(User.userPath,
             parameters: parameters,
             success: { (dataTask: NSURLSessionDataTask!, responseObject: AnyObject!) in
                 if let jsonResult = responseObject as? Dictionary<String, AnyObject> {
