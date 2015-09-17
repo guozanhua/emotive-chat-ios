@@ -64,18 +64,17 @@ class User: NSObject
     
     class func fetchInfoForUser(user: User, uuid: String)
     {
-        let urlString = User.userPath.stringByAppendingString(uuid)
         let manager = NetworkingManager.sharedInstance.manager
+        let parameters = ["uuid" : uuid]
         
-        manager.GET(urlString,
-            parameters: nil,
+        manager.GET(User.userPath,
+            parameters: parameters,
             success: { (dataTask: NSURLSessionDataTask!, responseObject: AnyObject!) in
                 if let jsonResult = responseObject as? Dictionary<String, AnyObject> {
                     user.uuid = jsonResult["uuid"] as? String
                     user.firstName = jsonResult["firstName"] as? String
                     user.lastName = jsonResult["lastName"] as? String
                     user.email = jsonResult["email"] as? String
-                    user.friends = jsonResult["friends"] as? [String]
                 }
                 else {
                     print("Error: responseObject coudln't be converted to Dictionary")
