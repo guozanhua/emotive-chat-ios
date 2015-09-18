@@ -70,9 +70,9 @@ class SettingsViewController: UIViewController, UITextFieldDelegate
         
         let manager = NetworkingManager.sharedInstance.manager
         let currentUserUuid = UserDefaults.currentUserUuid()
-        let parameters = ["uuid": currentUserUuid, "firstName": firstName, "lastName": lastName, "email": email, "password": password]
+        let parameters = ["firstName": firstName, "lastName": lastName, "email": email, "password": password]
         
-        manager.PUT(User.userPath,
+        manager.PUT(User.userPath + currentUserUuid,
             parameters: parameters,
             success: {
                 (dataTask: NSURLSessionDataTask!, responseObject: AnyObject!) -> Void in

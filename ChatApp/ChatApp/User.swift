@@ -12,6 +12,7 @@ class User: NSObject
 {
 
     static var userPath = "users/"
+    static var friendsPathComponent = "friends/"
     static var currentUser : User?
     
     var uuid: String?
@@ -65,10 +66,9 @@ class User: NSObject
     class func fetchInfoForUser(user: User, uuid: String)
     {
         let manager = NetworkingManager.sharedInstance.manager
-        let parameters = ["uuid" : uuid]
         
-        manager.GET(User.userPath,
-            parameters: parameters,
+        manager.GET(User.userPath + uuid,
+            parameters: nil,
             success: { (dataTask: NSURLSessionDataTask!, responseObject: AnyObject!) in
                 if let jsonResult = responseObject as? Dictionary<String, AnyObject> {
                     user.uuid = jsonResult["uuid"] as? String

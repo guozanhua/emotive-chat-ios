@@ -66,9 +66,9 @@ class AddFriendViewController: UIViewController, UITableViewDataSource, UITableV
 
         let friendsArray = self.selectedFriends.allObjects
         let currentUserUuid = UserDefaults.currentUserUuid()
-        let parameters = ["uuid": currentUserUuid, "newFriends": friendsArray]
+        let parameters = ["newFriends": friendsArray]
         
-        manager.PUT(User.userPath,
+        manager.PUT(User.userPath + currentUserUuid,
             parameters: parameters,
             success: {
                 (dataTask: NSURLSessionDataTask!, responseObject: AnyObject!) -> Void in
