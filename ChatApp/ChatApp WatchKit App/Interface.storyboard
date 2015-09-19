@@ -26,7 +26,7 @@
                     <items>
                         <table alignment="left" id="L5S-yp-Mob">
                             <items>
-                                <tableRow identifier="FriendsTableRowController" id="ktD-Dg-Cta" customClass="FriendsTableRowController" customModule="ChatApp_WatchKit_Extension">
+                                <tableRow identifier="FriendsTableRow" id="ktD-Dg-Cta" customClass="FriendsTableRow" customModule="ChatApp_WatchKit_Extension">
                                     <group key="rootItem" width="1" alignment="left" id="WQ6-ic-dui">
                                         <items>
                                             <separator alignment="left" verticalAlignment="center" id="1tq-Xd-lzR"/>
@@ -35,7 +35,7 @@
                                         <color key="backgroundColor" red="0.15745344065656564" green="0.15745344065656564" blue="0.15745344065656564" alpha="1" colorSpace="calibratedRGB"/>
                                     </group>
                                     <connections>
-                                        <outlet property="friendLabel" destination="Hsj-8b-CgQ" id="BS5-cy-c0m"/>
+                                        <outlet property="friendLabel" destination="Hsj-8b-CgQ" id="451-8t-BiT"/>
                                         <outlet property="friendSeparator" destination="1tq-Xd-lzR" id="g4C-gL-h5v"/>
                                     </connections>
                                 </tableRow>

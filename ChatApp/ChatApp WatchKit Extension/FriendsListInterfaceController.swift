@@ -49,11 +49,11 @@ class FriendsListInterfaceController: WKInterfaceController
     
     func loadTableData()
     {
-        friendsTable.setNumberOfRows(friends.count, withRowType: "FriendsTableRowController")
+        friendsTable.setNumberOfRows(friends.count, withRowType: "FriendsTableRow")
         
         for (index, friendName) in friends.enumerate() {
             
-            let row = friendsTable.rowControllerAtIndex(index) as! FriendsTableRowController
+            let row = friendsTable.rowControllerAtIndex(index) as! FriendsTableRow
             row.friendLabel.setText(friendName)
             row.friendSeparator.setColor(friendColors[index]);
         }

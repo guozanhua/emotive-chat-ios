@@ -1,5 +1,5 @@
 //
-//  FriendsTableRowController.swift
+//  FriendsTableRow.swift
 //  ChatApp
 //
 //  Created by Spencer Congero on 8/28/15.
@@ -8,7 +8,7 @@
 
 import WatchKit
 
-class FriendsTableRowController: NSObject {
+class FriendsTableRow: NSObject {
 
     @IBOutlet var friendSeparator: WKInterfaceSeparator!
     @IBOutlet var friendLabel: WKInterfaceLabel!

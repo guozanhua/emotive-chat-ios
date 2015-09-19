@@ -14,7 +14,7 @@
 		A1AC3CB51B9A530C00F04EC2 /* FriendSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1AC3CB41B9A530C00F04EC2 /* FriendSearchViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		A1AC3CB71B9A832000F04EC2 /* FriendsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1AC3CB61B9A832000F04EC2 /* FriendsTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
 		A1B178FE1B914DA800372CB0 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B178FD1B914DA800372CB0 /* SignUpViewController.swift */; };
-		A1B179001B9161E700372CB0 /* FriendsTableRowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B178FF1B9161E700372CB0 /* FriendsTableRowController.swift */; };
+		A1B179001B9161E700372CB0 /* FriendsTableRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B178FF1B9161E700372CB0 /* FriendsTableRow.swift */; };
 		A1C4A0891BA4E5C9001DF3E3 /* AddFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C4A0881BA4E5C9001DF3E3 /* AddFriendViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		A1C4A08B1BA4E9B6001DF3E3 /* AddFriendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C4A08A1BA4E9B6001DF3E3 /* AddFriendTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
 		A4E5A38606366F6212613BDE /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 94D61645A74D222B5754205F /* libPods.a */; };
@@ -90,7 +90,7 @@
 		A1AC3CB41B9A530C00F04EC2 /* FriendSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendSearchViewController.swift; sourceTree = "<group>"; };
 		A1AC3CB61B9A832000F04EC2 /* FriendsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsTableViewCell.swift; sourceTree = "<group>"; };
 		A1B178FD1B914DA800372CB0 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
-		A1B178FF1B9161E700372CB0 /* FriendsTableRowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsTableRowController.swift; sourceTree = "<group>"; };
+		A1B178FF1B9161E700372CB0 /* FriendsTableRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsTableRow.swift; sourceTree = "<group>"; };
 		A1C4A0881BA4E5C9001DF3E3 /* AddFriendViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFriendViewController.swift; sourceTree = "<group>"; };
 		A1C4A08A1BA4E9B6001DF3E3 /* AddFriendTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFriendTableViewCell.swift; sourceTree = "<group>"; };
 		B70FA7E41B96B33E009867E5 /* CredentialStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CredentialStore.swift; sourceTree = "<group>"; };
@@ -243,7 +243,7 @@
 				B7CCF95D1B8E7F6B004DE54A /* ExtensionDelegate.swift */,
 				B7CCF95F1B8E7F6B004DE54A /* Assets.xcassets */,
 				B7CCF9611B8E7F6B004DE54A /* Info.plist */,
-				A1B178FF1B9161E700372CB0 /* FriendsTableRowController.swift */,
+				A1B178FF1B9161E700372CB0 /* FriendsTableRow.swift */,
 				A1A878F51B91C9EB00AD0941 /* FriendDetailInterfaceController.swift */,
 				A1A878F71B922CC600AD0941 /* EmotiveSelectInterfaceController.swift */,
 			);
@@ -441,7 +441,7 @@
 				A1A878F61B91C9EB00AD0941 /* FriendDetailInterfaceController.swift in Sources */,
 				B7CCF95E1B8E7F6B004DE54A /* ExtensionDelegate.swift in Sources */,
 				B74DF7871BAE22BF00A3998D /* InterfaceController.swift in Sources */,
-				A1B179001B9161E700372CB0 /* FriendsTableRowController.swift in Sources */,
+				A1B179001B9161E700372CB0 /* FriendsTableRow.swift in Sources */,
 				B7CCF95C1B8E7F6B004DE54A /* FriendsListInterfaceController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
