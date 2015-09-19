@@ -15,22 +15,12 @@ class EmotiveSelectInterfaceController: WKInterfaceController {
     @IBOutlet var leftButton: WKInterfaceButton!
     @IBOutlet var rightButton: WKInterfaceButton!
     
-    @IBAction func leftPressed() {
-        //dismissController()
-    }
-    @IBAction func rightPressed() {
-        //dismissController()
-    }
+    // MARK: - WKInterfaceController methods
+    
     override func awakeWithContext(context: AnyObject?) {
         super.awakeWithContext(context)
         
-        // Configure interface objects here.
-        
-        /*
-        if let title = context as? String {
-            setTitle(title)
-        }
-        */
+        // Configure interface objects here.        
     }
 
     override func willActivate() {
@@ -41,6 +31,15 @@ class EmotiveSelectInterfaceController: WKInterfaceController {
     override func didDeactivate() {
         // This method is called when watch view controller is no longer visible
         super.didDeactivate()
+    }
+    
+    // MARK: - Internal methods
+    
+    @IBAction func leftPressed() {
+        //dismissController()
+    }
+    @IBAction func rightPressed() {
+        //dismissController()
     }
 
 }

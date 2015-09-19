@@ -1,8 +1,8 @@
 //
 //  InterfaceController.swift
-//  ChatApp WatchKit Extension
+//  ChatApp
 //
-//  Created by Rahul Madduluri on 8/26/15.
+//  Created by Rahul Madduluri on 9/19/15.
 //  Copyright © 2015 rahulm. All rights reserved.
 //
 
@@ -10,56 +10,25 @@ import WatchKit
 import Foundation
 
 
-class InterfaceController: WKInterfaceController
-{
+class InterfaceController: WKInterfaceController {
 
-    @IBOutlet var friendsTable: WKInterfaceTable!
+    @IBOutlet var authenticateLabel: WKInterfaceLabel!
     
+    // MARK: - WKInterfaceController methods
     
-    let friends = ["Rahul", "Spencer", "Jack", "Steve", "Sean"]
-    let friendColors = [UIColor.redColor(), UIColor.greenColor(), UIColor.blueColor(), UIColor.yellowColor(), UIColor.purpleColor()]
-
-    override func awakeWithContext(context: AnyObject?)
-    {
+    override func awakeWithContext(context: AnyObject?) {
         super.awakeWithContext(context)
         
         // Configure interface objects here.
-        
-        loadTableData()
-    }
-    
-    func loadTableData()
-    {
-        friendsTable.setNumberOfRows(friends.count, withRowType: "FriendsTableRowController")
-        
-        for (index, friendName) in friends.enumerate() {
-            
-            let row = friendsTable.rowControllerAtIndex(index) as! FriendsTableRowController
-            row.friendLabel.setText(friendName)
-            row.friendSeparator.setColor(friendColors[index]);
-        }
-    }
-    /*
-    override func contextForSegueWithIdentifier(segueIdentifier: String, inTable table: WKInterfaceTable, rowIndex: Int) -> AnyObject? {
-        
-        let friend = friends[rowIndex]
-        return friend
-        
-    }
-    */
-    
-    override func table(table: WKInterfaceTable, didSelectRowAtIndex rowIndex: Int) {
-        presentControllerWithNames(["FriendDetails", "emotiveSelect"], contexts: [friends[rowIndex], friends[rowIndex]])
+        authenticateLabel.setText("Auth Woomi\nor perish...")
     }
 
-    override func willActivate()
-    {
+    override func willActivate() {
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
     }
 
-    override func didDeactivate()
-    {
+    override func didDeactivate() {
         // This method is called when watch view controller is no longer visible
         super.didDeactivate()
     }

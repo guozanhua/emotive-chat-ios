@@ -23,6 +23,7 @@
 		B74005A71B901E2100565B02 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B74005A41B901E2100565B02 /* FBSDKCoreKit.framework */; };
 		B74005A81B901E2100565B02 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B74005A51B901E2100565B02 /* FBSDKLoginKit.framework */; };
 		B74005A91B901E2100565B02 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B74005A61B901E2100565B02 /* FBSDKShareKit.framework */; };
+		B74DF7871BAE22BF00A3998D /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74DF7861BAE22BF00A3998D /* InterfaceController.swift */; };
 		B77C129A1B942CDF00FA33F1 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77C12991B942CDF00FA33F1 /* User.swift */; };
 		B77C129D1B95048A00FA33F1 /* NetworkingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77C129C1B95048A00FA33F1 /* NetworkingManager.swift */; };
 		B7CCF9391B8E7F6B004DE54A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7CCF9381B8E7F6B004DE54A /* AppDelegate.swift */; };
@@ -33,7 +34,7 @@
 		B7CCF9481B8E7F6B004DE54A /* ChatApp WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = B7CCF9471B8E7F6B004DE54A /* ChatApp WatchKit App.app */; };
 		B7CCF9501B8E7F6B004DE54A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B7CCF94F1B8E7F6B004DE54A /* Assets.xcassets */; };
 		B7CCF9571B8E7F6B004DE54A /* ChatApp WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = B7CCF9561B8E7F6B004DE54A /* ChatApp WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		B7CCF95C1B8E7F6B004DE54A /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7CCF95B1B8E7F6B004DE54A /* InterfaceController.swift */; };
+		B7CCF95C1B8E7F6B004DE54A /* FriendsListInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7CCF95B1B8E7F6B004DE54A /* FriendsListInterfaceController.swift */; };
 		B7CCF95E1B8E7F6B004DE54A /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7CCF95D1B8E7F6B004DE54A /* ExtensionDelegate.swift */; };
 		B7CCF9601B8E7F6B004DE54A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B7CCF95F1B8E7F6B004DE54A /* Assets.xcassets */; };
 /* End PBXBuildFile section */
@@ -98,6 +99,7 @@
 		B74005A41B901E2100565B02 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		B74005A51B901E2100565B02 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		B74005A61B901E2100565B02 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
+		B74DF7861BAE22BF00A3998D /* InterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
 		B77C12991B942CDF00FA33F1 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		B77C129C1B95048A00FA33F1 /* NetworkingManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingManager.swift; sourceTree = "<group>"; };
 		B7CCF9351B8E7F6B004DE54A /* ChatApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChatApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -111,7 +113,7 @@
 		B7CCF94F1B8E7F6B004DE54A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B7CCF9511B8E7F6B004DE54A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B7CCF9561B8E7F6B004DE54A /* ChatApp WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "ChatApp WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
-		B7CCF95B1B8E7F6B004DE54A /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
+		B7CCF95B1B8E7F6B004DE54A /* FriendsListInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsListInterfaceController.swift; sourceTree = "<group>"; };
 		B7CCF95D1B8E7F6B004DE54A /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
 		B7CCF95F1B8E7F6B004DE54A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B7CCF9611B8E7F6B004DE54A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -236,7 +238,8 @@
 		B7CCF95A1B8E7F6B004DE54A /* ChatApp WatchKit Extension */ = {
 			isa = PBXGroup;
 			children = (
-				B7CCF95B1B8E7F6B004DE54A /* InterfaceController.swift */,
+				B74DF7861BAE22BF00A3998D /* InterfaceController.swift */,
+				B7CCF95B1B8E7F6B004DE54A /* FriendsListInterfaceController.swift */,
 				B7CCF95D1B8E7F6B004DE54A /* ExtensionDelegate.swift */,
 				B7CCF95F1B8E7F6B004DE54A /* Assets.xcassets */,
 				B7CCF9611B8E7F6B004DE54A /* Info.plist */,
@@ -437,8 +440,9 @@
 				A1A878F81B922CC600AD0941 /* EmotiveSelectInterfaceController.swift in Sources */,
 				A1A878F61B91C9EB00AD0941 /* FriendDetailInterfaceController.swift in Sources */,
 				B7CCF95E1B8E7F6B004DE54A /* ExtensionDelegate.swift in Sources */,
+				B74DF7871BAE22BF00A3998D /* InterfaceController.swift in Sources */,
 				A1B179001B9161E700372CB0 /* FriendsTableRowController.swift in Sources */,
-				B7CCF95C1B8E7F6B004DE54A /* InterfaceController.swift in Sources */,
+				B7CCF95C1B8E7F6B004DE54A /* FriendsListInterfaceController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

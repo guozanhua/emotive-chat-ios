@@ -11,25 +11,17 @@ import Foundation
 
 
 class FriendDetailInterfaceController: WKInterfaceController {
-    //preload images
+
     let blueImage = UIImage(named: "blueGradient")
     let greenImage = UIImage(named: "greenGradient")
     let owlImage = UIImage(named: "owl")
     
     var emotion = ""
     
-    /*
-    @IBAction func playAction() {
-        emotion = "Happy"
-        presentControllerWithName("emotiveSelect", context: emotion)
-    }
-    @IBAction func pauseAction() {
-        emotion = "Sad"
-        presentControllerWithName("emotiveSelect", context: emotion)
-    }
-    */
-
     @IBOutlet var friendImage: WKInterfaceImage!
+    
+    // MARK: - WKInterfaceController methods
+    
     override func awakeWithContext(context: AnyObject?) {
         super.awakeWithContext(context)
         
