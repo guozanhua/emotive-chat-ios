@@ -7,12 +7,19 @@
 //
 
 import WatchKit
+import WatchConnectivity
 
-class ExtensionDelegate: NSObject, WKExtensionDelegate {
+class ExtensionDelegate: NSObject, WKExtensionDelegate, WCSessionDelegate
+{
+    // MARK: - WKExtensionDelegate methods
 
     func applicationDidFinishLaunching()
     {
-        // Perform any final initialization of your application.
+        if (WCSession.isSupported()) {
+            let session = WCSession.defaultSession()
+            session.delegate = self
+            session.activateSession()
+        }
     }
 
     func applicationDidBecomeActive()
@@ -24,6 +31,21 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
     {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, etc.
+    }
+    
+    // MARK: - WKSessionDelegate methods
+    
+    func session(session: WCSession, didReceiveMessage message: [String : AnyObject], replyHandler: ([String : AnyObject]) -> Void) {
+        var replyValues = Dictionary<String, AnyObject>()
+        
+        switch message["type"] as! String {
+        case "auth" :
+            let token = message["authToken"] as! String
+        default:
+            replyValues["status"] = "failure"
+            break
+        }
+        
     }
 
 }

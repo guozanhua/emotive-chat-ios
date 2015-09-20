@@ -188,7 +188,7 @@ class FriendSearchViewController: UIViewController, UITableViewDataSource, UITab
                     }
                 }
                 else {
-                    print("Error: responseObject coudln't be converted to Dictionary")
+                    print("Error: responseObject couldn't be converted to Dictionary")
                 }
             },
             failure: { (dataTask: NSURLSessionDataTask!, error: NSError!) in

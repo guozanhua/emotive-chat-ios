@@ -8,9 +8,10 @@
 
 import UIKit
 import FBSDKCoreKit
+import WatchConnectivity
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate
+class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate
 {
 
     var window: UIWindow?
@@ -25,6 +26,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate
         
         window!.rootViewController = initialViewController
         window!.makeKeyAndVisible()
+        
+        if (WCSession.isSupported()) {
+            let session = WCSession.defaultSession()
+            session.delegate = self
+            session.activateSession()
+            
+            if (session.paired != true) {
+                print("Apple Watch not paired")
+            }
+            if (session.watchAppInstalled != true) {
+                print("WatchKit app not installed")
+            }
+        }
+        else {
+            print("WatchConnectivity is not supported on this device")
+        }
         
         return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions);
     }

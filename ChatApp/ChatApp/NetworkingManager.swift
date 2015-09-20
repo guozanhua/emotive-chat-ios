@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import WatchConnectivity
 
 class NetworkingManager: NSObject
 {
@@ -55,14 +56,34 @@ class NetworkingManager: NSObject
                     let firstName = jsonResult["firstName"] as? String
                     let lastName = jsonResult["lastName"] as? String
                     let friends = jsonResult["friends"] as? [String]
+                    
                     self.credentialStore.setAuthToken(authToken)
                     
-                    if (authToken != nil) {
+                    if (authToken != nil && userUUID != nil && email != nil && firstName != nil && lastName != nil) {
+                        
+                        if (WCSession.defaultSession().reachable == true) {
+                            let requestValues = ["type": "auth", "uuid": userUUID, "authToken": authToken] as [String: String!]
+                            let session = WCSession.defaultSession()
+                            
+                            session.sendMessage(requestValues,
+                                replyHandler: { (reply) -> Void in
+                                    let status = reply["status"] as? String
+                                    if (status != "success") {
+                                        print("User not sucessfully authenticated on watch")
+                                    }
+                                },
+                                errorHandler: { (error: NSError!) -> Void in
+                                    let errorMessage = "Error: " + error.localizedDescription
+                                    print(errorMessage)
+                                }
+                            )
+                        }
+                        
                         completionClosure(userUUID: userUUID, email: email, firstName: firstName, lastName: lastName, friends: friends)
                     }
                 }
                 else {
-                    print("Error: responseObject coudln't be converted to Dictionary")
+                    print("Error: responseObject couldn't be converted to Dictionary")
                 }
             }, failure: {
                 (dataTask: NSURLSessionDataTask!, error: NSError!) -> Void in

@@ -76,14 +76,9 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, UITextFie
             defaults.setObject(firstName, forKey: "firstName")
             defaults.setObject(lastName, forKey: "lastName")
             defaults.setObject(email, forKey: "email")
-            
-            if (userUUID == nil || firstName == nil || lastName == nil || email == nil) {
-                print("Did not receive all data while logging in")
-            }
-            else {
-                User.currentUser = User.init(newUUID: userUUID)
-                self.presentViewController(friendVC, animated: true, completion: nil)
-            }
+
+            User.currentUser = User.init(newUUID: userUUID)
+            self.presentViewController(friendVC, animated: true, completion: nil)
             
         })
     }
