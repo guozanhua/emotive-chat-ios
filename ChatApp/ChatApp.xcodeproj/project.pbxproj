@@ -163,6 +163,17 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		B74DF7891BAE2EB900A3998D /* InterfaceControllers */ = {
+			isa = PBXGroup;
+			children = (
+				B74DF7861BAE22BF00A3998D /* InterfaceController.swift */,
+				B7CCF95B1B8E7F6B004DE54A /* FriendsListInterfaceController.swift */,
+				A1A878F51B91C9EB00AD0941 /* FriendDetailInterfaceController.swift */,
+				A1A878F71B922CC600AD0941 /* EmotiveSelectInterfaceController.swift */,
+			);
+			name = InterfaceControllers;
+			sourceTree = "<group>";
+		};
 		B77C12981B942CA900FA33F1 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -238,14 +249,11 @@
 		B7CCF95A1B8E7F6B004DE54A /* ChatApp WatchKit Extension */ = {
 			isa = PBXGroup;
 			children = (
-				B74DF7861BAE22BF00A3998D /* InterfaceController.swift */,
-				B7CCF95B1B8E7F6B004DE54A /* FriendsListInterfaceController.swift */,
+				B74DF7891BAE2EB900A3998D /* InterfaceControllers */,
 				B7CCF95D1B8E7F6B004DE54A /* ExtensionDelegate.swift */,
 				B7CCF95F1B8E7F6B004DE54A /* Assets.xcassets */,
 				B7CCF9611B8E7F6B004DE54A /* Info.plist */,
 				A1B178FF1B9161E700372CB0 /* FriendsTableRow.swift */,
-				A1A878F51B91C9EB00AD0941 /* FriendDetailInterfaceController.swift */,
-				A1A878F71B922CC600AD0941 /* EmotiveSelectInterfaceController.swift */,
 			);
 			path = "ChatApp WatchKit Extension";
 			sourceTree = "<group>";
