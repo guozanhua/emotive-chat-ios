@@ -1,0 +1,1 @@
+PODS_CHATAPP_WATCHKIT_EXTENSION_SSKEYCHAIN_OTHER_LDFLAGS = -framework "Foundation" -framework "Security"
