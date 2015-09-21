@@ -23,7 +23,7 @@ PODS:
   - SSKeychain (1.2.3)
 
 DEPENDENCIES:
-  - AFNetworking (~> 2.5)
+  - AFNetworking (~> 2.6)
   - SSKeychain
 
 SPEC CHECKSUMS:
