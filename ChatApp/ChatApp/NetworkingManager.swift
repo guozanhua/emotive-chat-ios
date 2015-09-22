@@ -62,7 +62,7 @@ class NetworkingManager: NSObject
                     if (authToken != nil && userUUID != nil && email != nil && firstName != nil && lastName != nil) {
                         
                         if (WCSession.defaultSession().reachable == true) {
-                            let requestValues = ["type": "auth", "uuid": userUUID, "authToken": authToken] as [String: String!]
+                            let requestValues = ["type": "auth", "uuid": userUUID, "email": email, "firstName": firstName, "lastName": lastName, "authToken": authToken] as [String: String!]
                             let session = WCSession.defaultSession()
                             
                             session.sendMessage(requestValues,

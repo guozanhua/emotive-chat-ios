@@ -21,6 +21,10 @@
 		B70FA7E51B96B33E009867E5 /* CredentialStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70FA7E41B96B33E009867E5 /* CredentialStore.swift */; };
 		B726FF7A1BB011B50030307D /* Pods-ChatApp.debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = B726FF781BB011B50030307D /* Pods-ChatApp.debug.xcconfig */; };
 		B726FF7B1BB011B50030307D /* Pods-ChatApp.release.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = B726FF791BB011B50030307D /* Pods-ChatApp.release.xcconfig */; };
+		B726FF7C1BB111A80030307D /* CredentialStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70FA7E41B96B33E009867E5 /* CredentialStore.swift */; };
+		B726FF7D1BB111AE0030307D /* NetworkingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77C129C1B95048A00FA33F1 /* NetworkingManager.swift */; };
+		B726FF7E1BB111B30030307D /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = B73E67E11BA9303500AF8D5F /* UserDefaults.swift */; };
+		B726FF7F1BB111BC0030307D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77C12991B942CDF00FA33F1 /* User.swift */; };
 		B73E67E21BA9303500AF8D5F /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = B73E67E11BA9303500AF8D5F /* UserDefaults.swift */; };
 		B74005A71B901E2100565B02 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B74005A41B901E2100565B02 /* FBSDKCoreKit.framework */; };
 		B74005A81B901E2100565B02 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B74005A51B901E2100565B02 /* FBSDKLoginKit.framework */; };
@@ -496,7 +500,11 @@
 				B7CCF95E1B8E7F6B004DE54A /* ExtensionDelegate.swift in Sources */,
 				B74DF7871BAE22BF00A3998D /* InterfaceController.swift in Sources */,
 				A1B179001B9161E700372CB0 /* FriendsTableRow.swift in Sources */,
+				B726FF7E1BB111B30030307D /* UserDefaults.swift in Sources */,
+				B726FF7D1BB111AE0030307D /* NetworkingManager.swift in Sources */,
 				B7CCF95C1B8E7F6B004DE54A /* FriendsListInterfaceController.swift in Sources */,
+				B726FF7F1BB111BC0030307D /* User.swift in Sources */,
+				B726FF7C1BB111A80030307D /* CredentialStore.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

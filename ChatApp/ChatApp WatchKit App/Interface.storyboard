@@ -19,10 +19,10 @@
             </objects>
             <point key="canvasLocation" x="0.0" y="352"/>
         </scene>
-        <!--Friends List Interface Controller-->
+        <!--FriendsList-->
         <scene sceneID="aou-V4-d1y">
             <objects>
-                <controller id="AgC-eL-Hgc" customClass="FriendsListInterfaceController" customModule="ChatApp_WatchKit_Extension">
+                <controller id="AgC-eL-Hgc" userLabel="FriendsList" customClass="FriendsListInterfaceController" customModule="ChatApp_WatchKit_Extension">
                     <items>
                         <table alignment="left" id="L5S-yp-Mob">
                             <items>

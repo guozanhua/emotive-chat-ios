@@ -40,7 +40,21 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate, WCSessionDelegate
         
         switch message["type"] as! String {
         case "auth" :
+            let email = message["email"] as! String
+            let firstName = message["firstName"] as! String
+            let lastName = message["lastName"] as! String
+            let userUUID = message["uuid"] as! String
             let token = message["authToken"] as! String
+            
+            let defaults = NSUserDefaults.standardUserDefaults()
+            defaults.setObject(userUUID, forKey: "uuid")
+            defaults.setObject(firstName, forKey: "firstName")
+            defaults.setObject(lastName, forKey: "lastName")
+            defaults.setObject(email, forKey: "email")
+            
+            User.currentUser = User.init(newUUID: userUUID)
+            NetworkingManager.sharedInstance.credentialStore.setAuthToken(token)
+            
         default:
             replyValues["status"] = "failure"
             break

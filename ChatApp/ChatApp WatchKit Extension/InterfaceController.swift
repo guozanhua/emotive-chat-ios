@@ -21,6 +21,8 @@ class InterfaceController: WKInterfaceController {
         
         // Configure interface objects here.
         authenticateLabel.setText("Auth Woomi\nor perish...")
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: NSSelectorFromString("tokenChanged:"), name: "token-changed", object: nil)
     }
 
     override func willActivate() {
@@ -32,5 +34,14 @@ class InterfaceController: WKInterfaceController {
         // This method is called when watch view controller is no longer visible
         super.didDeactivate()
     }
+    
+    // MARK: - Internal methods
 
+    @objc func tokenChanged(notification: NSNotification)
+    {
+        if (NetworkingManager.sharedInstance.credentialStore.authToken() != nil) {
+            presentControllerWithName("FriendsList", context: nil)
+        }
+    }
+    
 }
