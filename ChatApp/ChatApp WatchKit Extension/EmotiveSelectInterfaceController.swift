@@ -20,7 +20,9 @@ class EmotiveSelectInterfaceController: WKInterfaceController {
     override func awakeWithContext(context: AnyObject?) {
         super.awakeWithContext(context)
         
-        // Configure interface objects here.        
+        // Configure interface objects here.
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: NSSelectorFromString("tokenChanged:"), name: "token-changed", object: nil)
     }
 
     override func willActivate() {
@@ -41,5 +43,11 @@ class EmotiveSelectInterfaceController: WKInterfaceController {
     @IBAction func rightPressed() {
         //dismissController()
     }
-
+        
+    @objc func tokenChanged(notification: NSNotification)
+    {
+        if (NetworkingManager.sharedInstance.credentialStore.authToken() == nil) {
+            presentControllerWithName("InterfaceController", context: nil)
+        }
+    }
 }

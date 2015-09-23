@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import WatchConnectivity
 
 class FriendSearchViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate
 {
@@ -69,6 +70,15 @@ class FriendSearchViewController: UIViewController, UITableViewDataSource, UITab
     
     func logoutPressed(sender: UIButton!)
     {
+        User.currentUser!.logout()
+        do {
+            let session = WCSession.defaultSession()
+            let applicationDict = ["type": "logout"]
+            try session.updateApplicationContext(applicationDict)
+        }
+        catch {
+            print("ERROR - failed to logout watch app")
+        }
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
@@ -197,7 +207,7 @@ class FriendSearchViewController: UIViewController, UITableViewDataSource, UITab
                 
                 if let response = dataTask.response as? NSHTTPURLResponse {
                     if (response.statusCode == 401) {
-                        NetworkingManager.sharedInstance.credentialStore.setAuthToken(nil)
+                        NetworkingManager.sharedInstance.credentialStore.clearSavedCredentials()
                     }
                 }
             }

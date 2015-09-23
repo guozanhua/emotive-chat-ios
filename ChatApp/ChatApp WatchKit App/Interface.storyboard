@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="8173.3" systemVersion="14F27" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="bbi-4u-VDO">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="bbi-4u-VDO">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8142"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="8089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="8092"/>
     </dependencies>
     <scenes>
-        <!--Interface Controller-->
+        <!--InterfaceController-->
         <scene sceneID="HEG-2h-zqR">
             <objects>
-                <controller hidesWhenLoading="NO" id="bbi-4u-VDO" customClass="InterfaceController" customModule="ChatApp_WatchKit_Extension">
+                <controller identifier="InterfaceController" hidesWhenLoading="NO" id="bbi-4u-VDO" customClass="InterfaceController" customModule="ChatApp_WatchKit_Extension">
                     <items>
                         <label width="126.5" height="113.5" alignment="left" textAlignment="center" numberOfLines="0" id="DRM-j2-9HN"/>
                     </items>
@@ -22,7 +22,7 @@
         <!--FriendsList-->
         <scene sceneID="aou-V4-d1y">
             <objects>
-                <controller id="AgC-eL-Hgc" userLabel="FriendsList" customClass="FriendsListInterfaceController" customModule="ChatApp_WatchKit_Extension">
+                <controller identifier="FriendsList" id="AgC-eL-Hgc" userLabel="FriendsList" customClass="FriendsListInterfaceController" customModule="ChatApp_WatchKit_Extension">
                     <items>
                         <table alignment="left" id="L5S-yp-Mob">
                             <items>

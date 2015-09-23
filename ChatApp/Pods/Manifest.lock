@@ -24,7 +24,17 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking (~> 2.6)
-  - SSKeychain
+  - SSKeychain (from `https://github.com/soffes/sskeychain.git`, branch `watchos`)
+
+EXTERNAL SOURCES:
+  SSKeychain:
+    :branch: watchos
+    :git: https://github.com/soffes/sskeychain.git
+
+CHECKOUT OPTIONS:
+  SSKeychain:
+    :commit: 377a45ec21fcb0fbc46157cad1596a7d9188059b
+    :git: https://github.com/soffes/sskeychain.git
 
 SPEC CHECKSUMS:
   AFNetworking: 79f7eb1a0fcfa7beb409332b2ca49afe9ce53b05

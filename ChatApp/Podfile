@@ -2,7 +2,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 
 def shared_pods
     pod 'AFNetworking', '~> 2.6'
-    pod 'SSKeychain'
+    pod 'SSKeychain', :git => 'https://github.com/soffes/sskeychain.git', :branch => 'watchos'
 end
 
 target 'ChatApp' do

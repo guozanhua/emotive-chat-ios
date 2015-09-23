@@ -91,7 +91,7 @@ class AddFriendViewController: UIViewController, UITableViewDataSource, UITableV
                 
                 if let response = dataTask.response as? NSHTTPURLResponse {
                     if (response.statusCode == 401) {
-                        NetworkingManager.sharedInstance.credentialStore.setAuthToken(nil)
+                        NetworkingManager.sharedInstance.credentialStore.clearSavedCredentials()
                     }
                 }
             }
@@ -229,7 +229,7 @@ class AddFriendViewController: UIViewController, UITableViewDataSource, UITableV
                 
                 if let response = dataTask.response as? NSHTTPURLResponse {
                     if (response.statusCode == 401) {
-                        NetworkingManager.sharedInstance.credentialStore.setAuthToken(nil)
+                        NetworkingManager.sharedInstance.credentialStore.clearSavedCredentials()
                     }
                 }
             }

@@ -32,6 +32,8 @@ class FriendDetailInterfaceController: WKInterfaceController {
         }
         friendImage.setImage(owlImage)
         
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: NSSelectorFromString("tokenChanged:"), name: "token-changed", object: nil)
+        
     }
 
     override func willActivate() {
@@ -43,5 +45,13 @@ class FriendDetailInterfaceController: WKInterfaceController {
         // This method is called when watch view controller is no longer visible
         super.didDeactivate()
     }
-
+    
+    // MARK: - Internal methods
+    
+    @objc func tokenChanged(notification: NSNotification)
+    {
+        if (NetworkingManager.sharedInstance.credentialStore.authToken() == nil) {
+            presentControllerWithName("InterfaceController", context: nil)
+        }
+    }
 }

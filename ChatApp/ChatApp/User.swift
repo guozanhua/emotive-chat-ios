@@ -29,6 +29,13 @@ class User: NSObject
         User.fetchInfoForUser(self, uuid: newUUID)
     }
     
+    // MARK: - Internal methods
+    
+    func logout ()
+    {
+        NetworkingManager.sharedInstance.credentialStore.clearSavedCredentials()
+    }
+    
     // MARK: - Type methods
     
     class func createNewUser(newFirstName: String, newLastName: String, newEmail: String, newPassword: String)
@@ -56,7 +63,7 @@ class User: NSObject
                 
                 if let response = dataTask.response as? NSHTTPURLResponse {
                     if (response.statusCode == 401) {
-                        NetworkingManager.sharedInstance.credentialStore.setAuthToken(nil)
+                        NetworkingManager.sharedInstance.credentialStore.clearSavedCredentials()
                     }
                 }
             }
@@ -86,7 +93,7 @@ class User: NSObject
                 
                 if let response = dataTask.response as? NSHTTPURLResponse {
                     if (response.statusCode == 401) {
-                        NetworkingManager.sharedInstance.credentialStore.setAuthToken(nil)
+                        NetworkingManager.sharedInstance.credentialStore.clearSavedCredentials()
                     }
                 }
             }

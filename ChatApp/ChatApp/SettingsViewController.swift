@@ -101,7 +101,7 @@ class SettingsViewController: UIViewController, UITextFieldDelegate
                 
                 if let response = dataTask.response as? NSHTTPURLResponse {
                     if (response.statusCode == 401) {
-                        NetworkingManager.sharedInstance.credentialStore.setAuthToken(nil)
+                        NetworkingManager.sharedInstance.credentialStore.clearSavedCredentials()
                     }
                 }
             }

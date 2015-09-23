@@ -3,10 +3,17 @@
 //  SSKeychain
 //
 //  Created by Sam Soffes on 5/19/10.
-//  Copyright (c) 2010-2014 Sam Soffes. All rights reserved.
+//  Copyright (c) 2010-2015 Sam Soffes. All rights reserved.
 //
 
-#import <SSKeychain/SSKeychainQuery.h>
+@import Foundation;
+
+//! Project version number for SSKeychain.
+FOUNDATION_EXPORT double SSKeychainVersionNumber;
+
+//! Project version string for SSKeychain.
+FOUNDATION_EXPORT const unsigned char SSKeychainVersionString[];
+
 
 /**
  Error code specific to SSKeychain that can be returned in NSError objects.
@@ -74,6 +81,20 @@ extern NSString *const kSSKeychainWhereKey;
 + (NSString *)passwordForService:(NSString *)serviceName account:(NSString *)account;
 + (NSString *)passwordForService:(NSString *)serviceName account:(NSString *)account error:(NSError **)error;
 
+/**
+ Returns a nsdata containing the password for a given account and service, or `nil` if the Keychain doesn't have a
+ password for the given parameters.
+
+ @param serviceName The service for which to return the corresponding password.
+
+ @param account The account for which to return the corresponding password.
+
+ @return Returns a nsdata containing the password for a given account and service, or `nil` if the Keychain doesn't
+ have a password for the given parameters.
+ */
++ (NSData *)passwordDataForService:(NSString *)serviceName account:(NSString *)account;
++ (NSData *)passwordDataForService:(NSString *)serviceName account:(NSString *)account error:(NSError **)error;
+
 
 /**
  Deletes a password from the Keychain.
@@ -102,6 +123,19 @@ extern NSString *const kSSKeychainWhereKey;
 + (BOOL)setPassword:(NSString *)password forService:(NSString *)serviceName account:(NSString *)account;
 + (BOOL)setPassword:(NSString *)password forService:(NSString *)serviceName account:(NSString *)account error:(NSError **)error;
 
+/**
+ Sets a password in the Keychain.
+
+ @param password The password to store in the Keychain.
+
+ @param serviceName The service for which to set the corresponding password.
+
+ @param account The account for which to set the corresponding password.
+
+ @return Returns `YES` on success, or `NO` on failure.
+ */
++ (BOOL)setPasswordData:(NSData *)password forService:(NSString *)serviceName account:(NSString *)account;
++ (BOOL)setPasswordData:(NSData *)password forService:(NSString *)serviceName account:(NSString *)account error:(NSError **)error;
 
 /**
  Returns an array containing the Keychain's accounts, or `nil` if the Keychain has no accounts.
@@ -161,3 +195,6 @@ extern NSString *const kSSKeychainWhereKey;
 #endif
 
 @end
+
+
+#import <SSKeychain/SSKeychainQuery.h>

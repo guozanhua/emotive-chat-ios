@@ -27,6 +27,8 @@ class FriendsListInterfaceController: WKInterfaceController
         // Configure interface objects here.
         
         loadTableData()
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: NSSelectorFromString("tokenChanged:"), name: "token-changed", object: nil)
     }
     
     override func willActivate()
@@ -56,6 +58,15 @@ class FriendsListInterfaceController: WKInterfaceController
             let row = friendsTable.rowControllerAtIndex(index) as! FriendsTableRow
             row.friendLabel.setText(friendName)
             row.friendSeparator.setColor(friendColors[index]);
+        }
+    }
+    
+    // MARK: - Internal methods
+    
+    @objc func tokenChanged(notification: NSNotification)
+    {
+        if (NetworkingManager.sharedInstance.credentialStore.authToken() == nil) {
+            presentControllerWithName("InterfaceController", context: nil)
         }
     }
 }

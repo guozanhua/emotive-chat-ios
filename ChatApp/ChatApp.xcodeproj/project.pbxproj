@@ -21,10 +21,10 @@
 		B70FA7E51B96B33E009867E5 /* CredentialStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70FA7E41B96B33E009867E5 /* CredentialStore.swift */; };
 		B726FF7A1BB011B50030307D /* Pods-ChatApp.debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = B726FF781BB011B50030307D /* Pods-ChatApp.debug.xcconfig */; };
 		B726FF7B1BB011B50030307D /* Pods-ChatApp.release.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = B726FF791BB011B50030307D /* Pods-ChatApp.release.xcconfig */; };
-		B726FF7C1BB111A80030307D /* CredentialStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70FA7E41B96B33E009867E5 /* CredentialStore.swift */; };
-		B726FF7D1BB111AE0030307D /* NetworkingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77C129C1B95048A00FA33F1 /* NetworkingManager.swift */; };
-		B726FF7E1BB111B30030307D /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = B73E67E11BA9303500AF8D5F /* UserDefaults.swift */; };
-		B726FF7F1BB111BC0030307D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77C12991B942CDF00FA33F1 /* User.swift */; };
+		B726FFA01BB1EFFC0030307D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77C12991B942CDF00FA33F1 /* User.swift */; };
+		B726FFA11BB1EFFC0030307D /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = B73E67E11BA9303500AF8D5F /* UserDefaults.swift */; };
+		B726FFA21BB1EFFC0030307D /* NetworkingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77C129C1B95048A00FA33F1 /* NetworkingManager.swift */; };
+		B726FFA31BB1EFFC0030307D /* CredentialStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70FA7E41B96B33E009867E5 /* CredentialStore.swift */; };
 		B73E67E21BA9303500AF8D5F /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = B73E67E11BA9303500AF8D5F /* UserDefaults.swift */; };
 		B74005A71B901E2100565B02 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B74005A41B901E2100565B02 /* FBSDKCoreKit.framework */; };
 		B74005A81B901E2100565B02 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B74005A51B901E2100565B02 /* FBSDKLoginKit.framework */; };
@@ -111,6 +111,9 @@
 		B74005A51B901E2100565B02 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		B74005A61B901E2100565B02 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
 		B74DF7861BAE22BF00A3998D /* InterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
+		B76DED3C1BB29294002F53D5 /* libPods-ChatApp WatchKit Extension-AFNetworking.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-ChatApp WatchKit Extension-AFNetworking.a"; path = "Pods/../build/Debug-watchos/libPods-ChatApp WatchKit Extension-AFNetworking.a"; sourceTree = "<group>"; };
+		B76DED3D1BB29294002F53D5 /* libPods-ChatApp WatchKit Extension-SSKeychain.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-ChatApp WatchKit Extension-SSKeychain.a"; path = "Pods/../build/Debug-watchos/libPods-ChatApp WatchKit Extension-SSKeychain.a"; sourceTree = "<group>"; };
+		B76DED401BB2950A002F53D5 /* ChatApp-Watch-Extension-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ChatApp-Watch-Extension-Bridging-Header.h"; sourceTree = "<group>"; };
 		B77C12991B942CDF00FA33F1 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		B77C129C1B95048A00FA33F1 /* NetworkingManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingManager.swift; sourceTree = "<group>"; };
 		B7CCF9351B8E7F6B004DE54A /* ChatApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChatApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -169,6 +172,8 @@
 		B74005A31B901D5800565B02 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B76DED3C1BB29294002F53D5 /* libPods-ChatApp WatchKit Extension-AFNetworking.a */,
+				B76DED3D1BB29294002F53D5 /* libPods-ChatApp WatchKit Extension-SSKeychain.a */,
 				B74005A41B901E2100565B02 /* FBSDKCoreKit.framework */,
 				B74005A51B901E2100565B02 /* FBSDKLoginKit.framework */,
 				B74005A61B901E2100565B02 /* FBSDKShareKit.framework */,
@@ -219,6 +224,7 @@
 			isa = PBXGroup;
 			children = (
 				B740059E1B901B4B00565B02 /* ChatApp-Bridging-Header.h */,
+				B76DED401BB2950A002F53D5 /* ChatApp-Watch-Extension-Bridging-Header.h */,
 				B74005A31B901D5800565B02 /* Frameworks */,
 				B7CCF9371B8E7F6B004DE54A /* ChatApp */,
 				B7CCF94B1B8E7F6B004DE54A /* ChatApp WatchKit App */,
@@ -499,12 +505,12 @@
 				A1A878F61B91C9EB00AD0941 /* FriendDetailInterfaceController.swift in Sources */,
 				B7CCF95E1B8E7F6B004DE54A /* ExtensionDelegate.swift in Sources */,
 				B74DF7871BAE22BF00A3998D /* InterfaceController.swift in Sources */,
+				B726FFA11BB1EFFC0030307D /* UserDefaults.swift in Sources */,
 				A1B179001B9161E700372CB0 /* FriendsTableRow.swift in Sources */,
-				B726FF7E1BB111B30030307D /* UserDefaults.swift in Sources */,
-				B726FF7D1BB111AE0030307D /* NetworkingManager.swift in Sources */,
+				B726FFA31BB1EFFC0030307D /* CredentialStore.swift in Sources */,
+				B726FFA21BB1EFFC0030307D /* NetworkingManager.swift in Sources */,
 				B7CCF95C1B8E7F6B004DE54A /* FriendsListInterfaceController.swift in Sources */,
-				B726FF7F1BB111BC0030307D /* User.swift in Sources */,
-				B726FF7C1BB111A80030307D /* CredentialStore.swift in Sources */,
+				B726FFA01BB1EFFC0030307D /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -632,11 +638,13 @@
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "ChatApp WatchKit Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				LIBRARY_SEARCH_PATHS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = rahulm.ChatApp.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				PROVISIONING_PROFILE = "";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "ChatApp-Watch-Extension-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 2.0;
 			};
@@ -650,11 +658,13 @@
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "ChatApp WatchKit Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				LIBRARY_SEARCH_PATHS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = rahulm.ChatApp.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				PROVISIONING_PROFILE = "";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "ChatApp-Watch-Extension-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 2.0;
 			};

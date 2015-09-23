@@ -59,7 +59,17 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate, WCSessionDelegate
             replyValues["status"] = "failure"
             break
         }
+    }
+    
+    func session(session: WCSession, didReceiveApplicationContext applicationContext: [String : AnyObject]) {
+        let context = applicationContext["type"]
         
+        switch context as! String {
+        case "logout" :
+            User.currentUser?.logout()
+        default :
+            break;
+        }
     }
 
 }
