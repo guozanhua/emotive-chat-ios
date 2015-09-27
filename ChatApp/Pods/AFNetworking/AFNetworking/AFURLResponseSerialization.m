@@ -232,6 +232,14 @@ static id AFJSONObjectByRemovingKeysWithNullValues(id JSONObject, NSJSONReadingO
                            data:(NSData *)data
                           error:(NSError *__autoreleasing *)error
 {
+    //HACK TO MAKE DATA SAME SIZE AS RESPONSE
+    NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+    NSUInteger contentLength = [httpResponse.allHeaderFields[@"Content-Length"] integerValue];
+    if (data.length > contentLength) {
+        data = [data subdataWithRange:NSMakeRange(0, contentLength)];
+    }
+    //ENDHACK
+    
     if (![self validateResponse:(NSHTTPURLResponse *)response data:data error:error]) {
         if (!error || AFErrorOrUnderlyingErrorHasCodeInDomain(*error, NSURLErrorCannotDecodeContentData, AFURLResponseSerializationErrorDomain)) {
             return nil;

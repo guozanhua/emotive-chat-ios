@@ -12,10 +12,9 @@ import Foundation
 
 class FriendsListInterfaceController: WKInterfaceController
 {
-
     @IBOutlet var friendsTable: WKInterfaceTable!
     
-    let friends = ["Rahul", "Spencer", "Jack", "Steve", "Sean"]
+    var friends: [Dictionary<String,String>] = []
     let friendColors = [UIColor.redColor(), UIColor.greenColor(), UIColor.blueColor(), UIColor.yellowColor(), UIColor.purpleColor()]
     
     // MARK: - WKInterfaceController methods
@@ -26,8 +25,6 @@ class FriendsListInterfaceController: WKInterfaceController
         
         // Configure interface objects here.
         
-        loadTableData()
-        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: NSSelectorFromString("tokenChanged:"), name: "token-changed", object: nil)
     }
     
@@ -35,6 +32,8 @@ class FriendsListInterfaceController: WKInterfaceController
     {
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
+        
+        self._getFriends()
     }
 
     override func didDeactivate()
@@ -53,11 +52,10 @@ class FriendsListInterfaceController: WKInterfaceController
     {
         friendsTable.setNumberOfRows(friends.count, withRowType: "FriendsTableRow")
         
-        for (index, friendName) in friends.enumerate() {
-            
+        for var index = 0; index < friends.count; ++index {
             let row = friendsTable.rowControllerAtIndex(index) as! FriendsTableRow
-            row.friendLabel.setText(friendName)
-            row.friendSeparator.setColor(friendColors[index]);
+            row.friendLabel.setText(friends[index]["firstName"]! + " " + friends[index]["lastName"]!)
+            row.friendSeparator.setColor(friendColors[index])
         }
     }
     
@@ -68,5 +66,43 @@ class FriendsListInterfaceController: WKInterfaceController
         if (NetworkingManager.sharedInstance.credentialStore.authToken() == nil) {
             presentControllerWithName("InterfaceController", context: nil)
         }
+    }
+    
+    // MARK: - Private methods
+    
+    private func _getFriends()
+    {
+        let manager = NetworkingManager.sharedInstance.manager
+        let currentUserUuid = UserDefaults.currentUserUuid()
+        
+        manager.GET(User.userPath + currentUserUuid + "/" + User.friendsPathComponent,
+            parameters: nil,
+            success: { (dataTask: NSURLSessionDataTask!, responseObject: AnyObject!) in
+                if let jsonResult = responseObject as? Dictionary<String, AnyObject> {
+                    let successful = jsonResult["success"] as? Bool
+                    if (successful == false) {
+                        print("Failed to get all friends of user")
+                    }
+                    else if (successful == true) {
+                        self.friends = jsonResult["friends"] as! [Dictionary<String, String>]
+                        
+                        self.loadTableData()
+                    }
+                }
+                else {
+                    print("Error: responseObject couldn't be converted to Dictionary")
+                }
+            },
+            failure: { (dataTask: NSURLSessionDataTask!, error: NSError!) in
+                let errorMessage = "Error: " + error.localizedDescription
+                print(errorMessage)
+                
+                if let response = dataTask.response as? NSHTTPURLResponse {
+                    if (response.statusCode == 401) {
+                        NetworkingManager.sharedInstance.credentialStore.clearSavedCredentials()
+                    }
+                }
+            }
+        )
     }
 }

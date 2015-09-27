@@ -62,10 +62,10 @@
 		AAA5AA52E0694E9894E498E2A4001DCC /* SSKeychainQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E6DBA12B61DBCE2B921B8A1A853F358 /* SSKeychainQuery.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		AF1430D64720D82291821CD7FBC9EA9C /* AFURLRequestSerialization.h in Headers */ = {isa = PBXBuildFile; fileRef = 924DB5DE0CF941C800F20C61C61CF5B0 /* AFURLRequestSerialization.h */; };
 		B4B08DC28CA173EA5FA709FACC17D762 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F9802707B9CCDF084CC5DCD8AFE108D /* AFHTTPRequestOperation.m */; };
-		B76DED411BB29633002F53D5 /* AFHTTPSessionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 901615015F3281C51670AC9A7AFD3899 /* AFHTTPSessionManager.h */; settings = {ASSET_TAGS = (); }; };
-		B76DED421BB29633002F53D5 /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 07DAB1A8B61EA809F6BA0363867C8A75 /* AFHTTPSessionManager.m */; settings = {ASSET_TAGS = (); }; };
-		B76DED431BB29633002F53D5 /* AFURLSessionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = B423B191318CCE3CB056CCF39747E15B /* AFURLSessionManager.h */; settings = {ASSET_TAGS = (); }; };
-		B76DED441BB29633002F53D5 /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 069563F5EE702BAC7C071D47838CDBE8 /* AFURLSessionManager.m */; settings = {ASSET_TAGS = (); }; };
+		B76DED4B1BB7EBAB002F53D5 /* AFHTTPSessionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 901615015F3281C51670AC9A7AFD3899 /* AFHTTPSessionManager.h */; settings = {ASSET_TAGS = (); }; };
+		B76DED4C1BB7EBAB002F53D5 /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 07DAB1A8B61EA809F6BA0363867C8A75 /* AFHTTPSessionManager.m */; settings = {ASSET_TAGS = (); }; };
+		B76DED4D1BB7EBAB002F53D5 /* AFURLSessionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = B423B191318CCE3CB056CCF39747E15B /* AFURLSessionManager.h */; settings = {ASSET_TAGS = (); }; };
+		B76DED4E1BB7EBAB002F53D5 /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 069563F5EE702BAC7C071D47838CDBE8 /* AFURLSessionManager.m */; settings = {ASSET_TAGS = (); }; };
 		BBB01D200A7D523156A5978A9E49FB08 /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = D0102961DA6B39A20CD33C5D578B5326 /* AFURLConnectionOperation.m */; };
 		BDE5CA56DC534BCC4E2600344DF90302 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5341B099AC855FDD1C36F63AD2B82BA /* Foundation.framework */; };
 		C32FD805003D41BCD4BC4320247BD497 /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9C014EEF4099A6778999411070650E /* AFURLResponseSerialization.m */; };
@@ -87,28 +87,28 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		08743C0C3F47848B42CA6F6D19D384AE /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 615000352C09F0D4E1AD90E492DD79CC;
-			remoteInfo = "Pods-ChatApp-SSKeychain";
-		};
-		0F0CDA5D89DB061B46301E1834D6E231 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = E3F43181C76957796BA3204FDFC1C7F1;
-			remoteInfo = "Pods-ChatApp WatchKit Extension-AFNetworking";
-		};
-		22EEFFF1DF92E79E0C00BCEDF4486117 /* PBXContainerItemProxy */ = {
+		15F2418ADC55ED22516C7C9A72938DC1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 12188B1061753EE287FFC02F82AEF0BF;
 			remoteInfo = "Pods-ChatApp-AFNetworking";
 		};
-		6BA80BF53B2922F7C0BA8A034C23C909 /* PBXContainerItemProxy */ = {
+		3AB8717F5E7A95E2A44A9D307243993E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 615000352C09F0D4E1AD90E492DD79CC;
+			remoteInfo = "Pods-ChatApp-SSKeychain";
+		};
+		8003140CAE35A7186E349BF8EB9CE6ED /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E3F43181C76957796BA3204FDFC1C7F1;
+			remoteInfo = "Pods-ChatApp WatchKit Extension-AFNetworking";
+		};
+		9A0AD8D93AAF44773904324762ADC21E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
@@ -512,10 +512,10 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B76DED431BB29633002F53D5 /* AFURLSessionManager.h in Headers */,
+				B76DED4D1BB7EBAB002F53D5 /* AFURLSessionManager.h in Headers */,
 				F56914BB7E12D233368E12539DD93DDD /* AFNetworking.h in Headers */,
 				816401BB88CCBEBF77F8D19B1F7E1C36 /* AFSecurityPolicy.h in Headers */,
-				B76DED411BB29633002F53D5 /* AFHTTPSessionManager.h in Headers */,
+				B76DED4B1BB7EBAB002F53D5 /* AFHTTPSessionManager.h in Headers */,
 				0B40215ACA3D5F1AB1F32FA9EBE9128A /* AFURLRequestSerialization.h in Headers */,
 				37E0CCDE6D98E1BC811CE05931DB1368 /* AFURLResponseSerialization.h in Headers */,
 			);
@@ -613,8 +613,8 @@
 			buildRules = (
 			);
 			dependencies = (
-				13FB94660A0092009F52163F6F86C4A4 /* PBXTargetDependency */,
-				E6409B86741BFB87B52603803CB2715C /* PBXTargetDependency */,
+				C58F6C654ED0700D0873C0644EDDC9E8 /* PBXTargetDependency */,
+				C0EE1900ECD8FF519900260C48F96FB9 /* PBXTargetDependency */,
 			);
 			name = "Pods-ChatApp";
 			productName = "Pods-ChatApp";
@@ -665,8 +665,8 @@
 			buildRules = (
 			);
 			dependencies = (
-				7296BA5A2C70FD9ECD3607BEF3A92444 /* PBXTargetDependency */,
-				95F905D6E326444368413A00B5554216 /* PBXTargetDependency */,
+				428E306F575DBA2D6F43BACABDA9FFCC /* PBXTargetDependency */,
+				930F4CEE4890233DA334A0077ECBDF27 /* PBXTargetDependency */,
 			);
 			name = "Pods-ChatApp WatchKit Extension";
 			productName = "Pods-ChatApp WatchKit Extension";
@@ -711,8 +711,8 @@
 			files = (
 				2938917240BD8D2B46FD5D5B67F65F11 /* AFSecurityPolicy.m in Sources */,
 				5D5E5BADAB26571B47DFEA74A72CE10E /* AFURLRequestSerialization.m in Sources */,
-				B76DED421BB29633002F53D5 /* AFHTTPSessionManager.m in Sources */,
-				B76DED441BB29633002F53D5 /* AFURLSessionManager.m in Sources */,
+				B76DED4C1BB7EBAB002F53D5 /* AFHTTPSessionManager.m in Sources */,
+				B76DED4E1BB7EBAB002F53D5 /* AFURLSessionManager.m in Sources */,
 				10D38F2D374D1C85C88E44DAEA3EB3B6 /* AFURLResponseSerialization.m in Sources */,
 				419F55A1459B140F1A1ABD7474FD65D4 /* Pods-ChatApp WatchKit Extension-AFNetworking-dummy.m in Sources */,
 			);
@@ -782,29 +782,29 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		13FB94660A0092009F52163F6F86C4A4 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "Pods-ChatApp-AFNetworking";
-			target = 12188B1061753EE287FFC02F82AEF0BF /* Pods-ChatApp-AFNetworking */;
-			targetProxy = 22EEFFF1DF92E79E0C00BCEDF4486117 /* PBXContainerItemProxy */;
-		};
-		7296BA5A2C70FD9ECD3607BEF3A92444 /* PBXTargetDependency */ = {
+		428E306F575DBA2D6F43BACABDA9FFCC /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "Pods-ChatApp WatchKit Extension-AFNetworking";
 			target = E3F43181C76957796BA3204FDFC1C7F1 /* Pods-ChatApp WatchKit Extension-AFNetworking */;
-			targetProxy = 0F0CDA5D89DB061B46301E1834D6E231 /* PBXContainerItemProxy */;
+			targetProxy = 8003140CAE35A7186E349BF8EB9CE6ED /* PBXContainerItemProxy */;
 		};
-		95F905D6E326444368413A00B5554216 /* PBXTargetDependency */ = {
+		930F4CEE4890233DA334A0077ECBDF27 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "Pods-ChatApp WatchKit Extension-SSKeychain";
 			target = E22F29F67595859E15E4EE9333E6CB9C /* Pods-ChatApp WatchKit Extension-SSKeychain */;
-			targetProxy = 6BA80BF53B2922F7C0BA8A034C23C909 /* PBXContainerItemProxy */;
+			targetProxy = 9A0AD8D93AAF44773904324762ADC21E /* PBXContainerItemProxy */;
 		};
-		E6409B86741BFB87B52603803CB2715C /* PBXTargetDependency */ = {
+		C0EE1900ECD8FF519900260C48F96FB9 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "Pods-ChatApp-SSKeychain";
 			target = 615000352C09F0D4E1AD90E492DD79CC /* Pods-ChatApp-SSKeychain */;
-			targetProxy = 08743C0C3F47848B42CA6F6D19D384AE /* PBXContainerItemProxy */;
+			targetProxy = 3AB8717F5E7A95E2A44A9D307243993E /* PBXContainerItemProxy */;
+		};
+		C58F6C654ED0700D0873C0644EDDC9E8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-ChatApp-AFNetworking";
+			target = 12188B1061753EE287FFC02F82AEF0BF /* Pods-ChatApp-AFNetworking */;
+			targetProxy = 15F2418ADC55ED22516C7C9A72938DC1 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

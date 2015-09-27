@@ -112,7 +112,7 @@ class NetworkingManager: NSObject
     {
         let authToken = self.credentialStore.authToken()
         if (authToken != nil) {
-            self.manager.requestSerializer.setValue(authToken, forHTTPHeaderField: "X-Auth-Token")
+            self.manager.requestSerializer.setValue(authToken, forHTTPHeaderField: "x-auth-token")
         }
     }
 

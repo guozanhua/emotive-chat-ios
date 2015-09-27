@@ -52,7 +52,6 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate, WCSessionDelegate
             defaults.setObject(lastName, forKey: "lastName")
             defaults.setObject(email, forKey: "email")
             
-            User.currentUser = User.init(newUUID: userUUID)
             NetworkingManager.sharedInstance.credentialStore.setAuthToken(token)
             
         default:
