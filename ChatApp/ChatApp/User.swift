@@ -19,6 +19,7 @@ class User: NSObject
     var lastName: String?
     var email: String?
     var friends: [String]?
+    var conversationUuids: [String]?
     
     // MARK: - Initializers
     

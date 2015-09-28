@@ -30,6 +30,12 @@
 		B74005A81B901E2100565B02 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B74005A51B901E2100565B02 /* FBSDKLoginKit.framework */; };
 		B74005A91B901E2100565B02 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B74005A61B901E2100565B02 /* FBSDKShareKit.framework */; };
 		B74DF7871BAE22BF00A3998D /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74DF7861BAE22BF00A3998D /* InterfaceController.swift */; };
+		B76DED521BB8BDF3002F53D5 /* Conversation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76DED511BB8BDF3002F53D5 /* Conversation.swift */; settings = {ASSET_TAGS = (); }; };
+		B76DED531BB8BDF3002F53D5 /* Conversation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76DED511BB8BDF3002F53D5 /* Conversation.swift */; settings = {ASSET_TAGS = (); }; };
+		B76DED551BB8BFC2002F53D5 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76DED541BB8BFC2002F53D5 /* Message.swift */; settings = {ASSET_TAGS = (); }; };
+		B76DED561BB8BFC2002F53D5 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76DED541BB8BFC2002F53D5 /* Message.swift */; settings = {ASSET_TAGS = (); }; };
+		B76DED581BB8C103002F53D5 /* Woo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76DED571BB8C103002F53D5 /* Woo.swift */; settings = {ASSET_TAGS = (); }; };
+		B76DED591BB8C103002F53D5 /* Woo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76DED571BB8C103002F53D5 /* Woo.swift */; settings = {ASSET_TAGS = (); }; };
 		B77C129A1B942CDF00FA33F1 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77C12991B942CDF00FA33F1 /* User.swift */; };
 		B77C129D1B95048A00FA33F1 /* NetworkingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77C129C1B95048A00FA33F1 /* NetworkingManager.swift */; };
 		B7CCF9391B8E7F6B004DE54A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7CCF9381B8E7F6B004DE54A /* AppDelegate.swift */; };
@@ -114,6 +120,9 @@
 		B76DED3C1BB29294002F53D5 /* libPods-ChatApp WatchKit Extension-AFNetworking.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-ChatApp WatchKit Extension-AFNetworking.a"; path = "Pods/../build/Debug-watchos/libPods-ChatApp WatchKit Extension-AFNetworking.a"; sourceTree = "<group>"; };
 		B76DED3D1BB29294002F53D5 /* libPods-ChatApp WatchKit Extension-SSKeychain.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-ChatApp WatchKit Extension-SSKeychain.a"; path = "Pods/../build/Debug-watchos/libPods-ChatApp WatchKit Extension-SSKeychain.a"; sourceTree = "<group>"; };
 		B76DED401BB2950A002F53D5 /* ChatApp-Watch-Extension-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ChatApp-Watch-Extension-Bridging-Header.h"; sourceTree = "<group>"; };
+		B76DED511BB8BDF3002F53D5 /* Conversation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Conversation.swift; sourceTree = "<group>"; };
+		B76DED541BB8BFC2002F53D5 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		B76DED571BB8C103002F53D5 /* Woo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Woo.swift; sourceTree = "<group>"; };
 		B77C12991B942CDF00FA33F1 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		B77C129C1B95048A00FA33F1 /* NetworkingManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingManager.swift; sourceTree = "<group>"; };
 		B7CCF9351B8E7F6B004DE54A /* ChatApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChatApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -213,6 +222,9 @@
 			isa = PBXGroup;
 			children = (
 				B77C12991B942CDF00FA33F1 /* User.swift */,
+				B76DED511BB8BDF3002F53D5 /* Conversation.swift */,
+				B76DED541BB8BFC2002F53D5 /* Message.swift */,
+				B76DED571BB8C103002F53D5 /* Woo.swift */,
 				B73E67E11BA9303500AF8D5F /* UserDefaults.swift */,
 				B77C129C1B95048A00FA33F1 /* NetworkingManager.swift */,
 				B70FA7E41B96B33E009867E5 /* CredentialStore.swift */,
@@ -484,6 +496,7 @@
 			files = (
 				A1AC3CB71B9A832000F04EC2 /* FriendsTableViewCell.swift in Sources */,
 				A1AC3CB51B9A530C00F04EC2 /* FriendSearchViewController.swift in Sources */,
+				B76DED581BB8C103002F53D5 /* Woo.swift in Sources */,
 				A1C4A08B1BA4E9B6001DF3E3 /* AddFriendTableViewCell.swift in Sources */,
 				A1C4A0891BA4E5C9001DF3E3 /* AddFriendViewController.swift in Sources */,
 				B70FA7E51B96B33E009867E5 /* CredentialStore.swift in Sources */,
@@ -494,6 +507,8 @@
 				B7CCF93B1B8E7F6B004DE54A /* LoginViewController.swift in Sources */,
 				B77C129D1B95048A00FA33F1 /* NetworkingManager.swift in Sources */,
 				B7CCF9391B8E7F6B004DE54A /* AppDelegate.swift in Sources */,
+				B76DED521BB8BDF3002F53D5 /* Conversation.swift in Sources */,
+				B76DED551BB8BFC2002F53D5 /* Message.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -506,9 +521,12 @@
 				B7CCF95E1B8E7F6B004DE54A /* ExtensionDelegate.swift in Sources */,
 				B74DF7871BAE22BF00A3998D /* InterfaceController.swift in Sources */,
 				B726FFA11BB1EFFC0030307D /* UserDefaults.swift in Sources */,
+				B76DED531BB8BDF3002F53D5 /* Conversation.swift in Sources */,
 				A1B179001B9161E700372CB0 /* FriendsTableRow.swift in Sources */,
 				B726FFA31BB1EFFC0030307D /* CredentialStore.swift in Sources */,
+				B76DED591BB8C103002F53D5 /* Woo.swift in Sources */,
 				B726FFA21BB1EFFC0030307D /* NetworkingManager.swift in Sources */,
+				B76DED561BB8BFC2002F53D5 /* Message.swift in Sources */,
 				B7CCF95C1B8E7F6B004DE54A /* FriendsListInterfaceController.swift in Sources */,
 				B726FFA01BB1EFFC0030307D /* User.swift in Sources */,
 			);
