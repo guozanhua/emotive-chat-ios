@@ -77,7 +77,6 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, UITextFie
             defaults.setObject(lastName, forKey: "lastName")
             defaults.setObject(email, forKey: "email")
 
-            User.currentUser = User.init(newUUID: userUUID)
             self.presentViewController(friendVC, animated: true, completion: nil)
             
         })

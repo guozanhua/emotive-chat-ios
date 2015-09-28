@@ -13,7 +13,6 @@ class User: NSObject
 
     static var userPath = "users/"
     static var friendsPathComponent = "friends/"
-    static var currentUser : User?
     
     var uuid: String?
     var firstName: String?
@@ -29,14 +28,12 @@ class User: NSObject
         User.fetchInfoForUser(self, uuid: newUUID)
     }
     
-    // MARK: - Internal methods
+    // MARK: - Type methods
     
-    func logout ()
+    class func logout ()
     {
         NetworkingManager.sharedInstance.credentialStore.clearSavedCredentials()
     }
-    
-    // MARK: - Type methods
     
     class func createNewUser(newFirstName: String, newLastName: String, newEmail: String, newPassword: String)
     {

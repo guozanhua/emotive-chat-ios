@@ -65,7 +65,7 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate, WCSessionDelegate
         
         switch context as! String {
         case "logout" :
-            User.currentUser?.logout()
+            User.logout()
         default :
             break;
         }

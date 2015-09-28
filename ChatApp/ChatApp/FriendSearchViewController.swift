@@ -70,7 +70,7 @@ class FriendSearchViewController: UIViewController, UITableViewDataSource, UITab
     
     func logoutPressed(sender: UIButton!)
     {
-        User.currentUser!.logout()
+        User.logout()
         do {
             let session = WCSession.defaultSession()
             let applicationDict = ["type": "logout"]
