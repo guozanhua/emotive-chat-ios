@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, UITextFieldDelegate
+class LoginViewController: UIViewController, UITextFieldDelegate
 {
     var bgColorRed: CGFloat = 0
     var bgColorGreen: CGFloat = 239/255
@@ -28,7 +28,6 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, UITextFie
     
     var emailTextField: UITextField!
     var passTextField: UITextField!
-    var fbLogInButton: FBSDKLoginButton!
     var loginButton: UIButton!
     var signUpButton: UIButton!
 
@@ -43,14 +42,8 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, UITextFie
         
         _addEmailTextField()
         _addPassTextField()
-        _addFacebookLogin()
         _addLoginButton()
         _addSignUpButton()
-        
-        if (FBSDKAccessToken.currentAccessToken() != nil)
-        {
-            // User is already logged in, do work such as go to next view controller.
-        }
     }
     
     // MARK: - Internal methods
@@ -82,47 +75,6 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, UITextFie
         })
     }
     
-    // MARK: - FBSDKLoginButtonDelegate methods
-    
-    func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!)
-    {
-        
-        if ((error) != nil) {
-            // Process error
-        }
-        else if result.isCancelled {
-            // Handle cancellations
-        }
-        else {
-            if result.grantedPermissions.contains("email") {
-                // Successfully logged in
-                self.returnUserData()
-            }
-        }
-    }
-    
-    func loginButtonDidLogOut(loginButton: FBSDKLoginButton!)
-    {
-        print("User Logged Out")
-    }
-    
-    func returnUserData()
-    {
-        let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, first_name, last_name, picture.type(large), email"])
-        graphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
-            
-            if ((error) != nil) {
-                // Process error
-                print("Error: \(error)")
-            }
-            else {
-                print("fetched user: \(result)")
-                let userEmail : String = result.valueForKey("email") as! String
-                self.emailTextField.text = userEmail
-            }
-        })
-    }
-    
     // MARK: - Private methods
     
     private func _addEmailTextField()
@@ -146,16 +98,6 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, UITextFie
         self.passTextField.delegate = self
         
         self.view.addSubview(self.passTextField)
-    }
-    
-    private func _addFacebookLogin()
-    {
-        self.fbLogInButton = FBSDKLoginButton()
-        self.fbLogInButton.center = self.view.center
-        self.fbLogInButton.readPermissions = ["public_profile", "email", "user_friends"]
-        self.fbLogInButton.delegate = self
-        
-        self.view.addSubview(self.fbLogInButton)
     }
     
     private func _addLoginButton()

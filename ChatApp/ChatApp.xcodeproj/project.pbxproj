@@ -26,9 +26,6 @@
 		B726FFA21BB1EFFC0030307D /* NetworkingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77C129C1B95048A00FA33F1 /* NetworkingManager.swift */; };
 		B726FFA31BB1EFFC0030307D /* CredentialStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70FA7E41B96B33E009867E5 /* CredentialStore.swift */; };
 		B73E67E21BA9303500AF8D5F /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = B73E67E11BA9303500AF8D5F /* UserDefaults.swift */; };
-		B74005A71B901E2100565B02 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B74005A41B901E2100565B02 /* FBSDKCoreKit.framework */; };
-		B74005A81B901E2100565B02 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B74005A51B901E2100565B02 /* FBSDKLoginKit.framework */; };
-		B74005A91B901E2100565B02 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B74005A61B901E2100565B02 /* FBSDKShareKit.framework */; };
 		B74DF7871BAE22BF00A3998D /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74DF7861BAE22BF00A3998D /* InterfaceController.swift */; };
 		B76DED521BB8BDF3002F53D5 /* Conversation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76DED511BB8BDF3002F53D5 /* Conversation.swift */; settings = {ASSET_TAGS = (); }; };
 		B76DED531BB8BDF3002F53D5 /* Conversation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76DED511BB8BDF3002F53D5 /* Conversation.swift */; settings = {ASSET_TAGS = (); }; };
@@ -149,9 +146,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B74005A81B901E2100565B02 /* FBSDKLoginKit.framework in Frameworks */,
-				B74005A71B901E2100565B02 /* FBSDKCoreKit.framework in Frameworks */,
-				B74005A91B901E2100565B02 /* FBSDKShareKit.framework in Frameworks */,
 				BDAC3D2B12380A20FE3F1E3D /* libPods-ChatApp.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
