@@ -12,7 +12,7 @@ import Foundation
 
 class ConversationListInterfaceController: WKInterfaceController {
 
-    var conversations: Dictionary<String, AnyObject>
+    var conversations: [Dictionary<String,AnyObject>] = []
     let friendColors = [UIColor.redColor(), UIColor.greenColor(), UIColor.blueColor(), UIColor.yellowColor(), UIColor.purpleColor()]
     
     @IBOutlet var conversationsTable: WKInterfaceTable!
@@ -45,25 +45,33 @@ class ConversationListInterfaceController: WKInterfaceController {
     // MARK: - WKInterfaceTable methods
     
     override func table(table: WKInterfaceTable, didSelectRowAtIndex rowIndex: Int) {
-        presentControllerWithName("Conversation", context: conversations[rowIndex])
+        presentControllerWithName("Conversation", context: self.conversations[rowIndex])
     }
     
     func loadTableData()
     {
-        conversationsTable.setNumberOfRows(conversations.count, withRowType: "ConversationsTableRow")
+        self.conversationsTable.setNumberOfRows(self.conversations.count, withRowType: "ConversationsTableRow")
         
         for var index = 0; index < conversations.count; ++index {
+            var currentConversation = conversations[index]
             let row = conversationsTable.rowControllerAtIndex(index) as! ConversationsTableRow
-            let conversationUsers = ""
-            for var user in conversations[index].userObjects {
-                if (user == conversations[index].userObjects.last) {
-                    conversationUsers += user.firstName + " " + user.lastName
-                } else {
-                    conversationUsers += user.firstName + " " + user.lastName + ", "
-                }
+            var conversationTitle = ""
+            if let convTitle = currentConversation["title"] {
+                conversationTitle = convTitle as! String
             }
-            row.ConversationLabel.setText(conversationUsers)
-            //row.friendSeparator.setColor(friendColors[index])
+            else {
+                let userObjects = currentConversation["userObjects"] as! [Dictionary<String,AnyObject>]
+                for var i = 0; i < userObjects.count; ++i {
+                    let userObject = userObjects[i]
+                    let firstName = userObject["firstName"] as! String
+                    conversationTitle = conversationTitle.stringByAppendingString(firstName)
+                    if (i != userObjects.count - 1) {
+                        conversationTitle = conversationTitle.stringByAppendingString(", ")
+                    }
+                }
+                
+            }
+            row.ConversationLabel.setText(conversationTitle)
         }
     }
     
@@ -72,7 +80,7 @@ class ConversationListInterfaceController: WKInterfaceController {
     @objc func tokenChanged(notification: NSNotification)
     {
         if (NetworkingManager.sharedInstance.credentialStore.authToken() == nil) {
-            presentControllerWithName("InterfaceController", context: nil)
+            WKInterfaceController.reloadRootControllersWithNames(["InterfaceController"], contexts: nil)
         }
     }
     
@@ -92,8 +100,7 @@ class ConversationListInterfaceController: WKInterfaceController {
                         print("Failed to get all conversations of user")
                     }
                     else if (successful == true) {
-                        self.conversations = jsonResult["conversations"] as! Dictionary<String, AnyObject>
-                        
+                        self.conversations = jsonResult["conversations"] as! [Dictionary<String, AnyObject>]
                         self.loadTableData()
                     }
                 }

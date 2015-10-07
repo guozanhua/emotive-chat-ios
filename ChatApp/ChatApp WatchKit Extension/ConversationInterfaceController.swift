@@ -26,7 +26,7 @@ class ConversationInterfaceController: WKInterfaceController {
         // Configure interface objects here.
         
         if let conversation = context as? String {
-            //setTitle(conversation)
+            self.setTitle(conversation)
         }
 
         
@@ -49,7 +49,7 @@ class ConversationInterfaceController: WKInterfaceController {
     @objc func tokenChanged(notification: NSNotification)
     {
         if (NetworkingManager.sharedInstance.credentialStore.authToken() == nil) {
-            presentControllerWithName("InterfaceController", context: nil)
+            WKInterfaceController.reloadRootControllersWithNames(["InterfaceController"], contexts: nil)
         }
     }
 }

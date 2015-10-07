@@ -64,7 +64,7 @@ class FriendsListInterfaceController: WKInterfaceController
     @objc func tokenChanged(notification: NSNotification)
     {
         if (NetworkingManager.sharedInstance.credentialStore.authToken() == nil) {
-            presentControllerWithName("InterfaceController", context: nil)
+            WKInterfaceController.reloadRootControllersWithNames(["InterfaceController"], contexts: nil)
         }
     }
     
