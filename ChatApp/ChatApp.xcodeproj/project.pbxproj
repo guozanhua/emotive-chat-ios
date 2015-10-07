@@ -9,7 +9,10 @@
 /* Begin PBXBuildFile section */
 		3078A797E95A313AD0367C73 /* libPods-ChatApp WatchKit Extension.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 95932E25B3CDFBFCBAF8D840 /* libPods-ChatApp WatchKit Extension.a */; };
 		A12834231B92BEE60030F2DF /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A12834221B92BEE60030F2DF /* Interface.storyboard */; };
-		A1A878F61B91C9EB00AD0941 /* FriendDetailInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A878F51B91C9EB00AD0941 /* FriendDetailInterfaceController.swift */; };
+		A1537E2E1BBF358800790867 /* MessageTableRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1537E2D1BBF358800790867 /* MessageTableRow.swift */; settings = {ASSET_TAGS = (); }; };
+		A1537E301BBF3D8800790867 /* ConversationListInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1537E2F1BBF3D8800790867 /* ConversationListInterfaceController.swift */; settings = {ASSET_TAGS = (); }; };
+		A1537E321BBF404600790867 /* ConversationsTableRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1537E311BBF404600790867 /* ConversationsTableRow.swift */; settings = {ASSET_TAGS = (); }; };
+		A1A878F61B91C9EB00AD0941 /* ConversationInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A878F51B91C9EB00AD0941 /* ConversationInterfaceController.swift */; };
 		A1A878F81B922CC600AD0941 /* EmotiveSelectInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A878F71B922CC600AD0941 /* EmotiveSelectInterfaceController.swift */; };
 		A1AC3CB31B9A488C00F04EC2 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1AC3CB21B9A488C00F04EC2 /* SettingsViewController.swift */; };
 		A1AC3CB51B9A530C00F04EC2 /* FriendSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1AC3CB41B9A530C00F04EC2 /* FriendSearchViewController.swift */; };
@@ -96,7 +99,10 @@
 		94D61645A74D222B5754205F /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		95932E25B3CDFBFCBAF8D840 /* libPods-ChatApp WatchKit Extension.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ChatApp WatchKit Extension.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A12834221B92BEE60030F2DF /* Interface.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Interface.storyboard; sourceTree = "<group>"; };
-		A1A878F51B91C9EB00AD0941 /* FriendDetailInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendDetailInterfaceController.swift; sourceTree = "<group>"; };
+		A1537E2D1BBF358800790867 /* MessageTableRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageTableRow.swift; sourceTree = "<group>"; };
+		A1537E2F1BBF3D8800790867 /* ConversationListInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationListInterfaceController.swift; sourceTree = "<group>"; };
+		A1537E311BBF404600790867 /* ConversationsTableRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationsTableRow.swift; sourceTree = "<group>"; };
+		A1A878F51B91C9EB00AD0941 /* ConversationInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationInterfaceController.swift; sourceTree = "<group>"; };
 		A1A878F71B922CC600AD0941 /* EmotiveSelectInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmotiveSelectInterfaceController.swift; sourceTree = "<group>"; };
 		A1AC3CB21B9A488C00F04EC2 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		A1AC3CB41B9A530C00F04EC2 /* FriendSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendSearchViewController.swift; sourceTree = "<group>"; };
@@ -192,7 +198,8 @@
 			children = (
 				B74DF7861BAE22BF00A3998D /* InterfaceController.swift */,
 				B7CCF95B1B8E7F6B004DE54A /* FriendsListInterfaceController.swift */,
-				A1A878F51B91C9EB00AD0941 /* FriendDetailInterfaceController.swift */,
+				A1537E2F1BBF3D8800790867 /* ConversationListInterfaceController.swift */,
+				A1A878F51B91C9EB00AD0941 /* ConversationInterfaceController.swift */,
 				A1A878F71B922CC600AD0941 /* EmotiveSelectInterfaceController.swift */,
 			);
 			name = InterfaceControllers;
@@ -282,6 +289,8 @@
 				B7CCF95F1B8E7F6B004DE54A /* Assets.xcassets */,
 				B7CCF9611B8E7F6B004DE54A /* Info.plist */,
 				A1B178FF1B9161E700372CB0 /* FriendsTableRow.swift */,
+				A1537E311BBF404600790867 /* ConversationsTableRow.swift */,
+				A1537E2D1BBF358800790867 /* MessageTableRow.swift */,
 			);
 			path = "ChatApp WatchKit Extension";
 			sourceTree = "<group>";
@@ -511,15 +520,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				A1A878F81B922CC600AD0941 /* EmotiveSelectInterfaceController.swift in Sources */,
-				A1A878F61B91C9EB00AD0941 /* FriendDetailInterfaceController.swift in Sources */,
+				A1A878F61B91C9EB00AD0941 /* ConversationInterfaceController.swift in Sources */,
 				B7CCF95E1B8E7F6B004DE54A /* ExtensionDelegate.swift in Sources */,
 				B74DF7871BAE22BF00A3998D /* InterfaceController.swift in Sources */,
+				A1537E321BBF404600790867 /* ConversationsTableRow.swift in Sources */,
 				B726FFA11BB1EFFC0030307D /* UserDefaults.swift in Sources */,
 				B76DED531BB8BDF3002F53D5 /* Conversation.swift in Sources */,
 				A1B179001B9161E700372CB0 /* FriendsTableRow.swift in Sources */,
+				A1537E301BBF3D8800790867 /* ConversationListInterfaceController.swift in Sources */,
 				B726FFA31BB1EFFC0030307D /* CredentialStore.swift in Sources */,
 				B76DED591BB8C103002F53D5 /* Woo.swift in Sources */,
 				B726FFA21BB1EFFC0030307D /* NetworkingManager.swift in Sources */,
+				A1537E2E1BBF358800790867 /* MessageTableRow.swift in Sources */,
 				B76DED561BB8BFC2002F53D5 /* Message.swift in Sources */,
 				B7CCF95C1B8E7F6B004DE54A /* FriendsListInterfaceController.swift in Sources */,
 				B726FFA01BB1EFFC0030307D /* User.swift in Sources */,

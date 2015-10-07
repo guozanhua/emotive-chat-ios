@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="bbi-4u-VDO">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="8187.4" systemVersion="14F27" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="bbi-4u-VDO">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8151.3"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="8092"/>
     </dependencies>
     <scenes>
@@ -19,50 +19,60 @@
             </objects>
             <point key="canvasLocation" x="0.0" y="352"/>
         </scene>
-        <!--FriendsList-->
-        <scene sceneID="aou-V4-d1y">
+        <!--ConversationList-->
+        <scene sceneID="Cgp-3f-Nb8">
             <objects>
-                <controller identifier="FriendsList" id="AgC-eL-Hgc" userLabel="FriendsList" customClass="FriendsListInterfaceController" customModule="ChatApp_WatchKit_Extension">
+                <controller identifier="ConversationList" hidesWhenLoading="NO" id="NKT-KE-wFq" customClass="ConversationListInterfaceController" customModule="ChatApp_WatchKit_Extension">
                     <items>
-                        <table alignment="left" id="L5S-yp-Mob">
+                        <table alignment="left" id="xI5-Mo-yS5">
                             <items>
-                                <tableRow identifier="FriendsTableRow" id="ktD-Dg-Cta" customClass="FriendsTableRow" customModule="ChatApp_WatchKit_Extension">
-                                    <group key="rootItem" width="1" alignment="left" id="WQ6-ic-dui">
+                                <tableRow identifier="Conversation" id="FCn-AL-VLD" customClass="ConversationsTableRow" customModule="ChatApp_WatchKit_Extension">
+                                    <group key="rootItem" width="1" alignment="left" id="XMt-q1-Of4">
                                         <items>
-                                            <separator alignment="left" verticalAlignment="center" id="1tq-Xd-lzR"/>
-                                            <label width="109" height="36.5" alignment="right" verticalAlignment="center" text="Label" textAlignment="left" id="Hsj-8b-CgQ"/>
+                                            <label width="119.5" height="39.5" alignment="left" text="Label" id="Fw9-MK-Z8X"/>
                                         </items>
-                                        <color key="backgroundColor" red="0.15745344065656564" green="0.15745344065656564" blue="0.15745344065656564" alpha="1" colorSpace="calibratedRGB"/>
                                     </group>
                                     <connections>
-                                        <outlet property="friendLabel" destination="Hsj-8b-CgQ" id="451-8t-BiT"/>
-                                        <outlet property="friendSeparator" destination="1tq-Xd-lzR" id="g4C-gL-h5v"/>
+                                        <outlet property="ConversationLabel" destination="Fw9-MK-Z8X" id="riQ-yz-18o"/>
                                     </connections>
                                 </tableRow>
                             </items>
                         </table>
                     </items>
                     <connections>
-                        <outlet property="friendsTable" destination="L5S-yp-Mob" id="oTX-rF-Ixb"/>
+                        <outlet property="conversationsTable" destination="xI5-Mo-yS5" id="C1A-KO-E63"/>
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="186" y="353"/>
+            <point key="canvasLocation" x="186" y="350"/>
         </scene>
-        <!--FriendDetails-->
+        <!--Conversation-->
         <scene sceneID="PnB-mK-I3l">
             <objects>
-                <controller identifier="FriendDetails" hidesWhenLoading="NO" id="V2w-pL-DL7" customClass="FriendDetailInterfaceController" customModule="ChatApp_WatchKit_Extension">
+                <controller identifier="Conversation" hidesWhenLoading="NO" id="V2w-pL-DL7" customClass="ConversationInterfaceController" customModule="ChatApp_WatchKit_Extension">
                     <items>
-                        <imageView width="0.90000000000000002" height="0.90000000000000002" alignment="center" verticalAlignment="center" id="kCU-Xz-eYd"/>
+                        <table alignment="left" id="MUP-15-jFf">
+                            <items>
+                                <tableRow identifier="MessageTableRow" id="sKG-TO-Nb3" customClass="MessageTableRow" customModule="ChatApp_WatchKit_Extension">
+                                    <group key="rootItem" width="1" height="89" alignment="left" id="aXZ-7L-89u">
+                                        <items>
+                                            <imageView width="97" height="91" alignment="right" id="LAz-Ey-xoM"/>
+                                        </items>
+                                    </group>
+                                    <connections>
+                                        <outlet property="woo" destination="LAz-Ey-xoM" id="TQf-Rn-Sap"/>
+                                    </connections>
+                                </tableRow>
+                            </items>
+                        </table>
+                        <button width="1" alignment="left" verticalAlignment="bottom" title="Button" id="d5G-QY-DzM"/>
                     </items>
                     <connections>
-                        <outlet property="friendImage" destination="kCU-Xz-eYd" id="QWW-aW-lhV"/>
-                        <segue destination="QVF-YW-Igh" kind="relationship" relationship="nextPage" id="olo-Gp-FlG"/>
+                        <outlet property="ConversationTable" destination="MUP-15-jFf" id="AKN-kU-Vle"/>
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="379" y="352.75"/>
+            <point key="canvasLocation" x="379" y="352"/>
         </scene>
         <!--emotiveSelect-->
         <scene sceneID="Mpw-LE-1mQ">

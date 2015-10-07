@@ -1,5 +1,5 @@
 //
-//  FriendDetailInterfaceController.swift
+//  ConversationInterfaceController.swift
 //  ChatApp
 //
 //  Created by Spencer Congero on 8/29/15.
@@ -10,15 +10,13 @@ import WatchKit
 import Foundation
 
 
-class FriendDetailInterfaceController: WKInterfaceController {
+class ConversationInterfaceController: WKInterfaceController {
 
-    let blueImage = UIImage(named: "blueGradient")
-    let greenImage = UIImage(named: "greenGradient")
     let owlImage = UIImage(named: "owl")
     
     var emotion = ""
     
-    @IBOutlet var friendImage: WKInterfaceImage!
+    @IBOutlet var ConversationTable: WKInterfaceTable!
     
     // MARK: - WKInterfaceController methods
     
@@ -27,10 +25,10 @@ class FriendDetailInterfaceController: WKInterfaceController {
         
         // Configure interface objects here.
         
-        if let friend = context as? String {
-            setTitle(friend)
+        if let conversation = context as? String {
+            //setTitle(conversation)
         }
-        friendImage.setImage(owlImage)
+
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: NSSelectorFromString("tokenChanged:"), name: "token-changed", object: nil)
         

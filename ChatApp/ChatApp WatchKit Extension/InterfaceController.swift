@@ -40,7 +40,7 @@ class InterfaceController: WKInterfaceController {
     @objc func tokenChanged(notification: NSNotification)
     {
         if (NetworkingManager.sharedInstance.credentialStore.authToken() != nil) {
-            presentControllerWithName("FriendsList", context: nil)
+            presentControllerWithName("ConversationList", context: nil)
         }
     }
     

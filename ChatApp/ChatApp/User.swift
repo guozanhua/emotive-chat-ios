@@ -13,6 +13,7 @@ class User: NSObject
 
     static var userPath = "users/"
     static var friendsPathComponent = "friends/"
+    static var conversationsPathComponent = "conversations/"
     
     var uuid: String?
     var firstName: String?
