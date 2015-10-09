@@ -10,7 +10,12 @@ import WatchKit
 import Foundation
 
 
-class NewMessageInterfaceController: WKInterfaceController {
+class NewMessageInterfaceController: WKInterfaceController
+{
+    @IBOutlet var selectWooButton: WKInterfaceButton!
+    @IBOutlet var friendsMessagedButton: WKInterfaceButton!
+    
+    // MARK: - WKInterfaceController methods
 
     override func awakeWithContext(context: AnyObject?)
     {
@@ -28,5 +33,19 @@ class NewMessageInterfaceController: WKInterfaceController {
     {
         super.didDeactivate()
     }
+    
+    // MARK: - Internal methods
 
+    @IBAction func selectWooPressed()
+    {
+        self.presentControllerWithName("EmotiveSelect", context: nil)
+    }
+    @IBAction func friendsMessagedPressed()
+    {
+        self.presentControllerWithName("FriendsList", context: nil)
+    }
+    @IBAction func cancelPressed()
+    {
+        WKInterfaceController.reloadRootControllersWithNames(["ConversationList"], contexts: nil)
+    }
 }

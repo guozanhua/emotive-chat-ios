@@ -86,20 +86,38 @@
         <!--NewMessage-->
         <scene sceneID="p8w-6W-J6L">
             <objects>
-                <controller identifier="NewMessage" hidesWhenLoading="NO" id="I8b-vG-fLQ" customClass="NewMessageInterfaceController">
+                <controller identifier="NewMessage" hidesWhenLoading="NO" id="I8b-vG-fLQ" customClass="NewMessageInterfaceController" customModule="ChatApp_WatchKit_Extension">
                     <items>
-                        <button width="1" height="26.5" alignment="left" title="Friends" id="2U7-8A-K6F"/>
-                        <button width="87" height="75.5" alignment="center" title="Woo" id="VCg-EA-fAI"/>
-                        <group width="130" height="29.5" alignment="left" id="UA2-Cq-RqV">
+                        <button width="1" height="26.5" alignment="left" title="Friends" id="2U7-8A-K6F">
+                            <connections>
+                                <action selector="friendsMessagedPressed" destination="I8b-vG-fLQ" id="PSr-6x-Tm4"/>
+                            </connections>
+                        </button>
+                        <button width="95" height="86" alignment="center" title="Woo" id="VCg-EA-fAI">
+                            <connections>
+                                <action selector="selectWooPressed" destination="I8b-vG-fLQ" id="SQQ-D1-QiV"/>
+                            </connections>
+                        </button>
+                        <group width="136" height="29.5" alignment="left" id="UA2-Cq-RqV">
                             <items>
-                                <button width="64" height="42.5" alignment="left" title="Cancel" id="0Ui-Aw-rqO"/>
-                                <button width="64" height="42.5" alignment="left" title="Send" id="WQ7-Uk-hwc"/>
+                                <button width="66" height="42.5" alignment="left" title="Cancel" id="0Ui-Aw-rqO">
+                                    <connections>
+                                        <action selector="cancelPressed" destination="I8b-vG-fLQ" id="zfA-ri-lJU"/>
+                                    </connections>
+                                </button>
+                                <button width="66" height="42.5" alignment="left" title="Send" id="WQ7-Uk-hwc">
+                                    <color key="backgroundColor" red="0.393915112657513" green="0.64079579276279586" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </button>
                             </items>
                         </group>
                     </items>
+                    <connections>
+                        <outlet property="friendsMessagedButton" destination="2U7-8A-K6F" id="ym1-5Y-5Zr"/>
+                        <outlet property="selectWooButton" destination="VCg-EA-fAI" id="zY5-5w-Ezb"/>
+                    </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="398" y="226"/>
+            <point key="canvasLocation" x="398" y="222"/>
         </scene>
         <!--FriendsList-->
         <scene sceneID="XTv-FN-YXo">
@@ -130,10 +148,10 @@
             </objects>
             <point key="canvasLocation" x="615" y="222"/>
         </scene>
-        <!--emotiveSelect-->
+        <!--EmotiveSelect-->
         <scene sceneID="Mpw-LE-1mQ">
             <objects>
-                <controller identifier="emotiveSelect" hidesWhenLoading="NO" id="QVF-YW-Igh" customClass="EmotiveSelectInterfaceController" customModule="ChatApp_WatchKit_Extension">
+                <controller identifier="EmotiveSelect" hidesWhenLoading="NO" id="QVF-YW-Igh" customClass="EmotiveSelectInterfaceController" customModule="ChatApp_WatchKit_Extension">
                     <items>
                         <group width="1" height="174" alignment="left" layout="vertical" id="SAm-Dx-3rK">
                             <items>
