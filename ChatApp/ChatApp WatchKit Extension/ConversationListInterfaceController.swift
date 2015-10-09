@@ -45,7 +45,7 @@ class ConversationListInterfaceController: WKInterfaceController {
     // MARK: - WKInterfaceTable methods
     
     override func table(table: WKInterfaceTable, didSelectRowAtIndex rowIndex: Int) {
-        presentControllerWithName("Conversation", context: self.conversations[rowIndex])
+        self.pushControllerWithName("Conversation", context: self.conversations[rowIndex])
     }
     
     func loadTableData()
@@ -69,7 +69,6 @@ class ConversationListInterfaceController: WKInterfaceController {
                         conversationTitle = conversationTitle.stringByAppendingString(", ")
                     }
                 }
-                
             }
             row.ConversationLabel.setText(conversationTitle)
         }
@@ -82,6 +81,11 @@ class ConversationListInterfaceController: WKInterfaceController {
         if (NetworkingManager.sharedInstance.credentialStore.authToken() == nil) {
             WKInterfaceController.reloadRootControllersWithNames(["InterfaceController"], contexts: nil)
         }
+    }
+    
+    @IBAction func newMessagePressed()
+    {
+        WKInterfaceController.reloadRootControllersWithNames(["NewMessage"], contexts: nil)
     }
     
     // MARK: - Private methods

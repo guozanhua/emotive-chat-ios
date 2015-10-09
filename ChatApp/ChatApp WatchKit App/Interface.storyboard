@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="8187.4" systemVersion="14F27" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="bbi-4u-VDO">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="bbi-4u-VDO">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8151.3"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="8092"/>
     </dependencies>
     <scenes>
@@ -39,6 +39,15 @@
                             </items>
                         </table>
                     </items>
+                    <menu key="menu" id="fig-hE-nid">
+                        <items>
+                            <menuItem title="New Message" icon="share" id="ET2-xW-f7q">
+                                <connections>
+                                    <action selector="newMessagePressed" destination="NKT-KE-wFq" id="rQa-tk-UtU"/>
+                                </connections>
+                            </menuItem>
+                        </items>
+                    </menu>
                     <connections>
                         <outlet property="conversationsTable" destination="xI5-Mo-yS5" id="C1A-KO-E63"/>
                     </connections>
@@ -72,7 +81,54 @@
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="379" y="352"/>
+            <point key="canvasLocation" x="403" y="572"/>
+        </scene>
+        <!--NewMessage-->
+        <scene sceneID="p8w-6W-J6L">
+            <objects>
+                <controller identifier="NewMessage" hidesWhenLoading="NO" id="I8b-vG-fLQ" customClass="NewMessageInterfaceController">
+                    <items>
+                        <button width="1" height="26.5" alignment="left" title="Friends" id="2U7-8A-K6F"/>
+                        <button width="87" height="75.5" alignment="center" title="Woo" id="VCg-EA-fAI"/>
+                        <group width="130" height="29.5" alignment="left" id="UA2-Cq-RqV">
+                            <items>
+                                <button width="64" height="42.5" alignment="left" title="Cancel" id="0Ui-Aw-rqO"/>
+                                <button width="64" height="42.5" alignment="left" title="Send" id="WQ7-Uk-hwc"/>
+                            </items>
+                        </group>
+                    </items>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="398" y="226"/>
+        </scene>
+        <!--FriendsList-->
+        <scene sceneID="XTv-FN-YXo">
+            <objects>
+                <controller identifier="FriendsList" hidesWhenLoading="NO" id="f4I-q2-HqG" customClass="FriendsListInterfaceController" customModule="ChatApp_WatchKit_Extension">
+                    <items>
+                        <table alignment="left" id="eOX-DE-oem" userLabel="Friends Table">
+                            <items>
+                                <tableRow identifier="FriendsTableRow" id="MAz-Ox-91h" userLabel="FriendsTableRow" customClass="FriendsTableRow" customModule="ChatApp_WatchKit_Extension">
+                                    <group key="rootItem" width="1" alignment="left" id="laC-Ga-7bL">
+                                        <items>
+                                            <separator alignment="left" id="s6f-tI-SVy"/>
+                                            <label width="119.5" height="39.5" alignment="left" text="Label" id="Aan-GV-oYz"/>
+                                        </items>
+                                    </group>
+                                    <connections>
+                                        <outlet property="friendLabel" destination="Aan-GV-oYz" id="LQv-Fy-w84"/>
+                                        <outlet property="friendSeparator" destination="s6f-tI-SVy" id="jlB-CL-eWG"/>
+                                    </connections>
+                                </tableRow>
+                            </items>
+                        </table>
+                    </items>
+                    <connections>
+                        <outlet property="friendsTable" destination="eOX-DE-oem" id="ahz-sn-tPM"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="615" y="222"/>
         </scene>
         <!--emotiveSelect-->
         <scene sceneID="Mpw-LE-1mQ">
@@ -138,7 +194,7 @@
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="572" y="363.5"/>
+            <point key="canvasLocation" x="586" y="583.5"/>
         </scene>
     </scenes>
 </document>

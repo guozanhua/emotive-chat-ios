@@ -45,7 +45,7 @@ class FriendsListInterfaceController: WKInterfaceController
     // MARK: - WKInterfaceTable methods
     
     override func table(table: WKInterfaceTable, didSelectRowAtIndex rowIndex: Int) {
-        presentControllerWithNames(["FriendDetails", "emotiveSelect"], contexts: [friends[rowIndex], friends[rowIndex]])
+        self.dismissController()
     }
     
     func loadTableData()
@@ -67,6 +67,8 @@ class FriendsListInterfaceController: WKInterfaceController
             WKInterfaceController.reloadRootControllersWithNames(["InterfaceController"], contexts: nil)
         }
     }
+    
+    @IBOutlet var addFriendToConversationPressed: FriendsTableRow!
     
     // MARK: - Private methods
     
