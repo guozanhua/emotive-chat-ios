@@ -196,10 +196,28 @@
             </objects>
             <point key="canvasLocation" x="586" y="583.5"/>
         </scene>
-        <!--Interface Controller-->
+        <!--WooList-->
         <scene sceneID="UWg-GY-eSl">
             <objects>
-                <controller hidesWhenLoading="NO" id="9JX-SN-pgm"/>
+                <controller identifier="WooList" hidesWhenLoading="NO" id="9JX-SN-pgm" customClass="WooListInterfaceController" customModule="ChatApp_WatchKit_Extension">
+                    <items>
+                        <table alignment="left" id="OQA-fA-R3Y">
+                            <items>
+                                <tableRow id="uka-pE-LJN">
+                                    <group key="rootItem" width="1" alignment="left" id="1Pi-lO-Wai">
+                                        <items>
+                                            <imageView width="60" alignment="left" id="8yZ-gO-Ydh"/>
+                                            <separator alignment="left" id="deV-Kq-hMV">
+                                                <color key="color" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            </separator>
+                                            <imageView width="60" alignment="right" id="mCX-Fe-x6N"/>
+                                        </items>
+                                    </group>
+                                </tableRow>
+                            </items>
+                        </table>
+                    </items>
+                </controller>
             </objects>
             <point key="canvasLocation" x="782" y="579"/>
         </scene>
