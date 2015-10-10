@@ -10,6 +10,8 @@ import UIKit
 
 class Woo: NSObject
 {
+    static var wooPath = "woos/"
+    
     var uuid: String?
     var images: [UIImage]?
 }

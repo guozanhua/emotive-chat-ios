@@ -8,8 +8,8 @@
 
 import WatchKit
 
-class FriendsTableRow: NSObject {
-
+class FriendsTableRow: NSObject
+{
     @IBOutlet var friendSeparator: WKInterfaceSeparator!
     @IBOutlet var friendLabel: WKInterfaceLabel!
 }

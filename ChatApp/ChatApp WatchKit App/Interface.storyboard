@@ -203,20 +203,38 @@
                     <items>
                         <table alignment="left" id="OQA-fA-R3Y">
                             <items>
-                                <tableRow id="uka-pE-LJN">
-                                    <group key="rootItem" width="1" alignment="left" id="1Pi-lO-Wai">
+                                <tableRow identifier="WooListTableRow" selectable="NO" id="uka-pE-LJN" customClass="WooListTableRow" customModule="ChatApp_WatchKit_Extension">
+                                    <group key="rootItem" width="1" alignment="left" radius="1" id="1Pi-lO-Wai">
                                         <items>
-                                            <imageView width="60" alignment="left" id="8yZ-gO-Ydh"/>
-                                            <separator alignment="left" id="deV-Kq-hMV">
-                                                <color key="color" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <button width="60" alignment="left" id="x28-F4-QRb">
+                                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <connections>
+                                                    <action selector="wooButtonPressed" destination="9JX-SN-pgm" id="hve-pV-RWO"/>
+                                                </connections>
+                                            </button>
+                                            <separator alignment="center" id="deV-Kq-hMV">
+                                                <color key="color" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             </separator>
-                                            <imageView width="60" alignment="right" id="mCX-Fe-x6N"/>
+                                            <button width="60" alignment="right" id="Gdc-4e-tDE">
+                                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <connections>
+                                                    <action selector="wooButtonPressed" destination="9JX-SN-pgm" id="pSN-V5-AT8"/>
+                                                </connections>
+                                            </button>
                                         </items>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     </group>
+                                    <connections>
+                                        <outlet property="leftWooButton" destination="x28-F4-QRb" id="XFx-eA-6HD"/>
+                                        <outlet property="rightWooButton" destination="Gdc-4e-tDE" id="BE0-Wy-nlR"/>
+                                    </connections>
                                 </tableRow>
                             </items>
                         </table>
                     </items>
+                    <connections>
+                        <outlet property="wooListTable" destination="OQA-fA-R3Y" id="sJ5-jd-kzr"/>
+                    </connections>
                 </controller>
             </objects>
             <point key="canvasLocation" x="782" y="579"/>

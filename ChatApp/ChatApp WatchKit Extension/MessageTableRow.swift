@@ -8,8 +8,7 @@
 
 import WatchKit
 
-class MessageTableRow: NSObject {
-
+class MessageTableRow: NSObject
+{
     @IBOutlet var woo: WKInterfaceImage!
-    
 }

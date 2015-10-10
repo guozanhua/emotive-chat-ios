@@ -8,7 +8,7 @@
 
 import WatchKit
 
-class ConversationsTableRow: NSObject {
-
+class ConversationsTableRow: NSObject
+{
     @IBOutlet var ConversationLabel: WKInterfaceLabel!
 }
