@@ -10,10 +10,14 @@ import WatchKit
 import Foundation
 
 
-class NewMessageInterfaceController: WKInterfaceController
+class NewMessageInterfaceController: WKInterfaceController, FriendAddedToMessageDelegate
 {
     @IBOutlet var selectWooButton: WKInterfaceButton!
     @IBOutlet var friendsMessagedButton: WKInterfaceButton!
+    
+    var friendsMessagedButtonText: String! = "Add Friend"
+    
+    var friendsToMessage: [Dictionary<String, String>] = []
     
     // MARK: - WKInterfaceController methods
 
@@ -27,6 +31,8 @@ class NewMessageInterfaceController: WKInterfaceController
     override func willActivate()
     {
         super.willActivate()
+        
+        self.friendsMessagedButton.setTitle(friendsMessagedButtonText)
     }
 
     override func didDeactivate()
@@ -34,15 +40,43 @@ class NewMessageInterfaceController: WKInterfaceController
         super.didDeactivate()
     }
     
+    // MARK: - FriendAddedToMessageDelegate methods
+    func friendAddedToMessage(friendObject: Dictionary<String, String>)
+    {
+        self.friendsToMessage.append(friendObject)
+        if (self.friendsToMessage.count == 1) {
+            let newAddFriendsText: String! = friendObject["firstName"]! + " " + friendObject["lastName"]!
+            self.friendsMessagedButtonText = newAddFriendsText
+        }
+        else {
+            var initalsList: [String] = []
+            for var friend in self.friendsToMessage {
+                let firstName: String! = friend["firstName"]
+                let lastName: String! = friend["lastName"]
+                let firstInitial: String! = firstName.substringToIndex(firstName.startIndex.advancedBy(1))
+                let lastInitial: String! = lastName.substringToIndex(lastName.startIndex.advancedBy(1))
+                initalsList.append(firstInitial+lastInitial)
+            }
+            var newAddFriendsText: String! = ""
+            for var index = 0; index < initalsList.count; index++ {
+                newAddFriendsText = newAddFriendsText + initalsList[index]
+                if (index != initalsList.count - 1) {
+                    newAddFriendsText = newAddFriendsText + ", "
+                }
+            }
+            self.friendsMessagedButtonText = newAddFriendsText
+        }
+    }
+    
     // MARK: - Internal methods
 
     @IBAction func selectWooPressed()
     {
-        self.presentControllerWithName("EmotiveSelect", context: nil)
+        self.presentControllerWithName("EmotiveSelect", context: self)
     }
     @IBAction func friendsMessagedPressed()
     {
-        self.presentControllerWithName("FriendsList", context: nil)
+        self.presentControllerWithName("FriendsList", context: self)
     }
     @IBAction func cancelPressed()
     {

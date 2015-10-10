@@ -9,6 +9,10 @@
 import WatchKit
 import Foundation
 
+protocol FriendAddedToMessageDelegate
+{
+    func friendAddedToMessage(friendObject: Dictionary<String, String>)
+}
 
 class FriendsListInterfaceController: WKInterfaceController
 {
@@ -17,6 +21,8 @@ class FriendsListInterfaceController: WKInterfaceController
     var friends: [Dictionary<String,String>] = []
     let friendColors = [UIColor.redColor(), UIColor.greenColor(), UIColor.blueColor(), UIColor.yellowColor(), UIColor.purpleColor()]
     
+    var delegate: FriendAddedToMessageDelegate! = nil
+    
     // MARK: - WKInterfaceController methods
 
     override func awakeWithContext(context: AnyObject?)
@@ -24,7 +30,7 @@ class FriendsListInterfaceController: WKInterfaceController
         super.awakeWithContext(context)
         
         // Configure interface objects here.
-        
+        self.delegate = context as! FriendAddedToMessageDelegate
         NSNotificationCenter.defaultCenter().addObserver(self, selector: NSSelectorFromString("tokenChanged:"), name: "token-changed", object: nil)
     }
     
@@ -44,7 +50,9 @@ class FriendsListInterfaceController: WKInterfaceController
     
     // MARK: - WKInterfaceTable methods
     
-    override func table(table: WKInterfaceTable, didSelectRowAtIndex rowIndex: Int) {
+    override func table(table: WKInterfaceTable, didSelectRowAtIndex rowIndex: Int)
+    {
+        self.delegate.friendAddedToMessage(self.friends[rowIndex])
         self.dismissController()
     }
     
@@ -67,8 +75,6 @@ class FriendsListInterfaceController: WKInterfaceController
             WKInterfaceController.reloadRootControllersWithNames(["InterfaceController"], contexts: nil)
         }
     }
-    
-    @IBOutlet var addFriendToConversationPressed: FriendsTableRow!
     
     // MARK: - Private methods
     
