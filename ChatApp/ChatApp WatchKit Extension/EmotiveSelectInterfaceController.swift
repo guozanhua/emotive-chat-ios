@@ -15,6 +15,8 @@ class EmotiveSelectInterfaceController: WKInterfaceController {
     @IBOutlet var leftButton: WKInterfaceButton!
     @IBOutlet var rightButton: WKInterfaceButton!
     
+    let favoritesTitle: String! = "Favorites"
+    
     // MARK: - WKInterfaceController methods
     
     override func awakeWithContext(context: AnyObject?) {
@@ -36,14 +38,12 @@ class EmotiveSelectInterfaceController: WKInterfaceController {
     }
     
     // MARK: - Internal methods
+
+    @IBAction func recentsPressed()
+    {
+        self.presentControllerWithName("WooList", context: favoritesTitle)
+    }
     
-    @IBAction func leftPressed() {
-        //dismissController()
-    }
-    @IBAction func rightPressed() {
-        //dismissController()
-    }
-        
     @objc func tokenChanged(notification: NSNotification)
     {
         if (NetworkingManager.sharedInstance.credentialStore.authToken() == nil) {

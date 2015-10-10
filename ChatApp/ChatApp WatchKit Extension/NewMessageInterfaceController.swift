@@ -33,6 +33,8 @@ class NewMessageInterfaceController: WKInterfaceController, FriendAddedToMessage
         super.willActivate()
         
         self.friendsMessagedButton.setTitle(friendsMessagedButtonText)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: NSSelectorFromString("tokenChanged:"), name: "token-changed", object: nil)
     }
 
     override func didDeactivate()
@@ -81,5 +83,12 @@ class NewMessageInterfaceController: WKInterfaceController, FriendAddedToMessage
     @IBAction func cancelPressed()
     {
         WKInterfaceController.reloadRootControllersWithNames(["ConversationList"], contexts: nil)
+    }
+    
+    @objc func tokenChanged(notification: NSNotification)
+    {
+        if (NetworkingManager.sharedInstance.credentialStore.authToken() == nil) {
+            WKInterfaceController.reloadRootControllersWithNames(["InterfaceController"], contexts: nil)
+        }
     }
 }

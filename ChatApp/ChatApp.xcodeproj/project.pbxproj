@@ -30,6 +30,7 @@
 		B726FFA31BB1EFFC0030307D /* CredentialStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70FA7E41B96B33E009867E5 /* CredentialStore.swift */; };
 		B73E67E21BA9303500AF8D5F /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = B73E67E11BA9303500AF8D5F /* UserDefaults.swift */; };
 		B7431B871BC8794200BD20F2 /* NewMessageInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7431B861BC8794200BD20F2 /* NewMessageInterfaceController.swift */; settings = {ASSET_TAGS = (); }; };
+		B7431B891BC89F1300BD20F2 /* WooListInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7431B881BC89F1300BD20F2 /* WooListInterfaceController.swift */; settings = {ASSET_TAGS = (); }; };
 		B74DF7871BAE22BF00A3998D /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74DF7861BAE22BF00A3998D /* InterfaceController.swift */; };
 		B76DED521BB8BDF3002F53D5 /* Conversation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76DED511BB8BDF3002F53D5 /* Conversation.swift */; settings = {ASSET_TAGS = (); }; };
 		B76DED531BB8BDF3002F53D5 /* Conversation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76DED511BB8BDF3002F53D5 /* Conversation.swift */; settings = {ASSET_TAGS = (); }; };
@@ -121,6 +122,7 @@
 		B74005A51B901E2100565B02 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		B74005A61B901E2100565B02 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
 		B7431B861BC8794200BD20F2 /* NewMessageInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewMessageInterfaceController.swift; sourceTree = "<group>"; };
+		B7431B881BC89F1300BD20F2 /* WooListInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WooListInterfaceController.swift; sourceTree = "<group>"; };
 		B74DF7861BAE22BF00A3998D /* InterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
 		B76DED3C1BB29294002F53D5 /* libPods-ChatApp WatchKit Extension-AFNetworking.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-ChatApp WatchKit Extension-AFNetworking.a"; path = "Pods/../build/Debug-watchos/libPods-ChatApp WatchKit Extension-AFNetworking.a"; sourceTree = "<group>"; };
 		B76DED3D1BB29294002F53D5 /* libPods-ChatApp WatchKit Extension-SSKeychain.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-ChatApp WatchKit Extension-SSKeychain.a"; path = "Pods/../build/Debug-watchos/libPods-ChatApp WatchKit Extension-SSKeychain.a"; sourceTree = "<group>"; };
@@ -214,6 +216,7 @@
 				B7431B861BC8794200BD20F2 /* NewMessageInterfaceController.swift */,
 				A1A878F51B91C9EB00AD0941 /* ConversationInterfaceController.swift */,
 				A1A878F71B922CC600AD0941 /* EmotiveSelectInterfaceController.swift */,
+				B7431B881BC89F1300BD20F2 /* WooListInterfaceController.swift */,
 			);
 			name = InterfaceControllers;
 			sourceTree = "<group>";
@@ -538,6 +541,7 @@
 				B726FFA11BB1EFFC0030307D /* UserDefaults.swift in Sources */,
 				B76DED531BB8BDF3002F53D5 /* Conversation.swift in Sources */,
 				A1B179001B9161E700372CB0 /* FriendsTableRow.swift in Sources */,
+				B7431B891BC89F1300BD20F2 /* WooListInterfaceController.swift in Sources */,
 				A1537E301BBF3D8800790867 /* ConversationListInterfaceController.swift in Sources */,
 				B726FFA31BB1EFFC0030307D /* CredentialStore.swift in Sources */,
 				B76DED591BB8C103002F53D5 /* Woo.swift in Sources */,

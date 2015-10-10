@@ -89,6 +89,7 @@
                 <controller identifier="NewMessage" hidesWhenLoading="NO" id="I8b-vG-fLQ" customClass="NewMessageInterfaceController" customModule="ChatApp_WatchKit_Extension">
                     <items>
                         <button width="1" height="26.5" alignment="left" title="Friends" id="2U7-8A-K6F">
+                            <color key="titleColor" red="0.393915112657513" green="0.64079579276279586" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="friendsMessagedPressed" destination="I8b-vG-fLQ" id="PSr-6x-Tm4"/>
                             </connections>
@@ -157,62 +158,50 @@
                             <items>
                                 <group width="1" height="54" alignment="left" id="r7T-fn-RjB">
                                     <items>
-                                        <button width="67" height="72" alignment="left" title="Button" id="8w6-Aj-S23">
+                                        <button width="67" height="72" alignment="left" title="1" id="8w6-Aj-S23">
                                             <color key="backgroundColor" red="0.26418349054624074" green="0.72549019607843135" blue="0.47773364335348983" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
-                                                <action selector="leftPressed" destination="QVF-YW-Igh" id="ug5-tJ-gqS"/>
+                                                <action selector="recentsPressed" destination="QVF-YW-Igh" id="Yxm-G1-D6b"/>
                                             </connections>
                                         </button>
-                                        <button width="67" height="72" alignment="right" title="Button" id="qFr-mv-qco">
+                                        <button width="67" height="72" alignment="right" title="2" id="qFr-mv-qco">
                                             <color key="backgroundColor" red="0.2738085934258907" green="0.37415797639740517" blue="0.72549019607843135" alpha="1" colorSpace="calibratedRGB"/>
-                                            <connections>
-                                                <action selector="rightPressed" destination="QVF-YW-Igh" id="N0t-cI-IIM"/>
-                                            </connections>
                                         </button>
                                     </items>
                                 </group>
                                 <group width="1" height="54" alignment="left" id="u6g-3u-EYe">
                                     <items>
-                                        <button width="67" height="72" alignment="left" title="Button" id="wlH-25-HH0">
+                                        <button width="67" height="72" alignment="left" title="3" id="wlH-25-HH0">
                                             <color key="backgroundColor" red="0.72549019609999998" green="0.24274082063713881" blue="0.27118841672370769" alpha="1" colorSpace="calibratedRGB"/>
-                                            <connections>
-                                                <action selector="leftPressed" destination="QVF-YW-Igh" id="SaM-5A-YVy"/>
-                                            </connections>
                                         </button>
-                                        <button width="67" height="72" alignment="right" title="Button" id="2jE-1p-dWg">
+                                        <button width="67" height="72" alignment="right" title="4" id="2jE-1p-dWg">
                                             <color key="backgroundColor" red="0.72549019609999998" green="0.62273528305865322" blue="0.28159509229215124" alpha="1" colorSpace="calibratedRGB"/>
-                                            <connections>
-                                                <action selector="rightPressed" destination="QVF-YW-Igh" id="oxO-9P-kxa"/>
-                                            </connections>
                                         </button>
                                     </items>
                                 </group>
                                 <group width="1" height="54" alignment="left" id="Nuc-DV-Dwr">
                                     <items>
-                                        <button width="67" height="72" alignment="left" title="Button" id="Agc-7Y-kXJ">
+                                        <button width="67" height="72" alignment="left" title="5" id="Agc-7Y-kXJ">
                                             <color key="backgroundColor" red="0.20891703680540516" green="0.72549019609999998" blue="0.68487953718648853" alpha="1" colorSpace="calibratedRGB"/>
-                                            <connections>
-                                                <action selector="leftPressed" destination="QVF-YW-Igh" id="6ab-bT-x94"/>
-                                            </connections>
                                         </button>
-                                        <button width="67" height="72" alignment="right" title="Button" id="WTf-Lt-AgH">
+                                        <button width="67" height="72" alignment="right" title="6" id="WTf-Lt-AgH">
                                             <color key="backgroundColor" red="0.72549019609999998" green="0.25837773587880553" blue="0.67130015032404633" alpha="1" colorSpace="calibratedRGB"/>
-                                            <connections>
-                                                <action selector="rightPressed" destination="QVF-YW-Igh" id="NaX-Nm-sL8"/>
-                                            </connections>
                                         </button>
                                     </items>
                                 </group>
                             </items>
                         </group>
                     </items>
-                    <connections>
-                        <outlet property="leftButton" destination="8w6-Aj-S23" id="XCI-bp-Pzv"/>
-                        <outlet property="rightButton" destination="qFr-mv-qco" id="0Hj-hD-CIb"/>
-                    </connections>
                 </controller>
             </objects>
             <point key="canvasLocation" x="586" y="583.5"/>
+        </scene>
+        <!--Interface Controller-->
+        <scene sceneID="UWg-GY-eSl">
+            <objects>
+                <controller hidesWhenLoading="NO" id="9JX-SN-pgm"/>
+            </objects>
+            <point key="canvasLocation" x="782" y="579"/>
         </scene>
     </scenes>
 </document>
