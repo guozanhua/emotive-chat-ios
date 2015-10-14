@@ -16,6 +16,7 @@ class NetworkingManager: NSObject
     
     static let baseURLString = "http://localhost:3003/api"
     static let authenticateURLPathComponent = "authenticate"
+    static let staticFilePathComponent = "static/"
 
     var manager: AFHTTPSessionManager
     var credentialStore : CredentialStore

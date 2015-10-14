@@ -82,7 +82,10 @@
     self.baseURL = url;
 
     self.requestSerializer = [AFHTTPRequestSerializer serializer];
-    self.responseSerializer = [AFJSONResponseSerializer serializer];
+    
+    //MY CHANGE -- MAKE SERIALIZER A COMPOUND SERIALIZER NOT JUST JSON
+    self.responseSerializer = [AFCompoundResponseSerializer compoundSerializerWithResponseSerializers:@[[AFJSONResponseSerializer serializer], [AFImageResponseSerializer serializer]]];
+    //self.responseSerializer = [AFJSONResponseSerializer serializer];
 
     return self;
 }
