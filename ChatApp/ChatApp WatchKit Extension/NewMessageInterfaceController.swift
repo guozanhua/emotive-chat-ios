@@ -113,38 +113,35 @@ class NewMessageInterfaceController: WKInterfaceController, FriendAddedToMessage
             
             if let wooUuidsString = self.wooToMessage?.uuid {
                 parameters = ["userUuids": userUuids, "wooUuid": wooUuidsString]
-            }
-            else {
-                parameters = ["userUuids": userUuids]
-            }
-            
-            manager.POST(Conversation.conversationPath,
-                parameters: parameters,
-                success: {
-                    (dataTask: NSURLSessionDataTask!, responseObject: AnyObject!) -> Void in
-                    if let jsonResult = responseObject as? Dictionary<String, AnyObject> {
-                        if ((jsonResult["success"] as! String) != "true") {
+                
+                manager.POST(Conversation.conversationPath,
+                    parameters: parameters,
+                    success: {
+                        (dataTask: NSURLSessionDataTask!, responseObject: AnyObject!) -> Void in
+                        if let jsonResult = responseObject as? Dictionary<String, AnyObject> {
+                            if ((jsonResult["success"] as! String) != "true") {
+                                print("Failed to create new conversation")
+                            }
+                        }
+                        else {
                             print("Failed to create new conversation")
+                            print("Error: responseObject couldn't be converted to Dictionary")
                         }
-                    }
-                    else {
+                    }, failure: {
+                        (dataTask: NSURLSessionDataTask!, error: NSError!) -> Void in
                         print("Failed to create new conversation")
-                        print("Error: responseObject couldn't be converted to Dictionary")
-                    }
-                }, failure: {
-                    (dataTask: NSURLSessionDataTask!, error: NSError!) -> Void in
-                    print("Failed to create new conversation")
-                    let errorMessage = "Error: " + error.localizedDescription
-                    print(errorMessage)
-                    
-                    if let response = dataTask.response as? NSHTTPURLResponse {
-                        if (response.statusCode == 401) {
-                            NetworkingManager.sharedInstance.credentialStore.clearSavedCredentials()
+                        let errorMessage = "Error: " + error.localizedDescription
+                        print(errorMessage)
+                        
+                        if let response = dataTask.response as? NSHTTPURLResponse {
+                            if (response.statusCode == 401) {
+                                NetworkingManager.sharedInstance.credentialStore.clearSavedCredentials()
+                            }
                         }
+                        
                     }
-                    
-                }
-            )
+                )
+            }
         }
     }
     
