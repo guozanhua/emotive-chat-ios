@@ -168,15 +168,15 @@ class WooListInterfaceController: WKInterfaceController
     {
         if (wooIndex <= self.woos.count - 1) {
             let woo = self.woos[wooIndex]
-            let uuidString = woo["uuid"] as! String
-            let images = woo["fullImages"]
             
             var wooObject = Dictionary<String, AnyObject>()
-            wooObject["uuid"] = uuidString
-            wooObject["images"] = images
-            self.delegate .wooAddedToMessage(wooObject)
-            
-            WKInterfaceController.reloadRootControllersWithNames(["NewMessage"], contexts: nil)
+            if let uuidString = woo["uuid"] as? String, images = woo["fullImages"] as? [UIImage] {
+                wooObject["uuid"] = uuidString
+                wooObject["images"] = images
+                self.delegate .wooAddedToMessage(wooObject)
+                
+                WKInterfaceController.reloadRootControllersWithNames(["NewMessage"], contexts: nil)
+            }
         }
     }
     

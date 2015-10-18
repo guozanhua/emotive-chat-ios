@@ -76,18 +76,16 @@ class NewMessageInterfaceController: WKInterfaceController, FriendAddedToMessage
     
     func wooAddedToMessage(wooObject: Dictionary<String, AnyObject>)
     {
-        let uuidString: String = wooObject["uuid"] as! String
-        let images: [UIImage] = wooObject["images"] as! [UIImage]
+        let uuidString = wooObject["uuid"] as? String
+        let images = wooObject["images"] as! [UIImage]
         
-        if (uuidString != nil && images != nil) {
-            let woo = Woo()
-            woo.uuid = uuidString
-            woo.images = images
-            self.wooToMessage = woo
-            
-            let firstImage = images[0]
-            self.selectWooButton.setBackgroundImage(firstImage)
-        }
+        let woo = Woo()
+        woo.uuid = uuidString
+        woo.images = images
+        self.wooToMessage = woo
+        
+        let firstImage = images[0]
+        self.selectWooButton.setBackgroundImage(firstImage)
     }
 
     
