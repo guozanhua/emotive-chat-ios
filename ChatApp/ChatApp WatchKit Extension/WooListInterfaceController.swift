@@ -10,10 +10,18 @@ import WatchKit
 import Foundation
 
 
+protocol WooAddedToMessageDelegate
+{
+    func wooAddedToMessage(wooObject: Dictionary<String, AnyObject>)
+}
+
 class WooListInterfaceController: WKInterfaceController
 {
+    let wooImageSize: CGFloat = 40
     var woos: [Dictionary<String, AnyObject>] = []
     var wooCategory: String! = "none"
+    
+    var delegate: WooAddedToMessageDelegate! = nil
     
     @IBOutlet var wooListTable: WKInterfaceTable!
     
@@ -24,8 +32,10 @@ class WooListInterfaceController: WKInterfaceController
         super.awakeWithContext(context)
         
         // Configure interface objects here.
-        
-        self.wooCategory = context as! String
+        let contextDictionary = context as! Dictionary<String, AnyObject>
+        self.delegate = contextDictionary["controller"] as! WooAddedToMessageDelegate
+
+        self.wooCategory = contextDictionary["category"] as! String
         self._getWoos()
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: NSSelectorFromString("tokenChanged:"), name: "token-changed", object: nil)
@@ -64,8 +74,8 @@ class WooListInterfaceController: WKInterfaceController
                         let rowController = self.wooListTable.rowControllerAtIndex(downloadIndex/2) as! WooListTableRow
                         
                         var firstWooImage: UIImage = responseObject as! UIImage
-                        UIGraphicsBeginImageContextWithOptions(CGSize(width: 40, height: 40), false, 0.0);
-                        firstWooImage.drawInRect(CGRectMake(0, 0, 40, 40))
+                        UIGraphicsBeginImageContextWithOptions(CGSize(width: self.wooImageSize, height: self.wooImageSize), false, 0.0);
+                        firstWooImage.drawInRect(CGRectMake(0, 0, self.wooImageSize, self.wooImageSize))
                         firstWooImage = UIGraphicsGetImageFromCurrentImageContext();
                         UIGraphicsEndImageContext();
                         
@@ -98,6 +108,7 @@ class WooListInterfaceController: WKInterfaceController
     
     @IBAction func wooButtonPressed()
     {
+        
         self.dismissController()
     }
     

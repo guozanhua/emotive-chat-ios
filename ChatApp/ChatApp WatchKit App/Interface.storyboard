@@ -108,6 +108,9 @@
                                 </button>
                                 <button width="66" height="42.5" alignment="left" title="Send" id="WQ7-Uk-hwc">
                                     <color key="backgroundColor" red="0.393915112657513" green="0.64079579276279586" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <connections>
+                                        <action selector="sendWooPressed" destination="I8b-vG-fLQ" id="28c-yE-gL0"/>
+                                    </connections>
                                 </button>
                             </items>
                         </group>

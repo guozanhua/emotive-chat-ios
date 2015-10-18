@@ -19,6 +19,9 @@ class InterfaceController: WKInterfaceController {
     override func awakeWithContext(context: AnyObject?) {
         super.awakeWithContext(context)
         
+        if (NetworkingManager.sharedInstance.credentialStore.isLoggedIn()) {
+            WKInterfaceController.reloadRootControllersWithNames(["ConversationList"], contexts: nil)
+        }
         // Configure interface objects here.
         authenticateLabel.setText("Auth Woomi\nor perish...")
         
@@ -27,6 +30,7 @@ class InterfaceController: WKInterfaceController {
 
     override func willActivate() {
         // This method is called when watch view controller is about to be visible to user
+        
         super.willActivate()
     }
 

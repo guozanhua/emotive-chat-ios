@@ -13,6 +13,6 @@ class Woo: NSObject
     static var wooPath = "woos/"
     
     var uuid: String?
-    var images: [UIImage]?
+    var images: [UIImage] = []
 }
 

@@ -10,7 +10,7 @@ import WatchKit
 import Foundation
 
 
-class NewMessageInterfaceController: WKInterfaceController, FriendAddedToMessageDelegate
+class NewMessageInterfaceController: WKInterfaceController, FriendAddedToMessageDelegate, WooAddedToMessageDelegate
 {
     @IBOutlet var selectWooButton: WKInterfaceButton!
     @IBOutlet var friendsMessagedButton: WKInterfaceButton!
@@ -18,6 +18,7 @@ class NewMessageInterfaceController: WKInterfaceController, FriendAddedToMessage
     var friendsMessagedButtonText: String! = "Add Friend"
     
     var friendsToMessage: [Dictionary<String, String>] = []
+    var wooToMessage: Woo? = nil
     
     // MARK: - WKInterfaceController methods
 
@@ -43,6 +44,7 @@ class NewMessageInterfaceController: WKInterfaceController, FriendAddedToMessage
     }
     
     // MARK: - FriendAddedToMessageDelegate methods
+    
     func friendAddedToMessage(friendObject: Dictionary<String, String>)
     {
         self.friendsToMessage.append(friendObject)
@@ -70,8 +72,29 @@ class NewMessageInterfaceController: WKInterfaceController, FriendAddedToMessage
         }
     }
     
+    // MARK: - WooAddedToMessageDelegate methods
+    
+    func wooAddedToMessage(wooObject: Dictionary<String, AnyObject>)
+    {
+        let woo = Woo()
+        woo.uuid = wooObject["uuid"] as? String
+        
+        let images = wooObject["images"] as! [UIImage]
+        woo.images = images
+        self.wooToMessage = woo
+        
+        let firstImage = images[0]
+        self.selectWooButton.setBackgroundImage(firstImage)
+    }
+
+    
     // MARK: - Internal methods
 
+    @IBAction func sendWooPressed()
+    {
+        
+    }
+    
     @IBAction func selectWooPressed()
     {
         self.presentControllerWithName("EmotiveSelect", context: self)
