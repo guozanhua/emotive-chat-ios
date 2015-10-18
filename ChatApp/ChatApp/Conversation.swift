@@ -10,6 +10,8 @@ import UIKit
 
 class Conversation: NSObject
 {
+    static var conversationPath = "conversations/"
+    
     var uuid: String?
     var title: String?
     var groupConversation: Bool
