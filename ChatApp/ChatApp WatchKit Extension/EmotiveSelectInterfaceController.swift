@@ -17,12 +17,17 @@ class EmotiveSelectInterfaceController: WKInterfaceController {
     
     let favoritesTitle: String! = "Favorites"
     
+    var newMessageController: NewMessageInterfaceController? = nil
+    
     // MARK: - WKInterfaceController methods
     
     override func awakeWithContext(context: AnyObject?) {
         super.awakeWithContext(context)
         
         // Configure interface objects here.
+        
+        let nmc = context as! NewMessageInterfaceController
+        self.newMessageController = nmc
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: NSSelectorFromString("tokenChanged:"), name: "token-changed", object: nil)
     }
@@ -41,7 +46,10 @@ class EmotiveSelectInterfaceController: WKInterfaceController {
 
     @IBAction func recentsPressed()
     {
-        self.presentControllerWithName("WooList", context: favoritesTitle)
+        var contextDictionary = Dictionary<String, AnyObject>()
+        contextDictionary["category"] = self.favoritesTitle
+        contextDictionary["controller"] = self.newMessageController
+        self.presentControllerWithName("WooList", context: contextDictionary)
     }
     
     @objc func tokenChanged(notification: NSNotification)

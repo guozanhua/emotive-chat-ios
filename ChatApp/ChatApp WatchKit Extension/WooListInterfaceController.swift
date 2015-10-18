@@ -23,6 +23,16 @@ class WooListInterfaceController: WKInterfaceController
     
     var delegate: WooAddedToMessageDelegate! = nil
     
+    var wooButtons: [WKInterfaceButton] = []
+    @IBOutlet var woo1: WKInterfaceButton!
+    @IBOutlet var woo2: WKInterfaceButton!
+    @IBOutlet var woo3: WKInterfaceButton!
+    @IBOutlet var woo4: WKInterfaceButton!
+    @IBOutlet var woo5: WKInterfaceButton!
+    @IBOutlet var woo6: WKInterfaceButton!
+    @IBOutlet var woo7: WKInterfaceButton!
+    @IBOutlet var woo8: WKInterfaceButton!
+    
     @IBOutlet var wooListTable: WKInterfaceTable!
     
     // MARK: - WKInterfaceController methods
@@ -38,6 +48,8 @@ class WooListInterfaceController: WKInterfaceController
         self.wooCategory = contextDictionary["category"] as! String
         self._getWoos()
         
+        self.wooButtons = [woo1, woo2, woo3, woo4, woo5, woo6, woo7, woo8]
+        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: NSSelectorFromString("tokenChanged:"), name: "token-changed", object: nil)
     }
 
@@ -51,15 +63,13 @@ class WooListInterfaceController: WKInterfaceController
         super.didDeactivate()
     }
     
-    // MARK: - WKInterfaceTable methods
+    // MARK: - Internal methods
     
-    func loadTableData()
+    func loadButtonData()
     {
-        self.wooListTable.setNumberOfRows(self.woos.count/2+1, withRowType: "WooListTableRow")
-        
         let manager = NetworkingManager.sharedInstance.manager
         var downloadIndex = 0
-
+        
         for var index = 0; index < self.woos.count; index++ {
             
             var currentWoo = self.woos[index]
@@ -71,22 +81,16 @@ class WooListInterfaceController: WKInterfaceController
                 success: { (dataTask: NSURLSessionDataTask!, responseObject: AnyObject!) in
                     
                     dispatch_async(dispatch_get_main_queue()) {
-                        let rowController = self.wooListTable.rowControllerAtIndex(downloadIndex/2) as! WooListTableRow
-                        
                         var firstWooImage: UIImage = responseObject as! UIImage
+                        self.woos[downloadIndex]["fullImages"] = [firstWooImage]
                         UIGraphicsBeginImageContextWithOptions(CGSize(width: self.wooImageSize, height: self.wooImageSize), false, 0.0);
                         firstWooImage.drawInRect(CGRectMake(0, 0, self.wooImageSize, self.wooImageSize))
                         firstWooImage = UIGraphicsGetImageFromCurrentImageContext();
                         UIGraphicsEndImageContext();
                         
-                        if (downloadIndex % 2 == 0) {
-                            rowController.leftWooButton.setBackgroundImage(firstWooImage)
-                        }
-                        else {
-                            rowController.rightWooButton.setBackgroundImage(firstWooImage)
-                        }
+                        self.wooButtons[downloadIndex].setBackgroundImage(firstWooImage)
                         downloadIndex = downloadIndex + 1
-
+                        
                     }
                     
                 },
@@ -103,15 +107,53 @@ class WooListInterfaceController: WKInterfaceController
             )
         }
     }
-
-    // MARK: - Internal methods
     
-    @IBAction func wooButtonPressed()
+    @IBAction func woo1Pressed()
     {
-        
-        self.dismissController()
+        self._wooPressed(0)
     }
-    
+    @IBAction func woo2Pressed()
+    {
+        if (self.woos.count >= 2) {
+            self._wooPressed(1)
+        }
+    }
+    @IBAction func woo3Pressed()
+    {
+        if (self.woos.count >= 3) {
+            self._wooPressed(2)
+        }
+    }
+    @IBAction func woo4Pressed()
+    {
+        if (self.woos.count >= 4) {
+            self._wooPressed(3)
+        }
+    }
+    @IBAction func woo5Pressed()
+    {
+        if (self.woos.count >= 5) {
+            self._wooPressed(4)
+        }
+    }
+    @IBAction func woo6Pressed()
+    {
+        if (self.woos.count >= 6) {
+            self._wooPressed(5)
+        }
+    }
+    @IBAction func woo7Pressed()
+    {
+        if (self.woos.count >= 7) {
+            self._wooPressed(6)
+        }
+    }
+    @IBAction func woo8Pressed()
+    {
+        if (self.woos.count >= 8) {
+            self._wooPressed(7)
+        }
+    }
     
     @objc func tokenChanged(notification: NSNotification)
     {
@@ -121,6 +163,22 @@ class WooListInterfaceController: WKInterfaceController
     }
     
     // MARK: - Private methods
+    
+    private func _wooPressed(wooIndex: Int)
+    {
+        if (wooIndex <= self.woos.count - 1) {
+            let woo = self.woos[wooIndex]
+            let uuidString = woo["uuid"] as! String
+            let images = woo["fullImages"]
+            
+            var wooObject = Dictionary<String, AnyObject>()
+            wooObject["uuid"] = uuidString
+            wooObject["images"] = images
+            self.delegate .wooAddedToMessage(wooObject)
+            
+            WKInterfaceController.reloadRootControllersWithNames(["NewMessage"], contexts: nil)
+        }
+    }
     
     private func _getWoos()
     {
@@ -137,7 +195,7 @@ class WooListInterfaceController: WKInterfaceController
                     }
                     else if (successful == true) {
                         self.woos = jsonResult["woos"] as! [Dictionary<String, AnyObject>]
-                        self.loadTableData()
+                        self.loadButtonData()
                     }
                 }
                 else {
