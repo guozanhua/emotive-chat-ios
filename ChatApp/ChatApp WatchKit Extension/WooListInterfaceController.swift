@@ -61,6 +61,8 @@ class WooListInterfaceController: WKInterfaceController
     override func didDeactivate()
     {
         super.didDeactivate()
+        
+        NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
     // MARK: - Internal methods
@@ -175,7 +177,9 @@ class WooListInterfaceController: WKInterfaceController
                 wooObject["images"] = images
                 self.delegate .wooAddedToMessage(wooObject)
                 
-                WKInterfaceController.reloadRootControllersWithNames(["NewMessage"], contexts: nil)
+                (self.delegate as! WKInterfaceController).dismissController()
+                
+                //WKInterfaceController.reloadRootControllersWithNames(["NewMessage"], contexts: nil)
             }
         }
     }

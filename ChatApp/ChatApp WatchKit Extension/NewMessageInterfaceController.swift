@@ -32,8 +32,13 @@ class NewMessageInterfaceController: WKInterfaceController, FriendAddedToMessage
     override func willActivate()
     {
         super.willActivate()
-        
+
         self.friendsMessagedButton.setTitle(friendsMessagedButtonText)
+        
+        if let image = self.wooToMessage?.images[0] {
+            self.selectWooButton.setBackgroundImage(image)
+            self.selectWooButton.setTitle("")
+        }
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: NSSelectorFromString("tokenChanged:"), name: "token-changed", object: nil)
     }
@@ -41,6 +46,8 @@ class NewMessageInterfaceController: WKInterfaceController, FriendAddedToMessage
     override func didDeactivate()
     {
         super.didDeactivate()
+        
+        NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
     // MARK: - FriendAddedToMessageDelegate methods

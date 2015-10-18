@@ -40,6 +40,8 @@ class EmotiveSelectInterfaceController: WKInterfaceController {
     override func didDeactivate() {
         // This method is called when watch view controller is no longer visible
         super.didDeactivate()
+        
+        NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
     // MARK: - Internal methods

@@ -208,15 +208,15 @@
                             <items>
                                 <group width="136" height="61" alignment="left" id="Ina-83-anM">
                                     <items>
-                                        <button width="58" height="58" alignment="left" title="1" id="tdU-6g-cvT">
+                                        <button width="58" height="58" alignment="center" id="tdU-6g-cvT">
                                             <connections>
                                                 <action selector="woo1Pressed" destination="9JX-SN-pgm" id="8NN-H1-7t7"/>
                                             </connections>
                                         </button>
-                                        <separator alignment="left" id="oWv-AC-tUc">
+                                        <separator alignment="center" id="oWv-AC-tUc">
                                             <color key="color" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         </separator>
-                                        <button width="58" height="58" alignment="left" title="2" id="xZw-dn-ugN">
+                                        <button width="58" height="58" alignment="center" id="xZw-dn-ugN">
                                             <connections>
                                                 <action selector="woo2Pressed" destination="9JX-SN-pgm" id="ndZ-PQ-Sk6"/>
                                             </connections>
@@ -225,15 +225,15 @@
                                 </group>
                                 <group width="136" height="61" alignment="left" id="yGP-fa-nqd">
                                     <items>
-                                        <button width="58" height="58" alignment="left" title="3" id="DBq-Ix-t8H">
+                                        <button width="58" height="58" alignment="center" id="DBq-Ix-t8H">
                                             <connections>
                                                 <action selector="woo3Pressed" destination="9JX-SN-pgm" id="com-u1-ffg"/>
                                             </connections>
                                         </button>
-                                        <separator alignment="left" id="9X4-tp-AP1">
+                                        <separator alignment="center" id="9X4-tp-AP1">
                                             <color key="color" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         </separator>
-                                        <button width="58" height="58" alignment="left" title="4" id="QXm-fG-nTu">
+                                        <button width="58" height="58" alignment="center" id="QXm-fG-nTu">
                                             <connections>
                                                 <action selector="woo4Pressed" destination="9JX-SN-pgm" id="daK-Kj-DFC"/>
                                             </connections>
@@ -242,15 +242,15 @@
                                 </group>
                                 <group width="136" height="61" alignment="left" id="U19-8m-k5L">
                                     <items>
-                                        <button width="58" height="58" alignment="left" title="5" id="sgY-01-HiI">
+                                        <button width="58" height="58" alignment="center" id="sgY-01-HiI">
                                             <connections>
                                                 <action selector="woo5Pressed" destination="9JX-SN-pgm" id="G6i-yO-aer"/>
                                             </connections>
                                         </button>
-                                        <separator alignment="left" id="rLM-qc-4np">
+                                        <separator alignment="center" id="rLM-qc-4np">
                                             <color key="color" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         </separator>
-                                        <button width="58" height="58" alignment="left" title="6" id="2id-0z-WzF">
+                                        <button width="58" height="58" alignment="center" id="2id-0z-WzF">
                                             <connections>
                                                 <action selector="woo6Pressed" destination="9JX-SN-pgm" id="kJB-Hu-dnQ"/>
                                             </connections>
@@ -259,15 +259,15 @@
                                 </group>
                                 <group width="136" height="61" alignment="left" id="gec-HW-TfL">
                                     <items>
-                                        <button width="58" height="58" alignment="left" title="7" id="FL6-xw-7Bg">
+                                        <button width="58" height="58" alignment="center" id="FL6-xw-7Bg">
                                             <connections>
                                                 <action selector="woo7Pressed" destination="9JX-SN-pgm" id="rdN-aZ-kbm"/>
                                             </connections>
                                         </button>
-                                        <separator alignment="left" id="lfy-TN-xb3">
+                                        <separator alignment="center" id="lfy-TN-xb3">
                                             <color key="color" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         </separator>
-                                        <button width="58" height="58" alignment="left" title="8" id="gKl-rs-yXs">
+                                        <button width="58" height="58" alignment="center" id="gKl-rs-yXs">
                                             <connections>
                                                 <action selector="woo8Pressed" destination="9JX-SN-pgm" id="6jL-OU-emJ"/>
                                             </connections>
