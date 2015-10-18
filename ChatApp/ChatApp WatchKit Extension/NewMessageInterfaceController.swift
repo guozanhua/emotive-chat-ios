@@ -112,7 +112,7 @@ class NewMessageInterfaceController: WKInterfaceController, FriendAddedToMessage
             var parameters = [:]
             
             if let wooUuidsString = self.wooToMessage?.uuid {
-                parameters = ["userUuids": userUuids, "wooUuid": wooUuidsString]
+                parameters = ["userUuids": userUuids, "wooUuid": wooUuidsString, "senderUuid": UserDefaults.currentUserUuid()]
                 
                 manager.POST(Conversation.conversationPath,
                     parameters: parameters,
@@ -138,7 +138,6 @@ class NewMessageInterfaceController: WKInterfaceController, FriendAddedToMessage
                                 NetworkingManager.sharedInstance.credentialStore.clearSavedCredentials()
                             }
                         }
-                        
                     }
                 )
             }
