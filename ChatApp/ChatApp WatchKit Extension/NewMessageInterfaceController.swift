@@ -101,25 +101,27 @@ class NewMessageInterfaceController: WKInterfaceController, FriendAddedToMessage
     @IBAction func sendWooPressed()
     {
         let manager = NetworkingManager.sharedInstance.manager
+        let currentUserUuid = UserDefaults.currentUserUuid()
         
         var userUuids: [String] = []
         
         for var index = 0; index < self.friendsToMessage.count; index++ {
             userUuids.append(self.friendsToMessage[index]["uuid"]!)
         }
+        userUuids.append(currentUserUuid)
         
         if (userUuids.count > 0) {
             var parameters = [:]
             
             if let wooUuidsString = self.wooToMessage?.uuid {
-                parameters = ["userUuids": userUuids, "wooUuid": wooUuidsString, "senderUuid": UserDefaults.currentUserUuid()]
+                parameters = ["userUuids": userUuids, "wooUuid": wooUuidsString, "senderUuid": currentUserUuid]
                 
                 manager.POST(Conversation.conversationPath,
                     parameters: parameters,
                     success: {
                         (dataTask: NSURLSessionDataTask!, responseObject: AnyObject!) -> Void in
                         if let jsonResult = responseObject as? Dictionary<String, AnyObject> {
-                            if ((jsonResult["success"] as! String) != "true") {
+                            if ((jsonResult["success"] as! Bool) != true) {
                                 print("Failed to create new conversation")
                             }
                         }
