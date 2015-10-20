@@ -12,11 +12,10 @@ class UserDefaults: NSObject {
 
     // MARK: - Type methods
 
-    class func currentUserUuid () -> String!
+    class func currentUserUuid () -> String?
     {
-        var currentUserUuid = NSUserDefaults.standardUserDefaults().stringForKey("uuid")
+        let currentUserUuid = NSUserDefaults.standardUserDefaults().stringForKey("uuid")
         if (currentUserUuid == nil) {
-            currentUserUuid = "none"
             print("ERROR - could not find current user uuid")
         }
         return currentUserUuid

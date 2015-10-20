@@ -183,7 +183,7 @@ class FriendSearchViewController: UIViewController, UITableViewDataSource, UITab
         let manager = NetworkingManager.sharedInstance.manager
         let currentUserUuid = UserDefaults.currentUserUuid()
         
-        manager.GET(User.userPath + currentUserUuid + "/" + User.friendsPathComponent,
+        manager.GET(User.userPath + currentUserUuid! + "/" + User.friendsPathComponent,
             parameters: nil,
             success: { (dataTask: NSURLSessionDataTask!, responseObject: AnyObject!) in
                 if let jsonResult = responseObject as? Dictionary<String, AnyObject> {

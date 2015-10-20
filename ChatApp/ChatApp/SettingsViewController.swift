@@ -72,7 +72,7 @@ class SettingsViewController: UIViewController, UITextFieldDelegate
         let currentUserUuid = UserDefaults.currentUserUuid()
         let parameters = ["firstName": firstName, "lastName": lastName, "email": email, "password": password]
         
-        manager.PUT(User.userPath + currentUserUuid,
+        manager.PUT(User.userPath + currentUserUuid!,
             parameters: parameters,
             success: {
                 (dataTask: NSURLSessionDataTask!, responseObject: AnyObject!) -> Void in

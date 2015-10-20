@@ -54,7 +54,7 @@ class ConversationListInterfaceController: WKInterfaceController {
     {
         self.conversationsTable.setNumberOfRows(self.conversations.count, withRowType: "ConversationsTableRow")
         
-        for var index = 0; index < conversations.count; ++index {
+        for var index = 0; index < self.conversations.count; ++index {
             var currentConversation = conversations[index]
             let row = conversationsTable.rowControllerAtIndex(index) as! ConversationsTableRow
             var conversationTitle = ""
@@ -97,7 +97,7 @@ class ConversationListInterfaceController: WKInterfaceController {
         let manager = NetworkingManager.sharedInstance.manager
         let currentUserUuid = UserDefaults.currentUserUuid()
         
-        manager.GET(User.userPath + currentUserUuid + "/" + User.conversationsPathComponent,
+        manager.GET(User.userPath + currentUserUuid! + "/" + User.conversationsPathComponent,
             parameters: nil,
             success: { (dataTask: NSURLSessionDataTask!, responseObject: AnyObject!) in
                 if let jsonResult = responseObject as? Dictionary<String, AnyObject> {

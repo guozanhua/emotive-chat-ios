@@ -19,7 +19,7 @@ class InterfaceController: WKInterfaceController {
     override func awakeWithContext(context: AnyObject?) {
         super.awakeWithContext(context)
         
-        if (NetworkingManager.sharedInstance.credentialStore.isLoggedIn()) {
+        if (NetworkingManager.sharedInstance.credentialStore.isLoggedIn() && UserDefaults.currentUserUuid() != nil) {
             WKInterfaceController.reloadRootControllersWithNames(["ConversationList"], contexts: nil)
         }
         // Configure interface objects here.

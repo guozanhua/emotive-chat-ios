@@ -108,13 +108,13 @@ class NewMessageInterfaceController: WKInterfaceController, FriendAddedToMessage
         for var index = 0; index < self.friendsToMessage.count; index++ {
             userUuids.append(self.friendsToMessage[index]["uuid"]!)
         }
-        userUuids.append(currentUserUuid)
+        userUuids.append(currentUserUuid!)
         
         if (userUuids.count > 0) {
             var parameters = [:]
             
             if let wooUuidsString = self.wooToMessage?.uuid {
-                parameters = ["userUuids": userUuids, "wooUuid": wooUuidsString, "senderUuid": currentUserUuid]
+                parameters = ["userUuids": userUuids, "wooUuid": wooUuidsString, "senderUuid": currentUserUuid!]
                 
                 manager.POST(Conversation.conversationPath,
                     parameters: parameters,

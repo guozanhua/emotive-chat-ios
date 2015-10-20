@@ -68,7 +68,7 @@ class AddFriendViewController: UIViewController, UITableViewDataSource, UITableV
         let currentUserUuid = UserDefaults.currentUserUuid()
         let parameters = ["newFriends": friendsArray]
         
-        manager.PUT(User.userPath + currentUserUuid,
+        manager.PUT(User.userPath + currentUserUuid!,
             parameters: parameters,
             success: {
                 (dataTask: NSURLSessionDataTask!, responseObject: AnyObject!) -> Void in
@@ -203,7 +203,7 @@ class AddFriendViewController: UIViewController, UITableViewDataSource, UITableV
     private func _getPotentialFriends()
     {
         let manager = NetworkingManager.sharedInstance.manager
-        let parameters = ["ignoreFriendsOfUserWithUuid": UserDefaults.currentUserUuid()]
+        let parameters = ["ignoreFriendsOfUserWithUuid": UserDefaults.currentUserUuid()!]
         
         manager.GET(User.userPath,
             parameters: parameters,
