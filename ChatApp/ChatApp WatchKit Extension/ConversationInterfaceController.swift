@@ -11,10 +11,6 @@ import Foundation
 
 
 class ConversationInterfaceController: WKInterfaceController {
-
-    let owlImage = UIImage(named: "owl")
-    
-    var emotion = ""
     
     @IBOutlet var ConversationTable: WKInterfaceTable!
     
@@ -29,7 +25,6 @@ class ConversationInterfaceController: WKInterfaceController {
             self.setTitle(conversation)
         }
 
-        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: NSSelectorFromString("tokenChanged:"), name: "token-changed", object: nil)
         
     }

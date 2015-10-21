@@ -52,6 +52,7 @@
 		B7CCF95C1B8E7F6B004DE54A /* FriendsListInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7CCF95B1B8E7F6B004DE54A /* FriendsListInterfaceController.swift */; };
 		B7CCF95E1B8E7F6B004DE54A /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7CCF95D1B8E7F6B004DE54A /* ExtensionDelegate.swift */; };
 		B7CCF9601B8E7F6B004DE54A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B7CCF95F1B8E7F6B004DE54A /* Assets.xcassets */; };
+		B7F2D0F61BD77DF100288B1E /* ConversationTableRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F2D0F51BD77DF100288B1E /* ConversationTableRow.swift */; settings = {ASSET_TAGS = (); }; };
 		BDAC3D2B12380A20FE3F1E3D /* libPods-ChatApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D786A70DD086453422BD95AF /* libPods-ChatApp.a */; };
 /* End PBXBuildFile section */
 
@@ -149,6 +150,7 @@
 		B7CCF95D1B8E7F6B004DE54A /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
 		B7CCF95F1B8E7F6B004DE54A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B7CCF9611B8E7F6B004DE54A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B7F2D0F51BD77DF100288B1E /* ConversationTableRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationTableRow.swift; sourceTree = "<group>"; };
 		D786A70DD086453422BD95AF /* libPods-ChatApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ChatApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1F27C84D28A83C57107BEF7 /* Pods-ChatApp WatchKit Extension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChatApp WatchKit Extension.release.xcconfig"; path = "Pods/Target Support Files/Pods-ChatApp WatchKit Extension/Pods-ChatApp WatchKit Extension.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -204,6 +206,7 @@
 			children = (
 				A1B178FF1B9161E700372CB0 /* FriendsTableRow.swift */,
 				A1537E311BBF404600790867 /* ConversationsTableRow.swift */,
+				B7F2D0F51BD77DF100288B1E /* ConversationTableRow.swift */,
 				A1537E2D1BBF358800790867 /* MessageTableRow.swift */,
 				B7431B8A1BC8BDFE00BD20F2 /* WooListTableRow.swift */,
 			);
@@ -540,6 +543,7 @@
 				A1A878F61B91C9EB00AD0941 /* ConversationInterfaceController.swift in Sources */,
 				B7CCF95E1B8E7F6B004DE54A /* ExtensionDelegate.swift in Sources */,
 				B74DF7871BAE22BF00A3998D /* InterfaceController.swift in Sources */,
+				B7F2D0F61BD77DF100288B1E /* ConversationTableRow.swift in Sources */,
 				B7431B8B1BC8BDFE00BD20F2 /* WooListTableRow.swift in Sources */,
 				A1537E321BBF404600790867 /* ConversationsTableRow.swift in Sources */,
 				B726FFA11BB1EFFC0030307D /* UserDefaults.swift in Sources */,
