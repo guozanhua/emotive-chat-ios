@@ -62,7 +62,13 @@ class ConversationListInterfaceController: WKInterfaceController {
                 conversationTitle = convTitle as! String
             }
             else {
-                let userObjects = currentConversation["userObjects"] as! [Dictionary<String,AnyObject>]
+                var userObjects = currentConversation["userObjects"] as! [Dictionary<String,AnyObject>]
+                for var k = 0; k < userObjects.count; ++k {
+                    let userObject = userObjects[k]
+                    if ((userObject["uuid"] as! String) == UserDefaults.currentUserUuid()!) {
+                        userObjects.removeAtIndex(k)
+                    }
+                }
                 for var i = 0; i < userObjects.count; ++i {
                     let userObject = userObjects[i]
                     let firstName = userObject["firstName"] as! String
