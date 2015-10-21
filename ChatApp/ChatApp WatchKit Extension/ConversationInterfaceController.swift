@@ -12,7 +12,12 @@ import Foundation
 
 class ConversationInterfaceController: WKInterfaceController {
     
-    @IBOutlet var ConversationTable: WKInterfaceTable!
+    var wooImageSize: CGFloat = 40
+    
+    @IBOutlet var messagesTable: WKInterfaceTable!
+    
+    var conversationContext: Dictionary<String,AnyObject> = Dictionary<String,AnyObject>()
+    var messages: [Dictionary<String,AnyObject>] = []
     
     // MARK: - WKInterfaceController methods
     
@@ -20,10 +25,9 @@ class ConversationInterfaceController: WKInterfaceController {
         super.awakeWithContext(context)
         
         // Configure interface objects here.
+        self.conversationContext = context as! Dictionary<String, AnyObject>
         
-        if let conversation = context as? String {
-            self.setTitle(conversation)
-        }
+        self._getMessages()        
     }
 
     override func willActivate() {
@@ -40,6 +44,54 @@ class ConversationInterfaceController: WKInterfaceController {
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
+    // MARK: - WKInterfaceTable methods
+        
+    func loadTableData()
+    {
+        let manager = NetworkingManager.sharedInstance.manager
+        self.messagesTable.setNumberOfRows(self.messages.count, withRowType: "ConversationTableRow")
+        
+        for var index = 0; index < self.messages.count; ++index {
+            var currentMessage = self.messages[index]
+            let row = self.messagesTable.rowControllerAtIndex(index) as! ConversationTableRow
+
+            let firstName = currentMessage["senderFirstName"] as! String
+            let lastName = currentMessage["senderLastName"] as! String
+            row.nameLabel.setText(firstName + " " + lastName)
+            row.nameLabel.setHidden(false)
+            
+            let wooObject = currentMessage["wooObject"] as! Dictionary<String, AnyObject>
+            let firstWooImageName = (wooObject["orderedImages"] as! [String])[0]
+            
+            manager.GET(NetworkingManager.staticFilePathComponent + firstWooImageName,
+                parameters: nil,
+                success: { (dataTask: NSURLSessionDataTask!, responseObject: AnyObject!) in
+                    
+                    dispatch_async(dispatch_get_main_queue()) {
+                        var firstWooImage: UIImage = responseObject as! UIImage
+
+                        UIGraphicsBeginImageContextWithOptions(CGSize(width: self.wooImageSize, height: self.wooImageSize), false, 0.0);
+                        firstWooImage.drawInRect(CGRectMake(0, 0, self.wooImageSize, self.wooImageSize))
+                        firstWooImage = UIGraphicsGetImageFromCurrentImageContext();
+                        UIGraphicsEndImageContext();
+                        
+                        row.wooButton.setBackgroundImage(firstWooImage)
+                    }
+                },
+                failure: { (dataTask: NSURLSessionDataTask!, error: NSError!) in
+                    let errorMessage = "Error: " + error.localizedDescription
+                    print(errorMessage)
+                    
+                    if let response = dataTask.response as? NSHTTPURLResponse {
+                        if (response.statusCode == 401) {
+                            NetworkingManager.sharedInstance.credentialStore.clearSavedCredentials()
+                        }
+                    }
+                }
+            )
+        }
+    }
+    
     // MARK: - Internal methods
     
     @objc func tokenChanged(notification: NSNotification)
@@ -48,4 +100,42 @@ class ConversationInterfaceController: WKInterfaceController {
             WKInterfaceController.reloadRootControllersWithNames(["InterfaceController"], contexts: nil)
         }
     }
+    
+    // MARK: - Private methods
+
+    private func _getMessages()
+    {
+        let manager = NetworkingManager.sharedInstance.manager
+        let conversationUuid = self.conversationContext["uuid"] as! String
+        
+        manager.GET(Conversation.conversationPath + conversationUuid,
+            parameters: nil,
+            success: { (dataTask: NSURLSessionDataTask!, responseObject: AnyObject!) in
+                if let jsonResult = responseObject as? Dictionary<String, AnyObject> {
+                    let successful = jsonResult["success"] as? Bool
+                    if (successful == false) {
+                        print("Failed to get all conversations of user")
+                    }
+                    else if (successful == true) {
+                        self.messages = jsonResult["messages"] as! [Dictionary<String, AnyObject>]
+                        self.loadTableData()
+                    }
+                }
+                else {
+                    print("Error: responseObject couldn't be converted to Dictionary")
+                }
+            },
+            failure: { (dataTask: NSURLSessionDataTask!, error: NSError!) in
+                let errorMessage = "Error: " + error.localizedDescription
+                print(errorMessage)
+                
+                if let response = dataTask.response as? NSHTTPURLResponse {
+                    if (response.statusCode == 401) {
+                        NetworkingManager.sharedInstance.credentialStore.clearSavedCredentials()
+                    }
+                }
+            }
+        )
+    }
+
 }

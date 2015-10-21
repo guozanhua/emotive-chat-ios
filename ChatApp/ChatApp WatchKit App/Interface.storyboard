@@ -84,7 +84,7 @@
                         </group>
                     </items>
                     <connections>
-                        <outlet property="ConversationTable" destination="MUP-15-jFf" id="AKN-kU-Vle"/>
+                        <outlet property="messagesTable" destination="MUP-15-jFf" id="UZU-z0-4RB"/>
                     </connections>
                 </controller>
             </objects>
