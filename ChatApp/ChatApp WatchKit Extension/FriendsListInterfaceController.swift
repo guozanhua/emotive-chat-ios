@@ -31,7 +31,6 @@ class FriendsListInterfaceController: WKInterfaceController
         
         // Configure interface objects here.
         self.delegate = context as! FriendAddedToMessageDelegate
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: NSSelectorFromString("tokenChanged:"), name: "token-changed", object: nil)
     }
     
     override func willActivate()
@@ -40,6 +39,8 @@ class FriendsListInterfaceController: WKInterfaceController
         super.willActivate()
         
         self._getFriends()
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: NSSelectorFromString("tokenChanged:"), name: "token-changed", object: nil)
     }
 
     override func didDeactivate()

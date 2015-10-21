@@ -49,13 +49,13 @@ class WooListInterfaceController: WKInterfaceController
         self._getWoos()
         
         self.wooButtons = [woo1, woo2, woo3, woo4, woo5, woo6, woo7, woo8]
-        
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: NSSelectorFromString("tokenChanged:"), name: "token-changed", object: nil)
     }
 
     override func willActivate()
     {
         super.willActivate()
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: NSSelectorFromString("tokenChanged:"), name: "token-changed", object: nil)
     }
 
     override func didDeactivate()

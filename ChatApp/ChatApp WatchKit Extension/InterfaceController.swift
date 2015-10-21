@@ -24,14 +24,13 @@ class InterfaceController: WKInterfaceController {
         }
         // Configure interface objects here.
         authenticateLabel.setText("Auth Woomi\nor perish...")
-        
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: NSSelectorFromString("tokenChanged:"), name: "token-changed", object: nil)
     }
 
     override func willActivate() {
         // This method is called when watch view controller is about to be visible to user
-        
         super.willActivate()
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: NSSelectorFromString("tokenChanged:"), name: "token-changed", object: nil)
     }
 
     override func didDeactivate() {

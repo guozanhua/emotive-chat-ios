@@ -24,8 +24,6 @@ class ConversationListInterfaceController: WKInterfaceController {
         super.awakeWithContext(context)
         
         // Configure interface objects here.
-        
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: NSSelectorFromString("tokenChanged:"), name: "token-changed", object: nil)
     }
     
     override func willActivate()
@@ -34,6 +32,8 @@ class ConversationListInterfaceController: WKInterfaceController {
         super.willActivate()
         
         self._getConversations()
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: NSSelectorFromString("tokenChanged:"), name: "token-changed", object: nil)
     }
     
     override func didDeactivate()

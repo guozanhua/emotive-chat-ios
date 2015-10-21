@@ -28,13 +28,13 @@ class EmotiveSelectInterfaceController: WKInterfaceController {
         
         let nmc = context as! NewMessageInterfaceController
         self.newMessageController = nmc
-        
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: NSSelectorFromString("tokenChanged:"), name: "token-changed", object: nil)
     }
 
     override func willActivate() {
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: NSSelectorFromString("tokenChanged:"), name: "token-changed", object: nil)
     }
 
     override func didDeactivate() {

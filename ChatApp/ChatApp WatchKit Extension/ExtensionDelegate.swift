@@ -53,7 +53,7 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate, WCSessionDelegate
             defaults.setObject(email, forKey: "email")
             
             NetworkingManager.sharedInstance.credentialStore.setAuthToken(token)
-            
+                        
         default:
             replyValues["status"] = "failure"
             break
