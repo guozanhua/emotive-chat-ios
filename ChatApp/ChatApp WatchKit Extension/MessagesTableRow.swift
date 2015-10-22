@@ -10,16 +10,8 @@ import WatchKit
 
 class MessagesTableRow: NSObject
 {
-    @IBOutlet var nameLabel: WKInterfaceLabel!
     @IBOutlet var wooButton: WKInterfaceButton!
-    
-    // MARK: - Initializers
-    
-    override init()
-    {
-        super.init()
-        self.nameLabel.setHidden(true)
-        self.wooButton.setHidden(true)
-    }
+    @IBOutlet var nameLabel: WKInterfaceLabel!
+    @IBOutlet var timeLabel: WKInterfaceLabel!
     
 }

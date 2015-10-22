@@ -49,20 +49,23 @@ class ConversationInterfaceController: WKInterfaceController {
     func loadTableData()
     {
         let manager = NetworkingManager.sharedInstance.manager
-        self.messagesTable.setNumberOfRows(self.messages.count, withRowType: "ConversationTableRow")
+        self.messagesTable.setNumberOfRows(self.messages.count, withRowType: "MessagesTableRow")
         
         for var index = 0; index < self.messages.count; ++index {
             var currentMessage = self.messages[index]
             let wooObject = currentMessage["woo"] as! Dictionary<String, AnyObject>
             let userObject = currentMessage["userObject"] as! Dictionary<String, AnyObject>
-            let row = self.messagesTable.rowControllerAtIndex(index) as! ConversationTableRow
+            let row = self.messagesTable.rowControllerAtIndex(index) as! MessagesTableRow
+            row.wooButton.setHidden(true)
 
             let firstName = userObject["firstName"] as! String
             let lastName = userObject["lastName"] as! String
             row.nameLabel.setText(firstName + " " + lastName)
-            row.nameLabel.setHidden(false)
             
-            let firstWooImageName = (wooObject["orderedImages"] as! [String])[0]
+            let time = currentMessage["created_at"] as! String
+            row.timeLabel.setText(time)
+            
+            let firstWooImageName = (wooObject["orderedImageFileNames"] as! [String])[0]
             
             manager.GET(NetworkingManager.staticFilePathComponent + firstWooImageName,
                 parameters: nil,
@@ -76,6 +79,7 @@ class ConversationInterfaceController: WKInterfaceController {
                         UIGraphicsEndImageContext();
                         
                         row.wooButton.setBackgroundImage(firstWooImage)
+                        row.wooButton.setHidden(false)
                     }
                 },
                 failure: { (dataTask: NSURLSessionDataTask!, error: NSError!) in

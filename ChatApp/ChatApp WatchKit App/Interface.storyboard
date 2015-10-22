@@ -62,16 +62,26 @@
                     <items>
                         <table alignment="left" id="MUP-15-jFf">
                             <items>
-                                <tableRow identifier="ConversationTableRow" selectable="NO" id="sKG-TO-Nb3" customClass="ConversationTableRow" customModule="ChatApp_WatchKit_Extension">
-                                    <group key="rootItem" width="1" height="103" alignment="left" layout="vertical" id="aXZ-7L-89u">
+                                <tableRow identifier="MessagesTableRow" selectable="NO" id="sKG-TO-Nb3" customClass="MessagesTableRow" customModule="ChatApp_WatchKit_Extension">
+                                    <group key="rootItem" width="1" height="80" alignment="left" id="aXZ-7L-89u">
                                         <items>
-                                            <button width="78" height="73.5" alignment="right" verticalAlignment="bottom" title="Button" id="JU8-5H-Hp6"/>
-                                            <label width="69" height="21.5" alignment="right" text="First Last" id="qs5-cV-Ibu"/>
+                                            <group width="40" height="20" alignment="right" verticalAlignment="center" id="kfR-On-it7">
+                                                <items>
+                                                    <label alignment="left" text="Time" id="eHz-jJ-63i"/>
+                                                </items>
+                                            </group>
+                                            <group width="61" height="80" alignment="right" layout="vertical" id="Fkc-kk-yV1">
+                                                <items>
+                                                    <button width="52" height="52" alignment="right" verticalAlignment="center" title="Button" id="JU8-5H-Hp6"/>
+                                                    <label width="66" height="20" alignment="right" text="First Last" id="qs5-cV-Ibu"/>
+                                                </items>
+                                            </group>
                                         </items>
                                     </group>
                                     <connections>
-                                        <outlet property="nameLabel" destination="qs5-cV-Ibu" id="Mzc-Im-xVf"/>
-                                        <outlet property="wooButton" destination="JU8-5H-Hp6" id="DmD-5t-rfj"/>
+                                        <outlet property="nameLabel" destination="qs5-cV-Ibu" id="gZH-Tc-biw"/>
+                                        <outlet property="timeLabel" destination="eHz-jJ-63i" id="Z4j-hG-XgW"/>
+                                        <outlet property="wooButton" destination="JU8-5H-Hp6" id="KfS-gw-NFY"/>
                                     </connections>
                                 </tableRow>
                             </items>
@@ -88,7 +98,7 @@
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="403" y="575.5"/>
+            <point key="canvasLocation" x="403" y="575"/>
         </scene>
         <!--NewMessage-->
         <scene sceneID="p8w-6W-J6L">
