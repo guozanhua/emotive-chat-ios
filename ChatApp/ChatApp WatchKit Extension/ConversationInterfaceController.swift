@@ -53,23 +53,23 @@ class ConversationInterfaceController: WKInterfaceController {
         
         for var index = 0; index < self.messages.count; ++index {
             var currentMessage = self.messages[index]
+            let wooObject = currentMessage["woo"] as! Dictionary<String, AnyObject>
+            let userObject = currentMessage["userObject"] as! Dictionary<String, AnyObject>
             let row = self.messagesTable.rowControllerAtIndex(index) as! ConversationTableRow
 
-            let firstName = currentMessage["senderFirstName"] as! String
-            let lastName = currentMessage["senderLastName"] as! String
+            let firstName = userObject["firstName"] as! String
+            let lastName = userObject["lastName"] as! String
             row.nameLabel.setText(firstName + " " + lastName)
             row.nameLabel.setHidden(false)
             
-            let wooObject = currentMessage["wooObject"] as! Dictionary<String, AnyObject>
             let firstWooImageName = (wooObject["orderedImages"] as! [String])[0]
             
             manager.GET(NetworkingManager.staticFilePathComponent + firstWooImageName,
                 parameters: nil,
                 success: { (dataTask: NSURLSessionDataTask!, responseObject: AnyObject!) in
-                    
                     dispatch_async(dispatch_get_main_queue()) {
+                        
                         var firstWooImage: UIImage = responseObject as! UIImage
-
                         UIGraphicsBeginImageContextWithOptions(CGSize(width: self.wooImageSize, height: self.wooImageSize), false, 0.0);
                         firstWooImage.drawInRect(CGRectMake(0, 0, self.wooImageSize, self.wooImageSize))
                         firstWooImage = UIGraphicsGetImageFromCurrentImageContext();
