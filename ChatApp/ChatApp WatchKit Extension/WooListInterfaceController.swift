@@ -69,50 +69,16 @@ class WooListInterfaceController: WKInterfaceController
     
     func loadButtonData()
     {
-        let manager = NetworkingManager.sharedInstance.manager
-        var downloadIndex = 0
-        
         for var index = 0; index < self.woos.count; index++ {
-            
-            var currentWoo = self.woos[index]
-            let allWooImageFilenames = currentWoo["orderedImages"] as! [String]
-            let firstWooImageFilename = allWooImageFilenames[0]
-            
-            manager.GET(NetworkingManager.staticFilePathComponent + firstWooImageFilename,
-                parameters: nil,
-                success: { (dataTask: NSURLSessionDataTask!, responseObject: AnyObject!) in
-                    
-                    dispatch_async(dispatch_get_main_queue()) {
-                        var firstWooImage: UIImage = responseObject as! UIImage
-                        self.woos[downloadIndex]["fullImages"] = [firstWooImage]
-                        UIGraphicsBeginImageContextWithOptions(CGSize(width: self.wooImageSize, height: self.wooImageSize), false, 0.0);
-                        firstWooImage.drawInRect(CGRectMake(0, 0, self.wooImageSize, self.wooImageSize))
-                        firstWooImage = UIGraphicsGetImageFromCurrentImageContext();
-                        UIGraphicsEndImageContext();
-                        
-                        self.wooButtons[downloadIndex].setBackgroundImage(firstWooImage)
-                        downloadIndex = downloadIndex + 1
-                        
-                    }
-                    
-                },
-                failure: { (dataTask: NSURLSessionDataTask!, error: NSError!) in
-                    let errorMessage = "Error: " + error.localizedDescription
-                    print(errorMessage)
-                    
-                    if let response = dataTask.response as? NSHTTPURLResponse {
-                        if (response.statusCode == 401) {
-                            NetworkingManager.sharedInstance.credentialStore.clearSavedCredentials()
-                        }
-                    }
-                }
-            )
+            _setImageForWooIndex(index)
         }
     }
     
     @IBAction func woo1Pressed()
     {
-        self._wooPressed(0)
+        if (self.woos.count >= 1) {
+            self._wooPressed(0)
+        }
     }
     @IBAction func woo2Pressed()
     {
@@ -205,6 +171,43 @@ class WooListInterfaceController: WKInterfaceController
                 else {
                     print("Error: responseObject couldn't be converted to Dictionary")
                 }
+            },
+            failure: { (dataTask: NSURLSessionDataTask!, error: NSError!) in
+                let errorMessage = "Error: " + error.localizedDescription
+                print(errorMessage)
+                
+                if let response = dataTask.response as? NSHTTPURLResponse {
+                    if (response.statusCode == 401) {
+                        NetworkingManager.sharedInstance.credentialStore.clearSavedCredentials()
+                    }
+                }
+            }
+        )
+    }
+    
+    private func _setImageForWooIndex(index: Int)
+    {
+        let manager = NetworkingManager.sharedInstance.manager
+
+        var currentWoo = self.woos[index]
+        let allWooImageFilenames = currentWoo["orderedImages"] as! [String]
+        let firstWooImageFilename = allWooImageFilenames[0]
+
+        manager.GET(NetworkingManager.staticFilePathComponent + firstWooImageFilename,
+            parameters: nil,
+            success: { (dataTask: NSURLSessionDataTask!, responseObject: AnyObject!) in
+                
+                dispatch_async(dispatch_get_main_queue()) {
+                    var firstWooImage: UIImage = responseObject as! UIImage
+                    self.woos[index]["fullImages"] = [firstWooImage]
+                    UIGraphicsBeginImageContextWithOptions(CGSize(width: self.wooImageSize, height: self.wooImageSize), false, 0.0);
+                    firstWooImage.drawInRect(CGRectMake(0, 0, self.wooImageSize, self.wooImageSize))
+                    firstWooImage = UIGraphicsGetImageFromCurrentImageContext();
+                    UIGraphicsEndImageContext();
+                    
+                    self.wooButtons[index].setBackgroundImage(firstWooImage)
+                }
+                
             },
             failure: { (dataTask: NSURLSessionDataTask!, error: NSError!) in
                 let errorMessage = "Error: " + error.localizedDescription
