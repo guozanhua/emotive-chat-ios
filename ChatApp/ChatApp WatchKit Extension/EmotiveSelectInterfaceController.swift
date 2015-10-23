@@ -18,6 +18,7 @@ class EmotiveSelectInterfaceController: WKInterfaceController {
     let favoritesTitle: String! = "Favorites"
     
     var newMessageController: NewMessageInterfaceController? = nil
+    var newConversationController: ConversationInterfaceController? = nil
     
     // MARK: - WKInterfaceController methods
     
@@ -26,8 +27,14 @@ class EmotiveSelectInterfaceController: WKInterfaceController {
         
         // Configure interface objects here.
         
-        let nmc = context as! NewMessageInterfaceController
-        self.newMessageController = nmc
+        if let controller = context as? NewMessageInterfaceController {
+            self.newMessageController = controller
+            self.newConversationController = nil
+        }
+        else if let controller = context as? ConversationInterfaceController {
+            self.newConversationController = controller
+            self.newMessageController = nil
+        }
     }
 
     override func willActivate() {
@@ -50,7 +57,12 @@ class EmotiveSelectInterfaceController: WKInterfaceController {
     {
         var contextDictionary = Dictionary<String, AnyObject>()
         contextDictionary["category"] = self.favoritesTitle
-        contextDictionary["controller"] = self.newMessageController
+        if (self.newMessageController == nil) {
+            contextDictionary["controller"] = self.newConversationController
+        }
+        else {
+            contextDictionary["controller"] = self.newMessageController
+        }
         self.presentControllerWithName("WooList", context: contextDictionary)
     }
     

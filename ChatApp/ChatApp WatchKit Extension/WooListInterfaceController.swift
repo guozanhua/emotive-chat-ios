@@ -143,9 +143,7 @@ class WooListInterfaceController: WKInterfaceController
                 wooObject["images"] = images
                 self.delegate .wooAddedToMessage(wooObject)
                 
-                (self.delegate as! WKInterfaceController).dismissController()
-                
-                //WKInterfaceController.reloadRootControllersWithNames(["NewMessage"], contexts: nil)
+                (self.delegate as! WKInterfaceController).dismissController()                
             }
         }
     }

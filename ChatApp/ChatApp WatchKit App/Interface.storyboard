@@ -88,7 +88,11 @@
                         </table>
                         <group width="1" alignment="left" layout="vertical" id="DkI-zc-dM8">
                             <items>
-                                <button width="136" alignment="left" title="Woo" id="Pw9-OA-rGo"/>
+                                <button width="136" alignment="left" title="Woo" id="Pw9-OA-rGo">
+                                    <connections>
+                                        <action selector="wooButtonPressed" destination="V2w-pL-DL7" id="n1I-UA-ArR"/>
+                                    </connections>
+                                </button>
                                 <button width="135" alignment="left" title="Microphone" id="BVF-ka-BsA"/>
                             </items>
                         </group>

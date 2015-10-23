@@ -10,8 +10,8 @@ import WatchKit
 import Foundation
 
 
-class ConversationInterfaceController: WKInterfaceController {
-    
+class ConversationInterfaceController: WKInterfaceController, WooAddedToMessageDelegate
+{
     let wooImageSize: CGFloat = 40
     var dateFormatter = NSDateFormatter()
     
@@ -100,7 +100,52 @@ class ConversationInterfaceController: WKInterfaceController {
         }
     }
     
+    // MARK: - WooAddedToMessageDelegate methods
+    
+    func wooAddedToMessage(wooObject: Dictionary<String, AnyObject>)
+    {
+        let wooUuid = wooObject["uuid"] as! String
+        
+        let manager = NetworkingManager.sharedInstance.manager
+        let currentUserUuid = UserDefaults.currentUserUuid()
+        let conversationUuid = self.conversationContext["uuid"] as! String
+        
+        let parameters = ["wooUuid": wooUuid, "senderUuid": currentUserUuid!]
+        
+        manager.PUT(Conversation.conversationPath + conversationUuid,
+            parameters: parameters,
+            success: {
+                (dataTask: NSURLSessionDataTask!, responseObject: AnyObject!) -> Void in
+                if let jsonResult = responseObject as? Dictionary<String, AnyObject> {
+                    if ((jsonResult["success"] as! Bool) == false) {
+                        print("Failed to create new message")
+                    }
+                }
+                else {
+                    print("Failed to create new message")
+                    print("Error: responseObject couldn't be converted to Dictionary")
+                }
+            }, failure: {
+                (dataTask: NSURLSessionDataTask!, error: NSError!) -> Void in
+                print("Failed to create new message")
+                let errorMessage = "Error: " + error.localizedDescription
+                print(errorMessage)
+                
+                if let response = dataTask.response as? NSHTTPURLResponse {
+                    if (response.statusCode == 401) {
+                        NetworkingManager.sharedInstance.credentialStore.clearSavedCredentials()
+                    }
+                }
+            }
+        )
+    }
+    
     // MARK: - Internal methods
+    
+    @IBAction func wooButtonPressed()
+    {
+        self.pushControllerWithName("EmotiveSelect", context: self)
+    }
     
     @objc func tokenChanged(notification: NSNotification)
     {

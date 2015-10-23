@@ -10,8 +10,8 @@ import WatchKit
 import Foundation
 
 
-class ConversationListInterfaceController: WKInterfaceController {
-
+class ConversationListInterfaceController: WKInterfaceController
+{
     var conversations: [Dictionary<String,AnyObject>] = []
     let friendColors = [UIColor.redColor(), UIColor.greenColor(), UIColor.blueColor(), UIColor.yellowColor(), UIColor.purpleColor()]
     
