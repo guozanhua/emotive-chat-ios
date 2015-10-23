@@ -12,7 +12,8 @@ import Foundation
 
 class ConversationInterfaceController: WKInterfaceController {
     
-    var wooImageSize: CGFloat = 40
+    let wooImageSize: CGFloat = 40
+    var dateFormatter = NSDateFormatter()
     
     @IBOutlet var messagesTable: WKInterfaceTable!
     
@@ -26,8 +27,9 @@ class ConversationInterfaceController: WKInterfaceController {
         
         // Configure interface objects here.
         self.conversationContext = context as! Dictionary<String, AnyObject>
+        self.dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
         
-        self._getMessages()        
+        self._getMessages()
     }
 
     override func willActivate() {
@@ -62,8 +64,10 @@ class ConversationInterfaceController: WKInterfaceController {
             let lastName = userObject["lastName"] as! String
             row.nameLabel.setText(firstName + " " + lastName)
             
-            let time = currentMessage["created_at"] as! String
-            row.timeLabel.setText(time)
+            let unformattedTime = currentMessage["created_at"] as! String
+            let messageTime = self.dateFormatter.dateFromString(unformattedTime)
+            let dateComponents = NSCalendar.currentCalendar().components([NSCalendarUnit.Hour, NSCalendarUnit.Minute], fromDate: messageTime!)
+            row.timeLabel.setText(String(dateComponents.hour) + ":" + String(dateComponents.minute))
             
             let firstWooImageName = (wooObject["orderedImageFileNames"] as! [String])[0]
             

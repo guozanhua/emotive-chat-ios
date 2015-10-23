@@ -72,7 +72,7 @@
                                             </group>
                                             <group width="61" height="80" alignment="right" layout="vertical" id="Fkc-kk-yV1">
                                                 <items>
-                                                    <button width="52" height="52" alignment="right" verticalAlignment="center" title="Button" id="JU8-5H-Hp6"/>
+                                                    <button width="52" height="52" alignment="right" verticalAlignment="center" id="JU8-5H-Hp6"/>
                                                     <label width="66" height="20" alignment="right" text="First Last" id="qs5-cV-Ibu"/>
                                                 </items>
                                             </group>
