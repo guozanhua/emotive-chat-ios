@@ -26,7 +26,6 @@ class SettingsViewController: UIViewController, UITextFieldDelegate
     var lastNameTextField: UITextField!
     var emailTextField: UITextField!
     var passTextField: UITextField!
-    var cancelButton: UIButton!
     var acceptButton: UIButton!
     
     let defaults = NSUserDefaults.standardUserDefaults()
@@ -43,24 +42,22 @@ class SettingsViewController: UIViewController, UITextFieldDelegate
         _addLastNameTextField()
         _addEmailTextField()
         _addPassTextField()
-        _addCancelButton()
         _addAcceptButton()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        self.view.backgroundColor = UIColor.purpleColor()
+        self.passTextField.text = ""
     }
     
     // MARK: - Internal methods
     
-    func cancelPressed(sender: UIButton!)
-    {
-        self.dismissViewControllerAnimated(true, completion: nil)
-    }
-    
     func acceptPressed(sender: UIButton!)
     {
         _updateSettings(self.firstNameTextField.text, lastName: self.lastNameTextField.text, email: self.emailTextField.text, password: self.passTextField.text)
-        self.dismissViewControllerAnimated(true, completion: nil)
+        //self.dismissViewControllerAnimated(true, completion: nil)
+        self.view.backgroundColor = UIColor.magentaColor()
     }
-    
-    
     
     // MARK: - Private methods
     
@@ -165,16 +162,6 @@ class SettingsViewController: UIViewController, UITextFieldDelegate
         self.view.addSubview(passTextField)
     }
     
-    private func _addCancelButton()
-    {
-        self.cancelButton = UIButton()
-        self.cancelButton.setTitle("Cancel", forState: .Normal)
-        self.cancelButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-        self.cancelButton.frame = CGRectMake(self.view.center.x - signUpWidth/2, self.view.center.y + 0.5 * signUpYOffset, signUpWidth, signUpHeight)
-        self.cancelButton.addTarget(self, action: "cancelPressed:", forControlEvents: .TouchUpInside)
-        
-        self.view.addSubview(cancelButton)
-    }
     private func _addAcceptButton()
     {
         self.acceptButton = UIButton()

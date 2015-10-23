@@ -57,8 +57,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate
     func loginPressed(sender: UIButton!)
     {
         let modalStyle = UIModalTransitionStyle.CrossDissolve
-        let friendVC = FriendSearchViewController()
-        friendVC.modalTransitionStyle = modalStyle
+        //let friendVC = FriendSearchViewController()
+        
+        let tabBarController = TabBarViewController()
+                
+        tabBarController.modalTransitionStyle = modalStyle
         
         NetworkingManager.sharedInstance.authenticate(self.emailTextField.text, password: self.passTextField.text, completionClosure: {
             (userUUID: String!, email: String!, firstName: String!, lastName: String!, friends: [String]!) in
@@ -70,8 +73,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate
             defaults.setObject(lastName, forKey: "lastName")
             defaults.setObject(email, forKey: "email")
 
-            self.presentViewController(friendVC, animated: true, completion: nil)
-            
+            //self.presentViewController(friendVC, animated: true, completion: nil)
+            self.presentViewController(tabBarController, animated: true, completion: nil)
         })
     }
     
