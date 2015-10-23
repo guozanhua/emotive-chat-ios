@@ -110,7 +110,7 @@ class ConversationInterfaceController: WKInterfaceController, WooAddedToMessageD
         let currentUserUuid = UserDefaults.currentUserUuid()
         let conversationUuid = self.conversationContext["uuid"] as! String
         
-        let parameters = ["wooUuid": wooUuid, "senderUuid": currentUserUuid!]
+        let parameters = ["wooUuid": wooUuid, "senderUuid": currentUserUuid!, "conversationUuid": conversationUuid]
         
         manager.PUT(Conversation.conversationPath + conversationUuid,
             parameters: parameters,
@@ -119,6 +119,9 @@ class ConversationInterfaceController: WKInterfaceController, WooAddedToMessageD
                 if let jsonResult = responseObject as? Dictionary<String, AnyObject> {
                     if ((jsonResult["success"] as! Bool) == false) {
                         print("Failed to create new message")
+                    }
+                    else {
+                        self._getMessages()
                     }
                 }
                 else {
