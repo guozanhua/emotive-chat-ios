@@ -28,13 +28,13 @@ class ConversationInterfaceController: WKInterfaceController, WooAddedToMessageD
         // Configure interface objects here.
         self.conversationContext = context as! Dictionary<String, AnyObject>
         self.dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
-        
-        self._getMessages()
     }
 
     override func willActivate() {
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
+        
+        self._getMessages()
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: NSSelectorFromString("tokenChanged:"), name: "token-changed", object: nil)
     }
