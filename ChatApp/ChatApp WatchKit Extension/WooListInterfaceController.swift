@@ -22,6 +22,7 @@ class WooListInterfaceController: WKInterfaceController
     var wooCategory: String! = "none"
     
     var delegate: WooAddedToMessageDelegate! = nil
+    var controllerToDismiss: WKInterfaceController! = nil
     
     var wooButtons: [WKInterfaceButton] = []
     @IBOutlet var woo1: WKInterfaceButton!
@@ -44,6 +45,7 @@ class WooListInterfaceController: WKInterfaceController
         // Configure interface objects here.
         let contextDictionary = context as! Dictionary<String, AnyObject>
         self.delegate = contextDictionary["controller"] as! WooAddedToMessageDelegate
+        self.controllerToDismiss = contextDictionary["controllerToDismiss"] as! WKInterfaceController
 
         self.wooCategory = contextDictionary["category"] as! String
         self._getWoos()
@@ -141,9 +143,10 @@ class WooListInterfaceController: WKInterfaceController
             if let uuidString = woo["uuid"] as? String, images = woo["fullImages"] as? [UIImage] {
                 wooObject["uuid"] = uuidString
                 wooObject["images"] = images
-                self.delegate .wooAddedToMessage(wooObject)
+                self.delegate.wooAddedToMessage(wooObject)
                 
-                (self.delegate as! WKInterfaceController).dismissController()                
+                self.dismissController()
+                self.controllerToDismiss.dismissController()
             }
         }
     }

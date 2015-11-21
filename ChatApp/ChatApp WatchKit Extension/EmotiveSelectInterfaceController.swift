@@ -57,6 +57,7 @@ class EmotiveSelectInterfaceController: WKInterfaceController {
     {
         var contextDictionary = Dictionary<String, AnyObject>()
         contextDictionary["category"] = self.favoritesTitle
+        contextDictionary["controllerToDismiss"] = self
         if (self.newMessageController == nil) {
             contextDictionary["controller"] = self.newConversationController
         }

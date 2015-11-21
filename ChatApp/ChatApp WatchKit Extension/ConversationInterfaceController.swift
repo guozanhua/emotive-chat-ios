@@ -147,7 +147,7 @@ class ConversationInterfaceController: WKInterfaceController, WooAddedToMessageD
     
     @IBAction func wooButtonPressed()
     {
-        self.pushControllerWithName("EmotiveSelect", context: self)
+        self.presentControllerWithName("EmotiveSelect", context: self)
     }
     
     @objc func tokenChanged(notification: NSNotification)
