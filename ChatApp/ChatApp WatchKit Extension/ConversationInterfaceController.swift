@@ -14,6 +14,7 @@ class ConversationInterfaceController: WKInterfaceController, WooAddedToMessageD
 {
     let wooImageSize: CGFloat = 40
     var dateFormatter = NSDateFormatter()
+    var lastUpdatedDate = NSDate.distantPast()
     
     @IBOutlet var messagesTable: WKInterfaceTable!
     
@@ -33,6 +34,8 @@ class ConversationInterfaceController: WKInterfaceController, WooAddedToMessageD
     override func willActivate() {
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
+        
+        self.loadTableData()
         
         self._getMessages()
         
@@ -66,6 +69,9 @@ class ConversationInterfaceController: WKInterfaceController, WooAddedToMessageD
             
             let unformattedTime = currentMessage["created_at"] as! String
             let messageTime = self.dateFormatter.dateFromString(unformattedTime)
+            if (index == self.messages.count-1) {
+                self.lastUpdatedDate = messageTime!
+            }
             let dateComponents = NSCalendar.currentCalendar().components([NSCalendarUnit.Hour, NSCalendarUnit.Minute], fromDate: messageTime!)
             row.timeLabel.setText(String(dateComponents.hour) + ":" + String(dateComponents.minute))
             
@@ -164,8 +170,10 @@ class ConversationInterfaceController: WKInterfaceController, WooAddedToMessageD
         let manager = NetworkingManager.sharedInstance.manager
         let conversationUuid = self.conversationContext["uuid"] as! String
         
+        let parameters = ["lastUpdatedDate": self.dateFormatter.stringFromDate(self.lastUpdatedDate)]
+        
         manager.GET(Conversation.conversationPath + conversationUuid,
-            parameters: nil,
+            parameters: parameters,
             success: { (dataTask: NSURLSessionDataTask!, responseObject: AnyObject!) in
                 if let jsonResult = responseObject as? Dictionary<String, AnyObject> {
                     let successful = jsonResult["success"] as? Bool
