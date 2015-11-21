@@ -181,7 +181,8 @@ class ConversationInterfaceController: WKInterfaceController, WooAddedToMessageD
                         print("Failed to get all conversations of user")
                     }
                     else if (successful == true) {
-                        self.messages = jsonResult["messages"] as! [Dictionary<String, AnyObject>]
+                        let newMessages = jsonResult["messages"] as! [Dictionary<String, AnyObject>]
+                        self.messages.appendContentsOf(newMessages)
                         self.loadTableData()
                     }
                 }
